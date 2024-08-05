@@ -1,0 +1,34 @@
+.sidebar-container {
+  background-color: #25252D;
+  position: fixed;
+  height: 100%;
+  top: 4rem;
+  left: 0px;
+  width: 5rem;
+}
+
+.sidebar-content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  height: 50vh;
+  margin-top: 3rem;
+}
+
+.sidebar-icon {
+  width: 30px;
+  height: 30px;
+  color: white;
+  cursor: pointer;
+}
+
+.sidebar-icon.active {
+  fill: #269996;
+}
+
+span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
