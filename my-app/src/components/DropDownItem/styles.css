@@ -1,0 +1,12 @@
+.dropdown-item {
+  display: flex;
+  justify-content: start;
+  color: white;
+  font-size: 17px;
+}
+
+.dropdown-item a {
+  margin-left: 10px;
+  text-decoration: none;
+  color: white;
+}

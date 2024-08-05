@@ -1,0 +1,44 @@
+.navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+}
+
+.logo-search-bar {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-bar {
+  display: flex;
+  margin-left: 30px;
+  width: 473px;
+}
+
+.navbar-header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #25252D;
+  padding: 0;
+}
+
+.navbar-logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5rem;
+}
+
+.navbar-logo {
+  color: white;
+  width: 50px;
+  height: 39px;
+}
+
+.navbar-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
