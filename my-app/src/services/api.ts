@@ -3,7 +3,7 @@ import { parseCookies } from "nookies"
 
 
 export function getApiClient(ctx?: any): AxiosInstance {
-  const { 'deep.auth.token': token } = parseCookies(ctx)
+  const { 'quixalert.auth.token': token } = parseCookies(ctx)
 
   const api = axios.create({
     baseURL: process.env.NEXT_PUBLIC_BASE_URL_API
