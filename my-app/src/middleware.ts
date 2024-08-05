@@ -12,7 +12,7 @@ function matchesWildcard(path: string, pattern: string): boolean {
 }
 
 export async function middleware(request: NextRequest) {
-	const login = process.env.NEXT_PUBLIC_BASE_URL ?? '';
+	const login = process.env.NEXT_PUBLIC_AUTH_PAGE ?? '';
 
 	if (authRoutes.some(pattern => matchesWildcard(request.nextUrl.pathname, pattern))) {
 		const token = request.cookies.get('quixalert.auth.token');

@@ -12,8 +12,7 @@ export default function Home() {
 
   async function handleSignIn(data: any){
     const user = data as User
-    console.log(user)
-    // await signIn(data);
+    await signIn(user);
   }
 
   return (

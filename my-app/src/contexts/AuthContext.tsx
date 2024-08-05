@@ -14,9 +14,10 @@ type AuthContextType = {
   signIn: (data: SignInData) => Promise<void>;
 }
 
-type UserData = {
-  token: string,
-  user: User
+type Tokens = {
+  access_token: string,
+  refresh_token: string
+  // user: User
 }
 
 type SignInData = {
@@ -37,18 +38,18 @@ export function AuthProvider({children}: Readonly<{children: React.ReactNode}>){
   })
 
   async function signIn({ email, password }: SignInData){
-    const response = await api.post<UserData>('login', {
+    const response = await api.post<Tokens>('auth/authenticate', {
       email: email,
       password: password
     })
     
-    setCookie(undefined, 'quixalert.auth.token', response.data.token, {
+    setCookie(undefined, 'quixalert.auth.token', response.data.access_token, {
       maxAge: 60 * 60 * 8 // 8 hours
     })
 
-    api.defaults.headers['Authorization'] = `Bearer ${response.data.token}`
+    api.defaults.headers['Authorization'] = `Bearer ${response.data.access_token}`
 
-    setUser(response.data.user)
+    // setUser(response.data.user)
 
     router.push('/home')
   }
