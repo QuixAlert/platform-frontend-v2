@@ -4,7 +4,7 @@ import "./globals.css";
 import {AuthProvider} from "@/contexts/AuthContext";
 import React from "react";
 
-const nunito = Nunito({ subsets: ["latin"] });
+const font = Nunito({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "QuixAlert Login",
@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={font.className}>
         <AuthProvider>
           {children}
         </AuthProvider>
