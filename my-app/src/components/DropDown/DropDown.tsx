@@ -1,9 +1,6 @@
 import React, {useState} from "react"
 
 import DropDownItem from "../DropDownItem/DropDownItem";
-
-import userImg from "@/../../public/assets/images/user.png";
-
 import {DownOutlined, FormOutlined, LogoutOutlined, UserOutlined} from "@ant-design/icons";
 
 import "./style.css"
@@ -14,7 +11,7 @@ const DropDown = () => {
   return (
     <div>
       <div className="user-menu" >
-        <img className="user-image" src={userImg.src}/>
+        <img className="user-image" src="user.png"/>
         <div className="user-details">
           <div className="user-name" >Phablo Gabriel</div>
           <div className="user-role" >Administrador</div>
