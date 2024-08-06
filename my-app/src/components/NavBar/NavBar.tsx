@@ -18,7 +18,7 @@ const NavBar = () => {
       <Header className="navbar-header">
         <div className="logo-search-bar">
           <div className="navbar-logo-container">
-            <img className="navbar-logo" src="quixalert_logo.svg" alt="QuixAlert Logo"/>
+            <img className="navbar-logo" src="quixalert_logo_nav.svg" alt="QuixAlert Logo"/>
           </div>
 
           <div className="search-bar-container">
