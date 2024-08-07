@@ -115,7 +115,10 @@ function AdoptionCard({ adoption }: { adoption: Adoption }) {
         <div className="card-see-more">
           <button
             className="card-see-more-btn"
-            onClick={() => {router.push("/adoptionId")}}
+            onClick={() => {
+              router.push(`/adoption_details?adoptionId=${adoption.id}`)
+            }
+          }
           >
             Ver mais
           </button>
