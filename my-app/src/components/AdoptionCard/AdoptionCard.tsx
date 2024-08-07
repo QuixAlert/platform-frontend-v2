@@ -26,6 +26,7 @@ const adoptionCard = {
   }
 }
 
+import { useRouter } from "next/navigation";
 import { IoMaleSharp } from "react-icons/io5";
 import { IoFemaleSharp } from "react-icons/io5";
 import { FaDog } from "react-icons/fa";
@@ -35,7 +36,11 @@ import { PiBirdFill } from "react-icons/pi";
 import "./style.css"
 import Adoption from "@/model/Adoption";
 
+
+
 function AdoptionCard({ adoption }: { adoption: Adoption }) {
+  const router = useRouter();
+
   return (
     <div className="adoption-card" title="">
       <div className="card-left">
@@ -110,6 +115,10 @@ function AdoptionCard({ adoption }: { adoption: Adoption }) {
         <div className="card-see-more">
           <button
             className="card-see-more-btn"
+            onClick={() => {
+              router.push(`/adoption_details?adoptionId=${adoption.id}`)
+            }
+          }
           >
             Ver mais
           </button>

@@ -15,3 +15,15 @@ export const fetchAdoptions = async (token: string) => {
         return [] as Adoption[]
     }
 }
+export const fetchAdoption = async (token: string, id: string) => {
+    try {
+        console.log(token)
+        const response = await fetch(`${baseUrl}/adoption/${id}`, {
+            headers: {Authorization: `Bearer ${token}`},
+            method: 'GET'
+        })
+        return await response.json() as Adoption
+    } catch (e) {
+        return {} as Adoption
+    }
+}

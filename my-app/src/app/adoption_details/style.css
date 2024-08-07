@@ -1,0 +1,282 @@
+.page-container {
+  padding: 100px 0 0 120px;
+  background-color: #1D1E23;
+  color: white;
+}
+
+/* SOLICITANTE*/
+/* DETALHES DO SOLICITANTE */
+.adoption-part-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  align-self: flex-start;
+}
+
+.requester-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  align-self: flex-start;
+}
+.requester-photo {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 2px solid white;
+
+  object-fit: cover;
+
+}
+.requester-role {
+  opacity: 60%;
+  font-size: 20px;
+}
+.requester-name {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+/* CABEÇALHO DA ADOCAO */
+.request-header-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  align-self: flex-start;
+}
+.request-type {
+  font-size: 24px;
+  font-weight: bold;
+}
+.request-date-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.request-date-container div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.request-icon {
+  height: 20px;
+  width: 20px;
+}
+.request-adress span {
+  font-weight: bold;
+  display: inline;
+}
+
+/* DESCRICAO DA SOLICITACAO */
+.request-body-container {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+}
+.request-body-container div {
+  margin-bottom: 0.75rem;
+}
+.request-body-container h3{
+  font-size: 15px;
+  margin-bottom: 0.75rem;
+}
+.request-input-box {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0.5rem;
+  background-color: #EEEEEE;
+  color: black;
+  border-radius: 5px;
+}
+.request-input {
+  font-size: 12px;
+}
+.request-details {
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  font-size: 14px;
+}
+.personal-visit div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.visit-hour .visit-date {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ANIMAL */
+/* FOTO */
+.animal-image {
+  height: 300px;
+  width: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 3rem;
+}
+
+/* DESCRICAO DO ANIMAL */
+.animal-detail-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: #EEEEEE;
+  font-size: 14px;
+  color: black;
+  height: 40%;
+  border-radius: 12px;
+  padding: 10px;
+
+  width: 300px;
+  max-height: 17rem;
+}
+.animal-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: bold;
+}
+.animal-name {
+  font-size: 16px;
+}
+.animal-icon {
+  font-size: 20px;
+}
+.animal-title img {
+  width: 16px;
+}
+.animal-info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+.animal-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.animal-info h3 {
+  font-weight: bold;
+}
+.animal-other-infos {
+  display: flex;
+  gap: 14px;
+}
+.animal-description {
+  text-align: justify;
+}
+
+
+/* DEVOLUTIVA */
+/* container */
+.approval-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1rem;
+  border-radius: 18px;
+  background-color: #269996;
+  color: #fafafa;
+}
+.responsible-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+/* foto */
+.responsible-photo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+.responsible-role {
+  font-size: 18px;
+  opacity: 60%;
+}
+.responsible-name {
+  font-weight: bold;
+  font-size: 20px;
+}
+/* infos */
+.responsible-header-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.75rem;
+}
+.responsible-date-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.responsible-date-container div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.responsible-date-title {
+  font-weight: bold;
+  font-size: 20px;
+}
+.responsible-icon {
+  height: 20px;
+  width: 20px;
+  filter: invert(100%);
+}
+.responsible-adress span {
+  font-weight: bold;
+  display: inline;
+}
+.request-infos-head {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.request-infos-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%; 
+  margin-bottom: 1rem;
+}
+.request-infos h3 {
+  font-size: 18px;
+  font-weight: bold;
+}
+.request-return-form {
+  width: 100%;
+}
+.request-return-head {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+.request-return {
+  width: 100%;  
+  height: 8rem;
+  resize: none;
+  background-color: #EEEEEE;
+  color: black;
+  border-radius: 12px;
+  padding: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  margin-bottom: 1rem;
+}
+.return-btn {
+  margin-left: 0.5rem;
+}
