@@ -2,6 +2,8 @@
 import { useState } from 'react';
 import './style.css';
 import { Form, Input, Button, Select, Upload, Row, Col, GetProp, UploadFile, UploadProps } from 'antd';
+import NavBar from '@/components/NavBar/NavBar';
+import Sidebar from '@/components/SideBar/SideBar';
 
 const raceOptions = {
     cao: [
@@ -70,9 +72,14 @@ const CadastrarAnimalPage: React.FC = () => {
 
   return (
     <>
-      <h1 className="title max-w-[80%] mx-auto mt-[60px]" >
-         Cadastrar Animal:
-      </h1>
+      <Sidebar/>
+      <NavBar/>
+      
+      <div className='bg-[#1D1E23] pt-[76px] '>
+
+        <h1 className="title max-w-[80%] mx-auto mt-[40px]" >
+          Cadastrar Animal:
+        </h1>
 
         <Form
           form={form}
@@ -206,6 +213,7 @@ const CadastrarAnimalPage: React.FC = () => {
             </Col>
           </Row>
         </Form>
+      </div>
     </>
   );
 };
