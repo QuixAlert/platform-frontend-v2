@@ -3,6 +3,7 @@ import UserFirebase from "@/model/UserFirebase";
 import StatusAdoption from "@/model/StatusAdoption";
 
 export default interface Adoption {
+    id: string,
     animal_id: string;
     animal_description: string,
     house_description: string,
