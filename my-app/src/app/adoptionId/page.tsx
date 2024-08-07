@@ -220,12 +220,6 @@ const AdoptionId = () => {
               </textarea>
               <Button className="return-btn" type="primary">Aceitar</Button>
               <Button className="return-btn" type="primary" danger>Recusar</Button>
-              {/* <button className="request-return-button refuse-btn">
-                <img src={""} alt="refuse button icon" />
-              </button>
-              <button className="request-return-button accept-btn">
-                <img src={""} alt="accept button icon" />
-              </button> */}
             </form>
 
           </div>
