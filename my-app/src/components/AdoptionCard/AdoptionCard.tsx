@@ -34,18 +34,21 @@ import { FaCat } from "react-icons/fa";
 import { PiBirdFill } from "react-icons/pi";
 
 import "./style.css"
+import Adoption from "@/model/Adoption";
 
-const AdoptionCard = () => {
+
+
+function AdoptionCard({ adoption }: { adoption: Adoption }) {
   const router = useRouter();
 
   return (
     <div className="adoption-card" title="">
       <div className="card-left">
         <div className="card-person-container">
-          <img className="card-person-photo" src={ adoptionCard.solicitante.url } alt="person-photo" />
+          <img className="card-person-photo" src={ adoption.user.path_picture } alt="person-photo" />
           <div className="card-person-role-and-name">
             <p className="card-person-role">Solicitante:</p>
-            <p className="card-person-name">{ adoptionCard.solicitante.nome }</p>
+            <p className="card-person-name">{ adoption.user.name }</p>
           </div>
         </div>
         <div className="card-adoption-info-grid">
@@ -55,31 +58,26 @@ const AdoptionCard = () => {
           </div>
           <div className="card-adoption-info-line">
             <h3>Data da solicitação:</h3>            
-            <p>{ adoptionCard.solicitacao.data || "20/12/2023"}</p>
+            <p>{ "20/12/2023"}</p>
           </div>
         </div>
 
         <div className="card-animal-sub-info">
-            <h3>{ adoptionCard.animal.nome }</h3>
+            <h3>{ adoption.animal.name }</h3>
             {
               (() => {
-                if (adoptionCard.animal.tipo == "Cachorro") {
-                  return (
-                    <FaDog className="card-animal-icon"/>
-                  )
-                } else if (adoptionCard.animal.tipo == "Gato") {
-                  return (
-                    <FaCat className="card-animal-icon"/>
-                  )
-                } else if (adoptionCard.animal.tipo == "Pássaro") {
-                  return (
-                    <PiBirdFill className="card-animal-icon"/>
-                  )
-                  }
+                switch (adoption.animal.animal_type.type){
+                  case 'Dog':
+                    return <FaDog className="card-animal-icon"/>
+                  case 'Cat':
+                    return <FaCat className="card-animal-icon"/>
+                  case 'Bird':
+                    return <PiBirdFill className="card-animal-icon"/>
+                }
               })()
             }
             {
-              adoptionCard.animal.genero === "Macho" 
+              adoption.animal.gender === "Male"
                 ? (<IoMaleSharp className="card-animal-icon"/>)
                 : (<IoFemaleSharp className="card-animal-icon"/>)
             }
@@ -87,7 +85,7 @@ const AdoptionCard = () => {
         
         <div className="card-adoption-animal-info">
           <div className="card-animal-photo-container">
-            <img className="card-animal-photo" src={ adoptionCard.animal.foto} alt="animal image"/>
+            <img className="card-animal-photo" src={ adoption.animal.photo} alt="animal image"/>
           </div>
         </div>
       </div>
@@ -103,15 +101,15 @@ const AdoptionCard = () => {
         <div className="card-status-info">
         <div className="card-info-line">
             <h2>Dias em aberto:</h2>
-            <p>Está com { adoptionCard.solicitacao.emAberto || "20" } dias</p>
+            <p>Está com { "20" } dias</p>
           </div>
           <div className="card-info-line">
             <h2>Status:</h2>
-            <p>{ adoptionCard.solicitacao.status || "Aguardando" }</p>
+            <p>{ adoption.status_adoption.name || "Aguardando" }</p>
           </div>
           <div className="card-info-line">
             <h2>Conclusão Prevista:</h2>
-            <p>{ adoptionCard.solicitacao.previsao || "25/12/2023" }</p>
+            <p>{ "25/12/2023" }</p>
           </div>
         </div>
         <div className="card-see-more">
