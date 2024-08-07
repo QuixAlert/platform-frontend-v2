@@ -17,7 +17,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+      <div className="flex h-screen flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <Image priority={true} className="mx-auto h-36 w-auto" alt="Quixalert logo" src={'quixalert_logo.svg'} width={150} height={150}/>
         </div>
