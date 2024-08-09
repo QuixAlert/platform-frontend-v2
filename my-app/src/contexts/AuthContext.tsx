@@ -51,7 +51,7 @@ export function AuthProvider({children}: Readonly<{children: React.ReactNode}>){
 
     // setUser(response.data.user)
 
-    router.push('/home')
+    router.push('/adoption')
   }
 
   return (

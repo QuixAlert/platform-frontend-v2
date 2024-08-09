@@ -15,12 +15,12 @@ function Sidebar () {
   const currentPath = usePathname();
   const router = useRouter();
 
-  const isHomePage = currentPath === "/home";
-  const isAdoptionPage = currentPath === "/adoption";
-  const isUsersPage = currentPath === "/user";
-  const isConfigPage = currentPath === '/config';
-  const isHelpPage = currentPath === '/help';
-  const isReportPage = currentPath === '/report';
+  const isHomePage = currentPath.includes("/home");
+  const isAdoptionPage = currentPath.includes("/adoption");
+  const isUsersPage = currentPath.includes("/user");
+  const isConfigPage = currentPath.includes("/config");
+  const isHelpPage = currentPath.includes("/help");
+  const isReportPage = currentPath.includes("/report");
   
   return (
     <>
