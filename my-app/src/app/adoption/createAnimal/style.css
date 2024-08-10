@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+.title{
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  font-size: 26px; 
+}
+
+.custom-label {
+  color: white;
+  font-family: 'Nunito', sans-serif;
+  font-weight: bold;
+  font-size: 18px; 
+}
+
+.submitButton{
+  width: 100%;
+  background: #017957 ;
+  border-radius: 15px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: bold;
+  font-size: 18px; 
+  
+}
+
+.custom-placeholder{
+  font-family: 'Nunito', sans-serif;
+  color: black;
+}
+.custom-placeholder::placeholder{
+  font-family: 'Nunito', sans-serif;
+  color: rgb(95, 95, 95);
+}
+
+.custom-select .ant-select-selection-placeholder {
+  font-family: 'Nunito', sans-serif;
+  color: rgb(95, 95, 95);
+}
+
+
+/* antes do upload */
+.ant-upload {
+width: 100% !important;
+height: 250px !important;
+}
+
+/* depois do upload */
+.ant-upload-list-item {
+width: 500px !important;
+height: 250px !important;
+}
+
