@@ -1,6 +1,8 @@
 import Sidebar from "@/components/SideBar/SideBar";
 import NavBar from "@/components/NavBar/NavBar";
 import AdoptionCard from "@/components/AdoptionCard/AdoptionCard";
+import { useRouter, usePathname } from 'next/navigation'
+
 
 import { Button } from "antd";
 
@@ -14,6 +16,12 @@ export default async function Adoption() {
   const token = cookieStore.get("quixalert.auth.token");
 
   const adoptions = await fetchAdoptions(token?.value || '');
+
+    //Incluído para clicar no botão e ir para lista - da erro quando descomento, então não consegui fazer a logica do botão ver animais
+  //const currentPath = usePathname();
+  //const router = useRouter();
+
+  //const isAnimalListPage = currentPath.includes("/animals");
 
   return (
       <>
@@ -30,7 +38,7 @@ export default async function Adoption() {
             </div>
 
             <div className="creation">
-              <Button className="creation-button">Ver lista de animais</Button>
+              <Button className="creation-button" >Ver lista de animais</Button>
               <Button className="creation-button">Cadastrar animal</Button>
             </div>
           </div>
