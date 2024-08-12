@@ -11,7 +11,7 @@ const DropDown = () => {
   return (
     <div>
       <div className="user-menu" >
-        <img className="user-image" src="user.png"/>
+        <img className="user-image" src="/user.png"/>
         <div className="user-details">
           <div className="user-name" >Phablo Gabriel</div>
           <div className="user-role" >Administrador</div>

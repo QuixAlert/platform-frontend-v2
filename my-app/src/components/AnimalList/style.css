@@ -1,0 +1,84 @@
+.animal-card {
+    display: flex;
+    align-items: center;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 100%; 
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    margin: 10px;
+    width: 350px;
+  }
+  
+  .animal-image {
+    width: 100px; 
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px 0 0 8px;
+  }
+  
+  .animal-info {
+    flex-grow: 1;
+    padding: 16px;
+  }
+  
+  .animal-name {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-right: 1rem;
+  }
+
+  
+  .animal-date,
+  .animal-date-value {
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .animal-status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+    background-color: #f8f9fa; /* Cor de fundo para combinar com o card */
+    border-radius: 0 8px 8px 0;
+  }
+  
+  .status-label {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .status-value {
+    font-size: 14px;
+    font-weight: bold;
+    color: #28a745; /* Cor verde */
+    padding: 4px 8px;
+    border-radius: 12px;
+    margin-top: 4px;
+  }
+  .card-animal-icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .card-animal-icon {
+    flex-shrink: 0;
+    height: 20px;
+    width: 20px;
+    color: black;
+  }
+
+  .animal-icons{
+    display: flex;
+    flex-direction: row;
+  }
+
+  
