@@ -2,12 +2,18 @@
 import Sidebar from "@/components/SideBar/SideBar";
 import NavBar from "@/components/NavBar/NavBar";
 import AnimalListCard from "@/components/AnimalList/AnimalList";
-
 import { Button } from "antd";
+import {cookies} from "next/headers";
+import {fetchAnimals} from "@/api/animal";
+import Link from "next/link";
+import "./style.css";
 
-import "./style.css"
+export default async function Animals() {
+  const cookieStore = cookies();
+  const token = cookieStore.get("quixalert.auth.token");
 
-export default function Animals() {
+  const animals = await fetchAnimals(token?.value || '');
+  console.log(animals);
   return (
     <>
       <NavBar />
@@ -23,17 +29,16 @@ export default function Animals() {
           </div>
 
           <div className="creation">
-            <Button className="creation-button">Cadastrar animal</Button>
+            <Link className="ant-btn css-dev-only-do-not-override-1pg9a38 ant-btn-default creation-button" href={"/adoption/createAnimal"}>Cadastrar animal</Link>
           </div>
         </div>
 
         <div className="cards">
-          <AnimalListCard />
-          <AnimalListCard />
-          <AnimalListCard />
-          <AnimalListCard />
-          <AnimalListCard />
-        
+          {
+            animals.map(animal => {
+              return <AnimalListCard key={animal.id} animal={animal}/>
+            })
+          }
         </div>
       </div>
     </>

@@ -1,14 +1,11 @@
 import Sidebar from "@/components/SideBar/SideBar";
 import NavBar from "@/components/NavBar/NavBar";
 import AdoptionCard from "@/components/AdoptionCard/AdoptionCard";
-import { useRouter, usePathname } from 'next/navigation'
-
-
-import { Button } from "antd";
-
-import "./style.css"
 import {cookies} from "next/headers";
 import {fetchAdoptions} from "@/api/adoptions";
+import Link from "next/link";
+import { Button } from "antd";
+import "./style.css"
 
 export default async function Adoption() {
 
@@ -16,12 +13,6 @@ export default async function Adoption() {
   const token = cookieStore.get("quixalert.auth.token");
 
   const adoptions = await fetchAdoptions(token?.value || '');
-
-    //Incluído para clicar no botão e ir para lista - da erro quando descomento, então não consegui fazer a logica do botão ver animais
-  //const currentPath = usePathname();
-  //const router = useRouter();
-
-  //const isAnimalListPage = currentPath.includes("/animals");
 
   return (
       <>
@@ -38,8 +29,12 @@ export default async function Adoption() {
             </div>
 
             <div className="creation">
-              <Button className="creation-button" >Ver lista de animais</Button>
-              <Button className="creation-button">Cadastrar animal</Button>
+              <Link href={"/adoption/animals"} className="ant-btn css-dev-only-do-not-override-1pg9a38 ant-btn-default creation-button">
+                Ver lista de animais
+              </Link>
+              <Link href={"/adoption/createAnimal"} className="ant-btn css-dev-only-do-not-override-1pg9a38 ant-btn-default creation-button">
+                Cadastrar animal
+              </Link>
             </div>
           </div>
 

@@ -2,7 +2,10 @@ import UserFirebase from "@/model/UserFirebase";
 import AnimalType from "@/model/AnimalType";
 
 export default interface Animal {
+    id: string,
     name: string,
+    status: string,
+    creation_date: string,
     id_animal_type: string,
     age: number,
     gender: string,
