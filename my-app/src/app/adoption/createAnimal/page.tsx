@@ -1,47 +1,18 @@
-'use client';
+"use client"
+
 import { useState } from 'react';
 import './style.css';
-import { Form, Input, Button, Select, Upload, Row, Col, GetProp, UploadFile, UploadProps } from 'antd';
+import { Form, Input, Button, Select, Upload, Row, Col, GetProp, UploadFile, UploadProps, notification, Space } from 'antd';
 import NavBar from '@/components/NavBar/NavBar';
 import Sidebar from '@/components/SideBar/SideBar';
+import {addAnimal} from "@/api/animal";
+import {parseCookies} from "nookies";
 
-const raceOptions = {
-    cao: [
-      { value: 'labrador', label: 'Labrador' },
-      { value: 'poodle', label: 'Poodle' },
-      { value: 'beagle', label: 'Beagle' },
-      { value: 'bulldog', label: 'Bulldog' },
-      { value: 'golden_retriever', label: 'Golden Retriever' },
-      { value: 'pug', label: 'Pug' },
-      { value: 'germanshepherd', label: 'Pastor Alemão' },
-      { value: 'boxer', label: 'Boxer' },
-      { value: 'dachshund', label: 'Dachshund' },
-      { value: 'cocker_spaniel', label: 'Cocker Spaniel' },
-    ],
-    gato: [
-      { value: 'siames', label: 'Siamês' },
-      { value: 'persa', label: 'Persa' },
-      { value: 'maine_coon', label: 'Maine Coon' },
-      { value: 'ragdoll', label: 'Ragdoll' },
-      { value: 'burmese', label: 'Burmês' },
-      { value: 'sphynx', label: 'Sphynx' },
-      { value: 'abissinio', label: 'Abissínio' },
-      { value: 'british_shorthair', label: 'British Shorthair' },
-      { value: 'scottish_fold', label: 'Scottish Fold' },
-      { value: 'norwegian_forest', label: 'Norwegian Forest' },
-    ],
-  };
-  
 type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0];
 
 const CadastrarAnimalPage: React.FC = () => {
   const [form] = Form.useForm();
-  const [selectedType, setSelectedType] = useState<string | undefined>(undefined);
   const [fileList, setFileList] = useState<UploadFile[]>([]);
- const [racas, setRacas] = useState<{ value: string; label: string }[]>([
-    ...raceOptions.cao,
-    ...raceOptions.gato
-  ]);
   const onChange: UploadProps['onChange'] = ({ fileList: newFileList }) => {
     setFileList(newFileList);
   };
@@ -61,13 +32,19 @@ const CadastrarAnimalPage: React.FC = () => {
     imgWindow?.document.write(image.outerHTML);
   };
 
-  const onFinish = (values: any) => {
+  const onFinish = async (values: any) => {
     console.log('Received values from form: ', values);
-  };
+    const token = parseCookies(undefined)["quixalert.auth.token"];
 
-  const handleTypeChange = (value: string) => {
-    setSelectedType(value);
-    setRacas(raceOptions[value] || []);
+    const animalResponse = await addAnimal(token, values);
+
+    if (animalResponse && typeof animalResponse === 'object' && 'message' in animalResponse) {
+      console.log('Animal error:', animalResponse);
+    } else {
+      console.log('Animal okay:', animalResponse);
+      form.resetFields();
+      window.location.replace('/adoption/animals');
+    }
   };
 
   return (
@@ -94,7 +71,7 @@ const CadastrarAnimalPage: React.FC = () => {
                 {/* Linha 1 */}
                 <Col span={15}>
                   <Form.Item
-                    name="nome"
+                    name="name"
                     label={<span className="custom-label">Nome do Animal</span>}
                     rules={[{ required: true, message: 'Por favor, insira o nome do animal!' }]}
                   >
@@ -103,13 +80,13 @@ const CadastrarAnimalPage: React.FC = () => {
                 </Col>
                 <Col span={8} offset={1}>
                   <Form.Item
-                    name="tipo"
+                    name="type"
                     label={<span className="custom-label">Tipo de Animal</span>}
                     rules={[{ required: true, message: 'Por favor, selecione o tipo de animal!' }]}
                   >
-                    <Select className="custom-select" placeholder="Selecione o tipo" onChange={handleTypeChange}>
-                      <Select.Option value="cao">Cachorro</Select.Option>
-                      <Select.Option value="gato">Gato</Select.Option>
+                    <Select className="custom-select" placeholder="Selecione o tipo">
+                      <Select.Option value="Dog">Cachorro</Select.Option>
+                      <Select.Option value="Cat">Gato</Select.Option>
                     </Select>
                   </Form.Item>
                 </Col>
@@ -119,44 +96,38 @@ const CadastrarAnimalPage: React.FC = () => {
                 {/* Linha 2 */}
                 <Col span={8}>
                   <Form.Item
-                    name="idade"
+                    name="age"
                     label={<span className="custom-label">Idade</span>}
                     rules={[{ required: true, message: 'Por favor, insira a idade do animal!' }]}
                   >
-                    <Input className='custom-placeholder' placeholder="Ex: 18 meses" />
+                    <Input className='custom-placeholder' placeholder="Idade em anos" type="number" min={0} max={50} />
                   </Form.Item>
                 </Col>
                 <Col span={8}>
                   <Form.Item
-                    name="genero"
+                    name="gender"
                     label={<span className="custom-label">Gênero</span>}
                     rules={[{ required: true, message: 'Por favor, selecione o gênero!' }]}
                   >
                     <Select className="custom-select" placeholder="Selecione o gênero">
-                      <Select.Option value="macho">Macho</Select.Option>
-                      <Select.Option value="femea">Fêmea</Select.Option>
+                      <Select.Option value="Male">Macho</Select.Option>
+                      <Select.Option value="Female">Fêmea</Select.Option>
                     </Select>
                   </Form.Item>
                 </Col>
                 <Col span={8}>
                   <Form.Item
-                    name="raca"
+                    name="breed"
                     label={<span className="custom-label">Raça</span>}
                     rules={[{ required: true, message: 'Por favor, selecione a raça!' }]}
                   >
-                    <Select className="custom-select" placeholder="Selecione a raça">
-                      {racas.map(raca => (
-                        <Select.Option className="custom-select" key={raca.value} value={raca.value}>
-                          {raca.label}
-                        </Select.Option>
-                      ))}
-                    </Select>
+                    <Input className='custom-placeholder' placeholder="Ex: Labrador" type={"string"} />
                   </Form.Item>
                 </Col>
               </Row>
 
               <Form.Item
-                name="descricao"
+                name="description"
                 label={<span className="custom-label">Descrição</span>}
                 rules={[{ required: true, message: 'Por favor, insira uma descrição!' }]}
               >
@@ -176,7 +147,7 @@ const CadastrarAnimalPage: React.FC = () => {
                 {/* Linha 1 */}
                 <Col span={24}>
                   <Form.Item
-                    name="fichaMedica"
+                    name="medical_record"
                     label={<span className="custom-label">Ficha Médica</span>}
                     rules={[{ required: true, message: 'Por favor, insira a ficha médica!' }]}
                   >
@@ -189,7 +160,7 @@ const CadastrarAnimalPage: React.FC = () => {
                 {/* Linha 2 */}
                 <Col span={24}>
                     <Form.Item
-                    name="foto"
+                    name="photo"
                     label={<span className="custom-label">Foto</span>}
                     rules={[{ required: true ,message: 'Por favor, insira uma foto!' }]}
                     >

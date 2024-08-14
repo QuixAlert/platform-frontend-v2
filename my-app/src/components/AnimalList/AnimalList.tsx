@@ -39,7 +39,7 @@ function AnimalListCard({ animal }: { animal: Animal }){
                   return <PiBirdFill className="card-animal-icon" />;
                 }
               })()}
-              {animal.gender === "Macho"
+              {animal.gender === "Male"
                 ? <IoMaleSharp className="card-animal-icon" />
                 : <IoFemaleSharp className="card-animal-icon"/>}
             </div>
