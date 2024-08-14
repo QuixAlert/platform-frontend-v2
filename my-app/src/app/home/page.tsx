@@ -1,7 +1,41 @@
-export default function Home() {
+import React from 'react';
+import './style.css'; 
+import NavBar from '@/components/NavBar/NavBar';
+import Sidebar from '@/components/SideBar/SideBar';
+
+const Home = () => {
   return (
     <>
-      <h1>Home Page</h1>
+      <NavBar/>
+      <Sidebar/>
+      <div className="container">
+        <div className="card">
+          <div className="content">
+            <div className="textContainer">
+              <h1 className="title">
+                Plataforma de Gestão de Dados do QuixAlert!
+              </h1>
+              <p className="description">
+                A equipe responsável por cada atendimento solicitado via o QuixAlert é a equipe que 
+                trabalha na Autarquia Municipal de Meio Ambiente de Quixadá (AMMA). 
+                Para que a equipe consiga registrar esses atendimentos, estamos desenvolvendo 
+                uma plataforma web que possibilita o gerenciamento das informações e 
+                solicitações recebidas através do QuixAlert.
+              </p>
+              <button className="button">Preciso de Ajuda</button>
+            </div>
+            <div className="imageContainer">
+              <img 
+                src="QuixAlert! 5.png" 
+                alt="Logo" 
+                className="image"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
     </>
-  )
-}
+  );
+};
+
+export default Home;

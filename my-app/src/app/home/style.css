@@ -1,5 +1,84 @@
-.page-container {
-  padding: 60px 0 0 80px;
-  background-color: #1D1E23;
-  color: white; 
+html, body {
+  background-color: #212121; /* Defina a cor de fundo do html e body para a mesma cor */
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Nunito', sans-serif;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw; /* Ocupa toda a largura da viewport */
+  height: 100vh; /* Ocupa toda a altura da viewport */
+  background-color: #212121;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 40px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: left;
+  max-width: 1800px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+}
+
+.imageContainer {
+  margin-right: 20px;
+}
+
+.image {
+  width: 400px;
+  height: auto;
+}
+
+.textContainer {
+  max-width: 600px;
+}
+
+.title {
+  font-size: 38px;
+  font-weight: bold;
+  color: #1173B5;
+  margin-bottom: 80px;
+  font-family:'Nunito', sans-serif;
+  text-align: left; /* Alinha o texto à esquerda */
+
+}
+
+.highlight {
+  color: #017957;
+  text-align: left;
+}
+
+.description {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 150px;
+  line-height: 1.6;
+  font-family:'Nunito', sans-serif;
+}
+
+.button {
+  width: 200px;
+  background: #017957;
+  border-radius: 15px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
 }
