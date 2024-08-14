@@ -5,7 +5,6 @@ const baseUrl = process.env.NEXT_PUBLIC_BASE_URL_API
 
 export const fetchAdoptions = async (token: string) => {
     try {
-        console.log(token)
         const response = await fetch(`${baseUrl}/adoption`, {
             headers: {Authorization: `Bearer ${token}`},
             method: 'GET'
@@ -17,7 +16,6 @@ export const fetchAdoptions = async (token: string) => {
 }
 export const fetchAdoption = async (token: string, id: string) => {
     try {
-        console.log(token)
         const response = await fetch(`${baseUrl}/adoption/${id}`, {
             headers: {Authorization: `Bearer ${token}`},
             method: 'GET'
