@@ -1,7 +1,13 @@
+"use client"
+
 import React from 'react';
 import './style.css'; 
 import NavBar from '@/components/NavBar/NavBar';
 import Sidebar from '@/components/SideBar/SideBar';
+
+function helpPage() {
+  window.location.replace('/help');
+}
 
 const Home = () => {
   return (
@@ -22,7 +28,7 @@ const Home = () => {
                 uma plataforma web que possibilita o gerenciamento das informações e 
                 solicitações recebidas através do QuixAlert.
               </p>
-              <button className="button">Preciso de Ajuda</button>
+              <button className="button" onClick={helpPage}>Preciso de Ajuda</button>
             </div>
             <div className="imageContainer">
               <img 
