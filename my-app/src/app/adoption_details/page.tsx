@@ -12,6 +12,7 @@ import { fetchAdoption } from "@/api/adoptions";
 import Adoption from "@/model/Adoption";
 import { LoadingOutlined } from '@ant-design/icons';
 import { Flex, Spin } from 'antd';
+import { parseCookies } from 'nookies';
 
 const adoptionMock = {
   solicitante: {
@@ -55,7 +56,7 @@ const AdoptionDetailsClient = () => {
   useEffect(() => {
     const fetchData = async () => {
       // @ts-ignore
-      const token = document.cookie.split('; ').find(row => row.startsWith('quixalert.auth.token=')).split('=')[1];
+      const token = parseCookies(undefined)["quixalert.auth.token"];
       const data = await fetchAdoption(token || '', adoptionId || '');
       setAdoption(data);
     };
@@ -63,23 +64,21 @@ const AdoptionDetailsClient = () => {
     fetchData();
   }, [adoptionId]);
 
-  if (!adoption)
-    return (
-        <div className="h-screen flex items-center justify-center">
-          <Spin indicator={<LoadingOutlined style={{ fontSize: 48 }} spin />} />
-        </div>
-    )
-
-
   return (
       <>
         <NavBar/>
         <Sidebar/>
         <div className="page-container">
-        <Row>
-            <Col span={8} className="adoption-part-container solicitation">
-              <div className="requester-container">
-                <img className="requester-photo" src={adoption.user.path_picture} alt="requester-photo" />
+          { !adoption ? (
+              <div className="h-screen flex items-center justify-center">
+                <Spin indicator={<LoadingOutlined style={{fontSize: 48}} spin/>}/>
+              </div>
+          ) :
+          (
+              <Row>
+                <Col span={8} className="adoption-part-container solicitation">
+                  <div className="requester-container">
+                <img className="requester-photo" src={adoption.user.path_picture} alt="requester-photo"/>
                 <div className="requester-role-and-name">
                   <p className="requester-role">Solicitante:</p>
                   <p className="requester-name">{adoption.user.name}</p>
@@ -90,11 +89,11 @@ const AdoptionDetailsClient = () => {
                 <h2 className="request-type">Solicitação de Adoção</h2>
                 <div className="request-date-container">
                   <div className="request-date">
-                    <FaCalendarAlt className="request-icon" />
+                    <FaCalendarAlt className="request-icon"/>
                     <p>{adoptionMock.solicitacao.data}</p>
                   </div>
                   <div className="request-hour">
-                    <FaClock className="request-icon" />
+                    <FaClock className="request-icon"/>
                     <p>{adoptionMock.solicitacao.hora}</p>
                   </div>
                 </div>
@@ -134,13 +133,13 @@ const AdoptionDetailsClient = () => {
                     <div>
                       <div className="visit-date">
                         <div className="request-input-box">
-                          <FaCalendarAlt className="request-icon" />
+                          <FaCalendarAlt className="request-icon"/>
                           <p>{adoptionMock.solicitacao.agendaDia}</p>
                         </div>
                       </div>
                       <div className="visit-hour">
                         <div className="request-input-box">
-                          <FaClock className="request-icon" />
+                          <FaClock className="request-icon"/>
                           <p>{adoptionMock.solicitacao.agendaHora}</p>
                         </div>
                       </div>
@@ -151,17 +150,17 @@ const AdoptionDetailsClient = () => {
             </Col>
 
             <Col span={8} className="adoption-part-container animal">
-              <img className="animal-image" src={adoption.animal.photo} alt="" />
+              <img className="animal-image" src={adoption.animal.photo} alt=""/>
               <div className="animal-detail-container">
                 <div className="animal-title">
                   {(() => {
                     switch (adoption.animal.animal_type.type) {
                       case 'Dog':
-                        return <FaDog className="card-animal-icon" />;
+                        return <FaDog className="card-animal-icon"/>;
                       case 'Cat':
-                        return <FaCat className="card-animal-icon" />;
+                        return <FaCat className="card-animal-icon"/>;
                       case 'Bird':
-                        return <PiBirdFill className="card-animal-icon" />;
+                        return <PiBirdFill className="card-animal-icon"/>;
                       default:
                         return null;
                     }
@@ -198,7 +197,7 @@ const AdoptionDetailsClient = () => {
             <Col span={8} className="adoption-part-container devolutiva">
               <div className="info approval-container">
                 <div className="responsible-container">
-                  <img className="responsible-photo" src={adoptionMock.responsavel.foto} alt="responsible-photo" />
+                  <img className="responsible-photo" src={adoptionMock.responsavel.foto} alt="responsible-photo"/>
                   <div className="responsible-role-and-name">
                     <p className="responsible-role">Responsável:</p>
                     <p className="responsible-name">{adoptionMock.responsavel.nome}</p>
@@ -223,7 +222,9 @@ const AdoptionDetailsClient = () => {
                 <div className="request-return-head">
                   Devolutiva
                 </div>
-                <form className="request-return-form" onSubmit={(event) => { event.preventDefault() }}>
+                <form className="request-return-form" onSubmit={(event) => {
+                  event.preventDefault()
+                }}>
                 <textarea
                     placeholder="Ex.: Infelizmente, você não se adequou aos requisitos exigidos para adotar tal animal."
                     className="request-return"
@@ -239,6 +240,8 @@ const AdoptionDetailsClient = () => {
               </div>
             </Col>
           </Row>
+            )
+          }
         </div>
       </>
   );

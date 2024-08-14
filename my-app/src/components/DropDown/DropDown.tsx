@@ -4,6 +4,9 @@ import DropDownItem from "../DropDownItem/DropDownItem";
 import {DownOutlined, FormOutlined, LogoutOutlined, UserOutlined} from "@ant-design/icons";
 
 import "./style.css"
+import LogoutItem from "@/components/DropDownItem/LougoutItem";
+import { destroyCookie } from 'nookies';
+import {logout} from "@/lib/utils";
 
 const DropDown = () => {
   const [open, setOpen] = useState(false);
@@ -22,7 +25,7 @@ const DropDown = () => {
       <ul className={`dropdown-container ${open? ' active' : ' inactive'}`} >
         <DropDownItem icon={<UserOutlined />} text="Meu perfil"/>
         <DropDownItem icon={<FormOutlined />} text="Atendidos"/>
-        <DropDownItem icon={<LogoutOutlined />} text="Sair"/>
+        <LogoutItem icon={<LogoutOutlined />} text="Sair" onClick={logout}/>
       </ul>
     </div>
   )
