@@ -1,37 +1,34 @@
-'use client';
-
 import Sidebar from "@/components/SideBar/SideBar";
 import NavBar from "@/components/NavBar/NavBar";
 import AdoptionCard from "@/components/AdoptionCard/AdoptionCard";
 import { fetchAdoptions } from "@/api/adoptions";
 import Link from "next/link";
-import { Button, Spin } from "antd";
+import { Button } from "antd";
 import "./style.css";
-import Adoption from "@/model/Adoption";
-import React, { useState, useEffect } from "react";
-import { parseCookies } from 'nookies';
-import { LoadingOutlined } from "@ant-design/icons";
+import { Suspense } from 'react';
+import { Loading } from "@/components/Loading/Loading";
+import {cookies} from "next/headers";
 
-const AdoptionPage: React.FC = () => {
-  const [adoptions, setAdoptions] = useState<Adoption[]>([]);
-  const [loading, setLoading] = useState(true);
-  const token = parseCookies(undefined)["quixalert.auth.token"];
+const AdoptionsList = async () => {
+  const cookieStore = cookies();
+  const token = cookieStore.get('quixalert.auth.token')?.value || '';
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const fetchedAdoptions = await fetchAdoptions(token || '');
-        setAdoptions(fetchedAdoptions);
-      } catch (error) {
-        console.error("Failed to fetch adoptions:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  try {
+    const adoptions = await fetchAdoptions(token);
+    return (
+        <div className="cards">
+          {adoptions.map(adoption => (
+              <AdoptionCard key={adoption.id} adoption={adoption} />
+          ))}
+        </div>
+    );
+  } catch (error) {
+    console.error("Failed to fetch adoptions:", error);
+    return <div>Error loading adoptions</div>;
+  }
+};
 
-    fetchData();
-  }, [token]);
-
+export default function AdoptionPage() {
   return (
       <>
         <NavBar />
@@ -56,20 +53,10 @@ const AdoptionPage: React.FC = () => {
             </div>
           </div>
 
-          <div className="cards">
-            {loading ? (
-                <div className="flex items-center justify-center">
-                  <Spin indicator={<LoadingOutlined style={{ fontSize: 48 }} spin />} />
-                </div>
-            ) : (
-                adoptions.map(adoption => (
-                    <AdoptionCard key={adoption.id} adoption={adoption} />
-                ))
-            )}
-          </div>
+          <Suspense fallback={<Loading />}>
+            <AdoptionsList />
+          </Suspense>
         </div>
       </>
   );
-};
-
-export default AdoptionPage;
+}
