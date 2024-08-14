@@ -3,7 +3,6 @@ import React from "react";
 import DropDownItemModel from "@/models/DropDownItemModel"
 
 import "./styles.css";
-import {LogoutOutlined} from "@ant-design/icons";
 
 const DropDownItem = (props: DropDownItemModel) => {
   return (
