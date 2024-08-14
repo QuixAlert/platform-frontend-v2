@@ -1,23 +1,41 @@
+'use client';
+
 import Sidebar from "@/components/SideBar/SideBar";
 import NavBar from "@/components/NavBar/NavBar";
 import AdoptionCard from "@/components/AdoptionCard/AdoptionCard";
-import {cookies} from "next/headers";
-import {fetchAdoptions} from "@/api/adoptions";
+import { fetchAdoptions } from "@/api/adoptions";
 import Link from "next/link";
-import { Button } from "antd";
-import "./style.css"
+import { Button, Spin } from "antd";
+import "./style.css";
+import Adoption from "@/model/Adoption";
+import React, { useState, useEffect } from "react";
+import { parseCookies } from 'nookies';
+import { LoadingOutlined } from "@ant-design/icons";
 
-export default async function Adoption() {
+const AdoptionPage: React.FC = () => {
+  const [adoptions, setAdoptions] = useState<Adoption[]>([]);
+  const [loading, setLoading] = useState(true);
+  const token = parseCookies(undefined)["quixalert.auth.token"];
 
-  const cookieStore = cookies();
-  const token = cookieStore.get("quixalert.auth.token");
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const fetchedAdoptions = await fetchAdoptions(token || '');
+        setAdoptions(fetchedAdoptions);
+      } catch (error) {
+        console.error("Failed to fetch adoptions:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  const adoptions = await fetchAdoptions(token?.value || '');
+    fetchData();
+  }, [token]);
 
   return (
       <>
-        <NavBar/>
-        <Sidebar/>
+        <NavBar />
+        <Sidebar />
         <div className="page-container">
           <div className="header">
             <h1 className="main-title">Adoções</h1>
@@ -39,13 +57,19 @@ export default async function Adoption() {
           </div>
 
           <div className="cards">
-            {
-              adoptions.map(adoption => {
-                return <AdoptionCard key={adoption.animal_id} adoption={adoption} />
-              })
-            }
+            {loading ? (
+                <div className="flex items-center justify-center">
+                  <Spin indicator={<LoadingOutlined style={{ fontSize: 48 }} spin />} />
+                </div>
+            ) : (
+                adoptions.map(adoption => (
+                    <AdoptionCard key={adoption.id} adoption={adoption} />
+                ))
+            )}
           </div>
         </div>
       </>
-  )
-}
+  );
+};
+
+export default AdoptionPage;
