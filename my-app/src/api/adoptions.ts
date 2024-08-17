@@ -1,35 +1,48 @@
 import Adoption from "@/model/Adoption";
 import { HttpStatusCode } from "axios";
 import { ForbiddenError } from "@/errors/forbidden";
+import {cookies} from 'next/headers';
 import { EmptyResponseError } from "@/errors/empty-response";
+import {GenericError} from "@/errors/generic-error";
+import {Either, left, right} from "@/lib/either";
+import {ErrorS} from "@/model/Error";
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL_API;
 
-export const fetchAdoptions = async (token: string) => {
-  const response = await fetch(`${baseUrl}/adoption`, {
-    headers: { Authorization: `Bearer ${token}` },
-    method: "GET",
-  })
 
-  if (response.status == HttpStatusCode.Forbidden) throw new ForbiddenError("User Login Failed")
+export const fetchAdoptions = async (): Promise<Either<Error, Adoption[]>> => {
 
-  const adoptions = (await response.json()) as Adoption[];
+  const cookieStore = cookies();
+  const token = cookieStore.get("quixalert.auth.token")?.value;
 
-  if (adoptions.length == 0) throw new EmptyResponseError("No adoptions found")
-  
-  throw new EmptyResponseError("No adoptions found")
+  if (token === undefined) return left(new GenericError("O token não foi enviado"));
 
-  return adoptions
-};
+  try {
+    const response = await fetch(`${baseUrl}/adoption`, {
+      headers: { Authorization: `Bearer ${token}` },
+      method: "GET",
+    });
 
-export const fetchAdoption = async (token: string, id: string) => {
+    if (response.status === HttpStatusCode.Forbidden) {
+      return left(new ForbiddenError("Token inválido, para continuar você precisa fazer o login novamente."));
+    }
+
+    const data: Adoption[] = await response.json();
+    // return left(new ForbiddenError("Token inválido, para continuar você precisa fazer o login novamente."));
+    return right(data);
+
+  } catch (error) {
+    return left(new GenericError("Erro ao buscar adoções"));
+  }
+}
+
+
+export const fetchAdoption = async (token: string, id: string): Promise<Adoption> => {
   try {
     const response = await fetch(`${baseUrl}/adoption/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
       method: "GET",
     });
-
-    // if(response.status == HttpStatusCode.Forbidden) logout()
 
     return (await response.json()) as Adoption;
   } catch (e) {
