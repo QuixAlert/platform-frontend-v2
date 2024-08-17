@@ -1,5 +1,5 @@
-enum ErrorName {
-  FORIBIDDEN = 'FORBIDDEN',
+export enum ErrorName {
+  FORBIDDEN = 'FORBIDDEN',
   NOT_FOUND = 'NOT_FOUND',
   EMPTY_RESULT = 'EMPTY_RESULT',
   UNKNOWN = 'UNKNOWN'
