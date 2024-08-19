@@ -2,7 +2,6 @@ import React from 'react';
 
 import NavBar from '@/components/NavBar/NavBar';
 import Sidebar from '@/components/SideBar/SideBar';
-import NeedHelpBtn from "@/components/NeedHelpBtn/page";
 
 import './style.css';
 
@@ -25,7 +24,7 @@ const Home = () => {
                 uma plataforma web que possibilita o gerenciamento das informações e 
                 solicitações recebidas através do QuixAlert.
               </p>
-              <NeedHelpBtn />
+              {/* <NeedHelpBtn /> */}
             </div>
             <div className="imageContainer">
               <img 
