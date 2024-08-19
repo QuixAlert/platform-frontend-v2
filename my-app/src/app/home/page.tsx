@@ -25,7 +25,7 @@ const Home = () => {
                 uma plataforma web que possibilita o gerenciamento das informações e 
                 solicitações recebidas através do QuixAlert.
               </p>
-               <NeedHelpBtn />
+              <NeedHelpBtn />
             </div>
             <div className="imageContainer">
               <img 
