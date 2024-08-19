@@ -20,3 +20,10 @@ export const transformError = (error: Error) => ({
   message: error.message,
   stack: error.stack,
 });
+
+export const createQueryString = (name: string, value: any) => {
+  const params = new URLSearchParams();
+  params.set(name, value);
+
+  return params.toString();
+};

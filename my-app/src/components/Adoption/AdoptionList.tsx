@@ -1,11 +1,9 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import AdoptionCard from "@/components/Adoption/AdoptionCard/AdoptionCard";
 import Adoption from "@/model/Adoption";
 import { ErrorName } from "@/errors/error-names";
-import Forbidden from "@/components/Errors/Forbidden";
-import { useRouter } from "next/navigation";
+import errorHandlers from "@/components/Errors/error.handler";
 
 type AdoptionsListProps = {
     adoptions: Adoption[] | undefined;
@@ -13,20 +11,12 @@ type AdoptionsListProps = {
 };
 
 const AdoptionsList = ({ adoptions, error }: AdoptionsListProps) => {
-    const router = useRouter();
-    const modalShownRef = useRef(false);
+    if (error) {
+        const ErrorComponent = errorHandlers[error.name as ErrorName];
+        return <ErrorComponent error={error} />;
+    }
 
-    useEffect(() => {
-        if (error && !modalShownRef.current) {
-            if (error.name === ErrorName.FORBIDDEN) {
-                modalShownRef.current = true;
-                // Forbidden({ error, onOk: () => {
-                //         destroyCookie(undefined, "quixalert.auth.token");
-                //         router.replace("/");
-                //     } });
-            }
-        }
-    }, [error, router]);
+    if(adoptions) console.log('data fetched')
 
     return (
         <>
