@@ -1,8 +1,12 @@
-import {Tokens} from "@/model/Auth";
+import { BadRequestError } from "@/errors/bad-request";
+import { GenericError } from "@/errors/generic-error";
+import { LoginError } from "@/errors/login";
+import { Either, right, left } from "@/lib/either";
+import { Auth } from "@/model/Auth";
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL_API
 
-export const fetchLogin = async (email: string, password: string): Promise<Tokens> => {
+export const fetchLogin = async (email: string, password: string): Promise<Either<Error, Auth>> => {
     try {
         const response = await fetch(`${baseUrl}/auth/authenticate`, {
             method: 'POST',
@@ -15,13 +19,11 @@ export const fetchLogin = async (email: string, password: string): Promise<Token
             }),
         });
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
+        if (!response.ok) return left(new LoginError(`Email ou senha incorretos!`))
 
-        return await response.json() as Tokens
+        const token = await response.json() as Auth
+        return right(token)
     } catch (e) {
-        console.error('Fetch error:', e)
-        throw new Error('An unexpected error occurred.')
+        return left(new GenericError(`Ocorreu um erro inesperado:  ${e.name}`))
     }
 };
