@@ -1,12 +1,11 @@
 'use client'
 
 import React, { createContext } from 'react';
-import { setCookie, parseCookies } from 'nookies';
-import { useRouter } from 'next/navigation'
 import {fetchLogin} from "@/api/auth";
+import { AuthContextRes } from '@/model/AuthContextRes';
 
 type AuthContextType = {
-  signIn: (data: SignInData) => Promise<void>;
+  signIn: (data: SignInData) => Promise<AuthContextRes>;
 }
 
 type SignInData = {
@@ -17,16 +16,14 @@ type SignInData = {
 export const AuthContext = createContext({} as AuthContextType);
 
 export function AuthProvider({children}: Readonly<{children: React.ReactNode}>){
-  const router = useRouter()
-
-  async function signIn({ email, password }: SignInData){
+  async function signIn({ email, password }: SignInData): Promise<AuthContextRes>{
     const response = await fetchLogin(email, password)
+    const {error, value: token} = response.unpack();
     
-    setCookie(undefined, 'quixalert.auth.token', response.access_token, {
-      maxAge: 60 * 60 * 8 // 8 hours
-    })
-
-    router.push('/home')
+    return {
+      token,
+      error
+    }
   }
 
   return (
