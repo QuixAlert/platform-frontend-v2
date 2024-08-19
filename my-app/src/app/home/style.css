@@ -1,5 +1,5 @@
 html, body {
-  background-color: #212121; /* Defina a cor de fundo do html e body para a mesma cor */
+  background-color: #1d1e23; /* Defina a cor de fundo do html e body para a mesma cor */
   margin: 0;
   padding: 0;
   height: 100%;
@@ -12,7 +12,7 @@ html, body {
   align-items: center;
   width: 100vw; /* Ocupa toda a largura da viewport */
   height: 100vh; /* Ocupa toda a altura da viewport */
-  background-color: #212121;
+  background-color: #1d1e23;
 }
 
 .card {
