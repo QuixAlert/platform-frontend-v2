@@ -1,3 +1,5 @@
+"use client"
+
 import { Modal } from 'antd';
 import { FC, useEffect, useRef } from 'react';
 

@@ -1,3 +1,5 @@
+"use client"
+
 import { FC, useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { Modal } from 'antd';
