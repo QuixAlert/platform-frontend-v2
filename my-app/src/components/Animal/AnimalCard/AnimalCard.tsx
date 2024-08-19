@@ -1,5 +1,3 @@
-"use client"
-
 import React from "react";
 
 const animalListCard = {
@@ -21,7 +19,7 @@ import { PiBirdFill } from "react-icons/pi";
 import Animal from "@/model/Animal";
 import "./style.css"
 
-function AnimalListCard({ animal }: { animal: Animal }){
+function AnimalCard({ animal }: { animal: Animal }){
     return (
         <div className="animal-card">
           <img src={animal.photo} alt="Sheldon" className="animal-image" />
@@ -54,4 +52,4 @@ function AnimalListCard({ animal }: { animal: Animal }){
       );
     }
 
-export default AnimalListCard;
+export default AnimalCard;

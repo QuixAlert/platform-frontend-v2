@@ -1,18 +1,20 @@
+import {Suspense} from "react";
+
+import Link from "next/link";
+
+import {fetchAnimals} from "@/api/animal";
 
 import Sidebar from "@/components/SideBar/SideBar";
 import NavBar from "@/components/NavBar/NavBar";
-import AnimalListCard from "@/components/AnimalList/AnimalList";
+import AnimalFetcher from "@/components/Animal/AnimalFetcher";
+import {Loading} from "@/components/Loading/Loading";
+
 import { Button } from "antd";
-import {cookies} from "next/headers";
-import {fetchAnimals} from "@/api/animal";
-import Link from "next/link";
 import "./style.css";
 
 export default async function Animals() {
-  const cookieStore = cookies();
-  const token = cookieStore.get("quixalert.auth.token");
 
-  const animals = await fetchAnimals(token?.value || '');
+  const animals = await fetchAnimals();
   console.log(animals);
   return (
     <>
@@ -33,13 +35,9 @@ export default async function Animals() {
           </div>
         </div>
 
-        <div className="cards">
-          {
-            animals.map(animal => {
-              return <AnimalListCard key={animal.id} animal={animal}/>
-            })
-          }
-        </div>
+        <Suspense fallback={<Loading />}>
+          <AnimalFetcher />
+        </Suspense>
       </div>
     </>
   )
