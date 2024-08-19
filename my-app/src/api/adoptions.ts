@@ -5,7 +5,6 @@ import {cookies} from 'next/headers';
 import { EmptyResponseError } from "@/errors/empty-response";
 import {GenericError} from "@/errors/generic-error";
 import {Either, left, right} from "@/lib/either";
-import {ErrorS} from "@/model/Error";
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL_API;
 
@@ -28,7 +27,6 @@ export const fetchAdoptions = async (): Promise<Either<Error, Adoption[]>> => {
     }
 
     const data: Adoption[] = await response.json();
-    // return left(new ForbiddenError("Token inválido, para continuar você precisa fazer o login novamente."));
     return right(data);
 
   } catch (error) {
