@@ -1,6 +1,7 @@
 'use client'
 
 import React from "react";
+
 import { useRouter, usePathname } from 'next/navigation'
 import { IoHome, IoPersonSharp } from "react-icons/io5";
 import { MdOutlinePets } from "react-icons/md";
@@ -23,41 +24,31 @@ function Sidebar () {
   const isReportPage = currentPath.includes("/report");
   
   return (
-    <>
       <div className="sidebar-container">
         <div className="sidebar-content-container">
-
-          <a onClick={() => {router.push("/home")}}>
-            <IoHome className={`sidebar-icon ${ isHomePage ? 'active' : '' }`} />
-          </a>
-
-          <a onClick={() => {router.push("/users")}}>
-            <IoPersonSharp className={`sidebar-icon ${ isUsersPage ? 'active' : '' }`}/>
-          </a>
-
-          <a onClick={() => {router.push("/documents")}}>
-            <FaFileAlt className={`sidebar-icon`}/>
-          </a>
-
-          <a onClick={() => {router.push("/reports")}}>
-            <GoAlertFill className={`sidebar-icon ${ isReportPage ? 'active' : '' }`}/>
-          </a>
-
-          <a onClick={() => {router.push("/adoption")}}>
-            <MdOutlinePets className={`sidebar-icon ${ isAdoptionPage ? 'active' : '' }`}/>
-          </a>
-
-          <a onClick={() => {router.push("/help")}}>
-            <BsFillQuestionCircleFill className={`sidebar-icon ${ isHelpPage ? 'active' : '' }`}/>
-          </a>
-
-          <a onClick={() => {router.push("/config")}}>
-            <FaGear className={`sidebar-icon ${ isConfigPage ? 'active' : '' }`}/>
-          </a>
-          
+          <div>
+            <IoHome onClick={() => {router.push("/home")}} className={`sidebar-icon ${ isHomePage ? 'active' : '' }`} />
+          </div>
+          <div>
+            <IoPersonSharp onClick={() => {router.push("/users")}} className={`sidebar-icon ${ isUsersPage ? 'active' : '' }`}/>
+          </div>
+          <div>
+            <FaFileAlt onClick={() => {router.push("/documents")}} className={`sidebar-icon`}/>
+          </div>
+          <div>
+            <GoAlertFill onClick={() => {router.push("/reports")}}  className={`sidebar-icon ${ isReportPage ? 'active' : '' }`}/>
+          </div>
+          <div>
+            <MdOutlinePets onClick={() => {router.push("/adoption")}} className={`sidebar-icon ${ isAdoptionPage ? 'active' : '' }`}/>
+          </div>
+          <div>
+            <BsFillQuestionCircleFill onClick={() => {router.push("/help")}} className={`sidebar-icon ${ isHelpPage ? 'active' : '' }`}/>
+          </div>
+          <div>
+            <FaGear onClick={() => {router.push("/config")}} className={`sidebar-icon ${ isConfigPage ? 'active' : '' }`}/>
+          </div>
         </div>
       </div>
-    </>
   );
 }
 
