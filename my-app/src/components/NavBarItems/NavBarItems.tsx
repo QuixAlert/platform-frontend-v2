@@ -1,6 +1,5 @@
-"use client"
-
 import React from "react";
+
 import { MessageFilled, BellFilled, ClockCircleFilled } from "@ant-design/icons";
 
 import "./style.css"
