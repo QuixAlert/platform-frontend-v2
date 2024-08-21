@@ -1,9 +1,10 @@
-'use client'
-import HelpCard from '@/components/HelpCard/HelpCard'
-import NavBar from '@/components/NavBar/NavBar'
-import Sidebar from '@/components/SideBar/SideBar'
-import React from 'react'
-import "./style.css"
+import React from 'react';
+
+import HelpCard from '@/components/HelpCard/HelpCard';
+import NavBar from '@/components/NavBar/NavBar';
+import Sidebar from '@/components/SideBar/SideBar';
+
+import "./style.css";
 
 const helpCardsMoki = [
   {

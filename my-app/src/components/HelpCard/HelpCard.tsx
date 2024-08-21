@@ -1,7 +1,11 @@
+"use client"
+
 import React, { useState } from 'react';
+
+import HelpCardModal from '../HelpCardModal/HelpCardModal';
+
 import { Card } from 'antd';
 import { PlayCircleFilled } from '@ant-design/icons';
-import HelpCardModal from '../HelpCardModal/HelpCardModal';
 
 interface HelpButtonProps {
   title: string;
