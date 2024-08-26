@@ -33,15 +33,12 @@ const CadastrarAnimalPage: React.FC = () => {
   };
 
   const onFinish = async (values: any) => {
-    console.log('Received values from form: ', values);
     const token = parseCookies(undefined)["quixalert.auth.token"];
 
     const animalResponse = await addAnimal(token, values);
 
     if (animalResponse && typeof animalResponse === 'object' && 'message' in animalResponse) {
-      console.log('Animal error:', animalResponse);
     } else {
-      console.log('Animal okay:', animalResponse);
       form.resetFields();
       window.location.replace('/adoption/animals');
     }

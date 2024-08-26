@@ -69,8 +69,6 @@ export const fetchAnimals = async (): Promise<Either<Error, Animal[]>> => {
 }
 
 export const addAnimal = async (token: string, animal: Animal) => {
-    console.log(token);
-
     try {
         const response = await fetch(`${baseUrl}/animals`, {
             headers: {
