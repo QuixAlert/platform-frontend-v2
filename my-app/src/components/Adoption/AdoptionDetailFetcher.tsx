@@ -1,4 +1,4 @@
-import {fetchAdoption} from "@/api/adoptions";
+import {fetchAdoption} from "@/api/client/adoptions";
 
 import {transformError} from "@/lib/utils";
 

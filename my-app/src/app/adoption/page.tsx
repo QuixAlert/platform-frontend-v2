@@ -23,13 +23,13 @@ export default function AdoptionPage() {
             </div>
             <div className="creation">
               <Link
-                  href={"/adoption/animals"}
+                  href={"/animals"}
                   className="ant-btn css-dev-only-do-not-override-1pg9a38 ant-btn-default creation-button"
               >
                 Ver lista de animais
               </Link>
               <Link
-                  href={"/adoption/createAnimal"}
+                  href={"/animals/create"}
                   className="ant-btn css-dev-only-do-not-override-1pg9a38 ant-btn-default creation-button"
               >
                 Cadastrar animal

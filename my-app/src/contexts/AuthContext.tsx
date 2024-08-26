@@ -1,7 +1,7 @@
 'use client'
 
 import React, { createContext } from 'react';
-import {fetchLogin} from "@/api/auth";
+import {fetchLogin} from "@/api/client/auth";
 import { AuthContextRes } from '@/model/AuthContextRes';
 
 type AuthContextType = {

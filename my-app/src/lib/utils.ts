@@ -1,7 +1,7 @@
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 import {destroyCookie} from "nookies";
-import {fetchAdoptions} from "@/api/adoptions";
+import {fetchAdoptions} from "@/api/client/adoptions";
 import Adoption from "@/model/Adoption";
 
 export function cn(...inputs: ClassValue[]) {

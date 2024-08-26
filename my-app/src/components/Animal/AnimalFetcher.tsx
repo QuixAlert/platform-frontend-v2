@@ -1,4 +1,4 @@
-import {fetchAnimals} from "@/api/animal";
+import {fetchAnimals} from "@/api/client/animal";
 
 import {transformError} from "@/lib/utils";
 

@@ -1,5 +1,5 @@
 import AdoptionsList from "@/components/Adoption/AdoptionList";
-import {fetchAdoptions} from "@/api/adoptions";
+import {fetchAdoptions} from "@/api/client/adoptions";
 import Adoption from "@/model/Adoption";
 import {ErrorS} from "@/model/Error";
 import {transformError} from "@/lib/utils";
