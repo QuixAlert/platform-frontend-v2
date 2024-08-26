@@ -9,8 +9,8 @@ import Sidebar from "@/components/SideBar/SideBar";
 const font = Nunito({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "QuixAlert Login",
-  description: "Página de login do QuixAlert",
+  title: "Plataforma QuixAlert",
+  description: "Plataforma de Dados do QuixAlert",
 };
 
 export default function RootLayout({
