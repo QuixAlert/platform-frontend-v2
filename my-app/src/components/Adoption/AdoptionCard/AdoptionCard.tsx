@@ -2,6 +2,18 @@
 
 import React from "react";
 
+import Image from "next/image";
+
+import { useRouter } from "next/navigation";
+import { IoMaleSharp } from "react-icons/io5";
+import { IoFemaleSharp } from "react-icons/io5";
+import { FaDog } from "react-icons/fa";
+import { FaCat } from "react-icons/fa";
+import { PiBirdFill } from "react-icons/pi";
+
+import "./style.css"
+import Adoption from "@/model/Adoption";
+
 const adoptionCard = {
   solicitante: {
     nome: "Thiago",
@@ -26,17 +38,6 @@ const adoptionCard = {
   }
 }
 
-import { useRouter } from "next/navigation";
-import { IoMaleSharp } from "react-icons/io5";
-import { IoFemaleSharp } from "react-icons/io5";
-import { FaDog } from "react-icons/fa";
-import { FaCat } from "react-icons/fa";
-import { PiBirdFill } from "react-icons/pi";
-
-import "./style.css"
-import Adoption from "@/model/Adoption";
-
-
 
 function AdoptionCard({ adoption }: { adoption: Adoption }) {
   const router = useRouter();
@@ -45,10 +46,10 @@ function AdoptionCard({ adoption }: { adoption: Adoption }) {
     <div className="adoption-card" title="">
       <div className="card-left">
         <div className="card-person-container">
-          <img className="card-person-photo" src={ adoption.user.path_picture } alt="person-photo" />
+          <img className="card-person-photo" src={ adoption.user?.path_picture || adoptionCard.solicitante.url} alt="person-photo" />
           <div className="card-person-role-and-name">
             <p className="card-person-role">Solicitante:</p>
-            <p className="card-person-name">{ adoption.user.name }</p>
+            <p className="card-person-name">{ adoption.user?.name || adoptionCard.solicitante.nome }</p>
           </div>
         </div>
         <div className="card-adoption-info-grid">
@@ -116,7 +117,7 @@ function AdoptionCard({ adoption }: { adoption: Adoption }) {
           <button
             className="card-see-more-btn"
             onClick={() => {
-              router.push(`/adoption_details?adoptionId=${adoption.id}`)
+              router.push(`/adoption/${adoption.id}`)
             }
           }
           >
