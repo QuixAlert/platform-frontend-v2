@@ -13,8 +13,6 @@ import { Button } from "antd";
 import "./style.css";
 
 export default async function Animals() {
-
-  const animals = await fetchAnimals();
   return (
     <>
       <NavBar />
