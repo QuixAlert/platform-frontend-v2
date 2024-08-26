@@ -4,10 +4,14 @@ import "./style.css";
 import Link from "next/link";
 import {Button} from "antd";
 import AdoptionFetcher from "@/components/Adoption/AdoptionFetcher";
+import NavBar from "@/components/NavBar/NavBar";
+import Sidebar from "@/components/SideBar/SideBar";
 
 export default function AdoptionPage() {
   return (
       <>
+        <NavBar/>
+        <Sidebar/>
         <div className="page-container">
           <div className="header">
             <h1 className="main-title">Adoções</h1>

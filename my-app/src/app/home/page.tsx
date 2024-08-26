@@ -1,5 +1,7 @@
 import React from 'react';
 import NeedHelpBtn from "@/components/NeedHelpBtn/NeedHelpBtn";
+import NavBar from "@/components/NavBar/NavBar";
+import Sidebar from "@/components/SideBar/SideBar";
 
 import './style.css';
 import Image from 'next/image';
@@ -7,6 +9,8 @@ import Image from 'next/image';
 const Home = () => {
   return (
     <>
+      <NavBar/>
+      <Sidebar/>
       <div className="container">
         <div className="card">
           <div className="content">

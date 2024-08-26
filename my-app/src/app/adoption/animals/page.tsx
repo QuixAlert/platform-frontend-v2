@@ -7,10 +7,14 @@ import {Loading} from "@/components/Loading/Loading";
 
 import { Button } from "antd";
 import "./style.css";
+import NavBar from "@/components/NavBar/NavBar";
+import Sidebar from "@/components/SideBar/SideBar";
 
 export default async function Animals() {
   return (
     <>
+      <NavBar/>
+      <Sidebar/>
       <div className="page-container">
         <div className="header">
           <h1 className="main-title">Lista de Animais</h1>

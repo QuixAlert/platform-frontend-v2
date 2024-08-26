@@ -1,6 +1,8 @@
 import React from 'react';
 
 import HelpCard from '@/components/HelpCard/HelpCard';
+import NavBar from "@/components/NavBar/NavBar";
+import Sidebar from "@/components/SideBar/SideBar";
 
 import "./style.css";
 
@@ -50,6 +52,8 @@ const helpCardsMoki = [
 const Page = () => {
   return (
     <>
+      <NavBar/>
+      <Sidebar/>
       <div className='bg-[#1D1E23] pt-[100px] pl-[120px]'>
 
         <h1 className="text-white font-nunito font-bold text-[26px]">

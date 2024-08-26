@@ -25,8 +25,6 @@ export default function RootLayout({
       </head>
       <body className="${font.className} bg-default">
         <AuthProvider>
-          <NavBar />
-          <Sidebar />
           {children}
         </AuthProvider>
       </body>
