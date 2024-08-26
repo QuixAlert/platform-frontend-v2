@@ -5,6 +5,7 @@ import Sidebar from '@/components/SideBar/SideBar';
 import NeedHelpBtn from "@/components/NeedHelpBtn/NeedHelpBtn";
 
 import './style.css';
+import Image from 'next/image';
 
 const Home = () => {
   return (
@@ -28,10 +29,12 @@ const Home = () => {
               <NeedHelpBtn />
             </div>
             <div className="imageContainer">
-              <img 
-                src="QuixAlert! 5.png" 
+              <Image 
+                src="/QuixAlert! 5.png" 
                 alt="Logo" 
                 className="image"
+                width={500} 
+                height={500}
               />
             </div>
           </div>
