@@ -30,9 +30,11 @@ const Home = () => {
             </div>
             <div className="imageContainer">
               <Image 
-                src="QuixAlert! 5.png" 
+                src="/QuixAlert! 5.png" 
                 alt="Logo" 
                 className="image"
+                width={500} 
+                height={500}
               />
             </div>
           </div>
