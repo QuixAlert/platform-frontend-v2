@@ -16,8 +16,6 @@ const AdoptionsList = ({ adoptions, error }: AdoptionsListProps) => {
         return <ErrorComponent error={error} />;
     }
 
-    if(adoptions) console.log('data fetched')
-
     return (
         <>
             <div className="cards">

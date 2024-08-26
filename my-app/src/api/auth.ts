@@ -24,6 +24,7 @@ export const fetchLogin = async (email: string, password: string): Promise<Eithe
         const token = await response.json() as Auth
         return right(token)
     } catch (e) {
-        return left(new GenericError(`Ocorreu um erro inesperado:  ${e.name}`))
+        const error = e as Error
+        return left(new GenericError(`Ocorreu um erro inesperado:  ${error.name}`))
     }
 };

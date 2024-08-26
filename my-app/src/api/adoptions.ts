@@ -26,7 +26,8 @@ export const fetchAdoptions = async (): Promise<Either<Error, Adoption[]>> => {
       return left(new ForbiddenError("Token inválido, para continuar você precisa fazer o login novamente."));
     }
 
-    const data: Adoption[] = await response.json();
+    const data = await response.json() as Adoption[];
+    console.log(data)
     return right(data);
 
   } catch (error) {

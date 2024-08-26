@@ -36,7 +36,7 @@ export const fetchAnimals = async (): Promise<Either<Error, Animal[]>> => {
             return left(new ForbiddenError("Token inválido, para continuar você precisa fazer o login novamente."));
         }
 
-        const data: Adoption[] = await response.json();
+        const data: Animal[] = await response.json();
         return right(data);
     } catch (e) {
         return left(new GenericError("Erro ao buscar animais"));
