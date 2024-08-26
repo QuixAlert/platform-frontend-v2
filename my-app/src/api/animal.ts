@@ -78,10 +78,10 @@ export const addAnimal = async (token: string, animal: Animal) => {
             method: 'POST',
             body: JSON.stringify({
                 "name": animal.name,
-                "id_animal_type": convertAnimalType(animal.type),
+                "id_animal_type": convertAnimalType(animal.animal_type.id),
                 "animal_type": {
-                    "id": convertAnimalType(animal.type),
-                    "type": animal.type,
+                    "id": convertAnimalType(animal.animal_type.id),
+                    "type": animal.animal_type.id,
                 },
                 "age": animal.age,
                 "gender": animal.gender,
