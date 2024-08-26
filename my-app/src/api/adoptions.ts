@@ -28,7 +28,6 @@ export const fetchAdoptions = async (): Promise<Either<Error, Adoption[]>> => {
     }
 
     const data = await response.json() as Adoption[];
-    console.log(data)
     return right(data);
 
   } catch (error) {
