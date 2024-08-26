@@ -1,5 +1,3 @@
-import Sidebar from "@/components/SideBar/SideBar";
-import NavBar from "@/components/NavBar/NavBar";
 import { Suspense } from "react";
 import { Loading } from "@/components/Loading/Loading";
 import "./style.css";
@@ -10,8 +8,6 @@ import AdoptionFetcher from "@/components/Adoption/AdoptionFetcher";
 export default function AdoptionPage() {
   return (
       <>
-        <NavBar />
-        <Sidebar />
         <div className="page-container">
           <div className="header">
             <h1 className="main-title">Adoções</h1>

@@ -18,6 +18,9 @@ const config = {
       },
     },
     extend: {
+      backgroundColor: {
+        'default': "#1d1e24"
+      },
       colors: {
         pgreen: "#269996",
         sgreen: "#39C2BE",

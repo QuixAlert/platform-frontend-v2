@@ -1,7 +1,4 @@
 import React from 'react';
-
-import NavBar from '@/components/NavBar/NavBar';
-import Sidebar from '@/components/SideBar/SideBar';
 import NeedHelpBtn from "@/components/NeedHelpBtn/NeedHelpBtn";
 
 import './style.css';
@@ -10,8 +7,6 @@ import Image from 'next/image';
 const Home = () => {
   return (
     <>
-      <NavBar/>
-      <Sidebar/>
       <div className="container">
         <div className="card">
           <div className="content">
@@ -30,11 +25,11 @@ const Home = () => {
             </div>
             <div className="imageContainer">
               <Image 
-                src="/QuixAlert! 5.png" 
+                src="/quixalert_logo.svg" 
                 alt="Logo" 
                 className="image"
-                width={500} 
-                height={500}
+                width={300} 
+                height={300}
               />
             </div>
           </div>

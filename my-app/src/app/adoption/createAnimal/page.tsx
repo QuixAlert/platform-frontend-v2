@@ -3,8 +3,6 @@
 import { useState } from 'react';
 import './style.css';
 import { Form, Input, Button, Select, Upload, Row, Col, GetProp, UploadFile, UploadProps, notification, Space } from 'antd';
-import NavBar from '@/components/NavBar/NavBar';
-import Sidebar from '@/components/SideBar/SideBar';
 import {addAnimal} from "@/api/animal";
 import {parseCookies} from "nookies";
 
@@ -46,9 +44,6 @@ const CadastrarAnimalPage: React.FC = () => {
 
   return (
     <>
-      <Sidebar/>
-      <NavBar/>
-      
       <div className='bg-[#1D1E23] pt-[76px] '>
 
         <h1 className="title max-w-[80%] mx-auto mt-[40px]" >

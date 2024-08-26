@@ -3,6 +3,8 @@ import { Nunito } from "next/font/google";
 import "./globals.css";
 import {AuthProvider} from "@/contexts/AuthContext";
 import React from "react";
+import NavBar from "@/components/NavBar/NavBar";
+import Sidebar from "@/components/SideBar/SideBar";
 
 const font = Nunito({ subsets: ["latin"] });
 
@@ -21,8 +23,10 @@ export default function RootLayout({
       <head>
       <link rel="icon" href="QuixAlert! 5.png" />
       </head>
-      <body className={font.className}>
+      <body className="${font.className} bg-default">
         <AuthProvider>
+          <NavBar />
+          <Sidebar />
           {children}
         </AuthProvider>
       </body>
