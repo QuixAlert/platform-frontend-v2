@@ -40,7 +40,7 @@ export default function RootLayout({
           </Header>
           <Layout>
             <Sider width={"5rem"}>
-              <SideBar />
+                <SideBar />
             </Sider>
             <Layout>
               <Content

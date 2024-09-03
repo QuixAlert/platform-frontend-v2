@@ -1,16 +1,14 @@
 import React from 'react';
-import NeedHelpBtn from "@/components/NeedHelpBtn/NeedHelpBtn";
-import NavBar from "@/components/NavBar/NavBar";
-import Sidebar from "@/components/SideBar/SideBar";
 
-import './style.css';
 import Image from 'next/image';
 
-const Home = () => {
+import NeedHelpBtn from "@/components/NeedHelpBtn/NeedHelpBtn";
+
+import './style.css';
+
+export default function Home(){
   return (
     <>
-      <NavBar/>
-      <Sidebar/>
       <div className="container">
         <div className="card">
           <div className="content">
@@ -42,5 +40,3 @@ const Home = () => {
     </>
   );
 };
-
-export default Home;

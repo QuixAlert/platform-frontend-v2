@@ -8,9 +8,6 @@ import { useRouter } from 'next/navigation';
 
 import {parseCookies} from "nookies";
 
-import NavBar from '@/components/NavBar/NavBar';
-import Sidebar from '@/components/SideBar/SideBar';
-
 import { Form, Input, Button, Select, Upload, Row, Col, GetProp, UploadFile, UploadProps, notification, Space } from 'antd';
 
 import './style.css';
@@ -55,9 +52,6 @@ const CreateAnimalPage: React.FC = () => {
 
   return (
     <>
-      <Sidebar/>
-      <NavBar/>
-      
       <div className='bg-[#1D1E23] pt-[76px] '>
 
         <h1 className="title max-w-[80%] mx-auto mt-[40px]" >

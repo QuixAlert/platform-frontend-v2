@@ -1,17 +1,18 @@
 import { Suspense } from "react";
-import { Loading } from "@/components/Loading/Loading";
-import "./style.css";
+
 import Link from "next/link";
-import {Button} from "antd";
+
+import { Loading } from "@/components/Loading/Loading";
 import AdoptionFetcher from "@/components/Adoption/AdoptionFetcher";
-import NavBar from "@/components/NavBar/NavBar";
-import Sidebar from "@/components/SideBar/SideBar";
+
+import {Button} from "antd";
+
+import "./style.css";
+
 
 export default function AdoptionPage() {
   return (
       <>
-        <NavBar/>
-        <Sidebar/>
         <div className="page-container">
           <div className="header">
             <h1 className="main-title">Adoções</h1>
