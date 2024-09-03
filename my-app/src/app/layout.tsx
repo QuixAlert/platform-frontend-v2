@@ -17,6 +17,16 @@ import { Nunito } from "next/font/google";
 import "./globals.css";
 
 
+import Layout from "antd/lib/layout";
+import Sider from "antd/lib/layout/Sider";
+import { Header } from "antd/lib/layout/layout";
+import Content from "antd/lib/layout";
+
+import { Nunito } from "next/font/google";
+
+import "./globals.css";
+import SideBar from "@/components/SideBar/SideBar";
+
 const font = Nunito({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
