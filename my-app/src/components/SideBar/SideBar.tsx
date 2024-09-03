@@ -17,7 +17,7 @@ function Sidebar () {
   const router = useRouter();
 
   const isHomePage = currentPath.includes("/home");
-  const isAdoptionPage = currentPath.includes("/adoption");
+  const isAdoptionPage = currentPath.includes("/adoption") || currentPath.includes("/animals");
   const isUsersPage = currentPath.includes("/user");
   const isConfigPage = currentPath.includes("/config");
   const isHelpPage = currentPath.includes("/help");

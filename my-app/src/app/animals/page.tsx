@@ -26,7 +26,7 @@ export default async function Animals() {
           </div>
 
           <div className="creation">
-            <Link className="ant-btn css-dev-only-do-not-override-1pg9a38 ant-btn-default creation-button" href={"/animal/create"}>Cadastrar animal</Link>
+            <Link className="ant-btn css-dev-only-do-not-override-1pg9a38 ant-btn-default creation-button" href={"/animals/create"}>Cadastrar animal</Link>
           </div>
         </div>
 

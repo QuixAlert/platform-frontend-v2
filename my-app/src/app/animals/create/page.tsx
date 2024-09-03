@@ -1,13 +1,20 @@
 "use client"
 
 import { useState } from 'react';
-import '../style.css';
-import { Form, Input, Button, Select, Upload, Row, Col, GetProp, UploadFile, UploadProps, notification, Space } from 'antd';
+
+import {addAnimal} from "@/api/server/animal";
+
+import { useRouter } from 'next/navigation';
+
+import {parseCookies} from "nookies";
+
 import NavBar from '@/components/NavBar/NavBar';
 import Sidebar from '@/components/SideBar/SideBar';
-import {addAnimal} from "@/api/server/animal";
-import {parseCookies} from "nookies";
-import { useRouter } from 'next/navigation';
+
+import { Form, Input, Button, Select, Upload, Row, Col, GetProp, UploadFile, UploadProps, notification, Space } from 'antd';
+
+import './style.css';
+
 
 type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0];
 
