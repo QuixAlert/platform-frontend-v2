@@ -2,22 +2,18 @@ import React from "react";
 
 import { MessageFilled, BellFilled, ClockCircleFilled } from "@ant-design/icons";
 
-import "./style.css"
-
-const NavBarItems = () => {
-    return (
-      <div className="navbar-items-container">
-        <a className="navbar-item bell-item">
-          <BellFilled className="test"/>
-        </a>
-        <a className="navbar-item message-item">
-          <MessageFilled className="test"/>
-        </a>
-        <a className="navbar-item clock-item">
-          <ClockCircleFilled className="test"/>
-        </a>
-      </div>
-    );
+export default function NavBarItems() {
+  return (
+    <div className="flex">
+      <a className="w-[65px] flex justify-center border-l border-r border-gray-700 text-white text-xl">
+        <BellFilled />
+      </a>
+      <a className="w-[65px] flex justify-center border-r border-gray-700 text-white text-xl">
+        <MessageFilled />
+      </a>
+      <a className="w-[64px] flex justify-center text-white text-xl">
+        <ClockCircleFilled />
+      </a>
+    </div>
+  );
 }
-
-export default NavBarItems;

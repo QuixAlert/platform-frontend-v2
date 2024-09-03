@@ -1,23 +1,21 @@
-import React from "react"
+import React from "react";
 
 import DropDown from "../DropDown/DropDown";
 import NavBarItems from "../NavBarItems/NavBarItems";
 
+import Image from 'next/image';
+
 import Search from "antd/lib/input/Search";
 import Layout from "antd/lib/layout";
 import { Header } from "antd/lib/layout/layout";
-import Image from 'next/image';
-
-import "../NavBar/style.css"
 
 const NavBar = () => {
   return (
-    <Layout className="navbar">
-      <Header className="navbar-header">
-        <div className="logo-search-bar">
-          <div className="navbar-logo-container">
-            <Image 
-              className="navbar-logo"
+    <Layout className="fixed w-full z-30">
+      <Header className="flex justify-between bg-[#25252D] p-0">
+        <div className="flex items-center gap-2">
+          <div className="flex justify-center items-center w-20">
+            <Image
               src="/quixalert_logo_nav.svg"
               alt="QuixAlert Logo"
               width={45}
@@ -25,12 +23,12 @@ const NavBar = () => {
             />
           </div>
 
-          <div className="search-bar-container">
-            <Search className="search-bar" placeholder="Pesquisar"/>
+          <div className="ml-8 w-[473px] flex">
+            <Search placeholder="Pesquisar" className="w-full" />
           </div>
         </div>
 
-        <div className="navbar-menu">
+        <div className="flex items-center justify-center">
           <DropDown />
           <NavBarItems />
         </div>
