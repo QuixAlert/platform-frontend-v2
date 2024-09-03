@@ -1,18 +1,18 @@
+import {Suspense} from "react";
 
-import Sidebar from "@/components/SideBar/SideBar";
-import NavBar from "@/components/NavBar/NavBar";
-import AnimalListCard from "@/components/AnimalList/AnimalList";
+import Link from "next/link";
+
+import AnimalFetcher from "@/components/Animal/AnimalFetcher";
+import {Loading} from "@/components/Loading/Loading";
 
 import { Button } from "antd";
 
-import "./style.css"
-import React from "react";
+import "./style.css";
 
-export default function Animals() {
+
+export default async function Animals() {
   return (
     <>
-      <NavBar />
-      <Sidebar />
       <div className="page-container">
         <div className="header">
           <h1 className="main-title">Lista de Animais</h1>
@@ -24,18 +24,13 @@ export default function Animals() {
           </div>
 
           <div className="creation">
-            <Button className="creation-button">Cadastrar animal</Button>
+            <Link className="ant-btn css-dev-only-do-not-override-1pg9a38 ant-btn-default creation-button" href={"/animals/create"}>Cadastrar animal</Link>
           </div>
         </div>
 
-        <div className="cards">
-          <AnimalListCard />
-          <AnimalListCard />
-          <AnimalListCard />
-          <AnimalListCard />
-          <AnimalListCard />
-        
-        </div>
+        <Suspense fallback={<Loading />}>
+          <AnimalFetcher />
+        </Suspense>
       </div>
     </>
   )

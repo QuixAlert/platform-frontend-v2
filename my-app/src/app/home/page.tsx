@@ -1,19 +1,14 @@
-"use client"
-
 import React from 'react';
-import './style.css'; 
-import NavBar from '@/components/NavBar/NavBar';
-import Sidebar from '@/components/SideBar/SideBar';
 
-function helpPage() {
-  window.location.replace('/help');
-}
+import Image from 'next/image';
 
-const Home = () => {
+import NeedHelpBtn from "@/components/NeedHelpBtn/NeedHelpBtn";
+
+import './style.css';
+
+export default function Home(){
   return (
     <>
-      <NavBar/>
-      <Sidebar/>
       <div className="container">
         <div className="card">
           <div className="content">
@@ -28,13 +23,15 @@ const Home = () => {
                 uma plataforma web que possibilita o gerenciamento das informações e 
                 solicitações recebidas através do QuixAlert.
               </p>
-              <button className="button" onClick={helpPage}>Preciso de Ajuda</button>
+              <NeedHelpBtn />
             </div>
             <div className="imageContainer">
-              <img 
-                src="QuixAlert! 5.png" 
+              <Image 
+                src="/quixalert_logo.svg" 
                 alt="Logo" 
                 className="image"
+                width={300} 
+                height={300}
               />
             </div>
           </div>
@@ -43,5 +40,3 @@ const Home = () => {
     </>
   );
 };
-
-export default Home;

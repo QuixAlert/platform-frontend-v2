@@ -1,6 +1,7 @@
 import PersonalDocument from "@/model/PersonalDocument";
 
 export default interface UserFirebase {
+    id: string,
     name: string,
     email: string,
     address: string,
