@@ -7,6 +7,8 @@ import {AuthProvider} from "@/contexts/AuthContext";
 import NavBar from "@/components/NavBar/NavBar";
 import SideBar from "@/components/SideBar/SideBar";
 
+import { AntdRegistry } from '@ant-design/nextjs-registry';
+
 import Layout from "antd/lib/layout";
 import Sider from "antd/lib/layout/Sider";
 import { Header } from "antd/lib/layout/layout";
@@ -14,7 +16,7 @@ import Content from "antd/lib/layout";
 
 import { Nunito } from "next/font/google";
 
-import "./globals.css";
+import "../globals.css";
 
 const font = Nunito({ subsets: ["latin"] });
 
@@ -33,7 +35,7 @@ export default function RootLayout({
       <head>
       <link rel="icon" href="QuixAlert! 5.png" />
       </head>
-      <body className="${font.className} bg-default">
+      <body className={`${font.className} bg-default`}>
         <Layout className={"min-h-screen h-auto"}>
           <Header className="p-0">
             <NavBar/>
@@ -50,9 +52,11 @@ export default function RootLayout({
                   height: "100%"
                 }}
               >
-                <AuthProvider>
-                  {children}
-                </AuthProvider>
+                <AntdRegistry>
+                  <AuthProvider>
+                    {children}
+                  </AuthProvider>
+                </AntdRegistry>
               </Content>
             </Layout>
           </Layout>
