@@ -19,11 +19,13 @@ const config = {
     },
     extend: {
       backgroundColor: {
-        'default': "#1d1e24"
+        'default': "#1d1e23"
       },
       colors: {
         pgreen: "#269996",
         sgreen: "#39C2BE",
+        pgb: "#1d1e23",
+        sgb: "#25252D",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

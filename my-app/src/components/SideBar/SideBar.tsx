@@ -22,48 +22,48 @@ function Sidebar() {
   const isReportPage = currentPath.includes("/report");
 
   return (
-    <div className="bg-[#25252D] h-full top-16 left-0 w-20">
-      <div className="flex flex-col items-center gap-12 h-1/2 pt-12">
+    <div className="bg-sgb fixed h-full flex justify-center w-20">
+      <div className="flex flex-col items-center gap-12 h-1/2 pt-8">
         <div>
           <IoHome
             onClick={() => { router.push("/home") }}
-            className={`w-8 h-8 text-white cursor-pointer ${isHomePage ? 'text-[#269996]' : ''}`}
+            className={`w-6 h-6 text-white cursor-pointer ${isHomePage ? 'fill-pgreen' : ''}`}
           />
         </div>
         <div>
           <IoPersonSharp
             onClick={() => { router.push("/users") }}
-            className={`w-8 h-8 text-white cursor-pointer ${isUsersPage ? 'text-[#269996]' : ''}`}
+            className={`w-6 h-6 text-white cursor-pointer ${isUsersPage ? 'fill-pgreen' : ''}`}
           />
         </div>
         <div>
           <FaFileAlt
             onClick={() => { router.push("/documents") }}
-            className={`w-8 h-8 text-white cursor-pointer ${isDocumentsPage ? 'text-[#269996]' : ''}`}
+            className={`w-6 h-6 text-white cursor-pointer ${isDocumentsPage ? 'fill-pgreen' : ''}`}
           />
         </div>
         <div>
           <GoAlertFill
             onClick={() => { router.push("/reports") }}
-            className={`w-8 h-8 text-white cursor-pointer ${isReportPage ? 'text-[#269996]' : ''}`}
+            className={`w-6 h-6 text-white cursor-pointer ${isReportPage ? 'fill-pgreen' : ''}`}
           />
         </div>
         <div>
           <MdOutlinePets
             onClick={() => { router.push("/adoption") }}
-            className={`w-8 h-8 text-white cursor-pointer ${isAdoptionPage ? 'text-[#269996]' : ''}`}
+            className={`w-6 h-6 text-white cursor-pointer ${isAdoptionPage ? 'fill-pgreen' : ''}`}
           />
         </div>
         <div>
           <BsFillQuestionCircleFill
             onClick={() => { router.push("/help") }}
-            className={`w-8 h-8 text-white cursor-pointer ${isHelpPage ? 'text-[#269996]' : ''}`}
+            className={`w-6 h-6 text-white cursor-pointer ${isHelpPage ? 'fill-pgreen' : ''}`}
           />
         </div>
         <div>
           <FaGear
             onClick={() => { router.push("/config") }}
-            className={`w-8 h-8 text-white cursor-pointer ${isConfigPage ? 'text-[#269996]' : ''}`}
+            className={`w-6 h-6 text-white cursor-pointer ${isConfigPage ? 'fill-pgreen' : ''}`}
           />
         </div>
       </div>
