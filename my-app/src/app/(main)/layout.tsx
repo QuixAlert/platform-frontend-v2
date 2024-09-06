@@ -36,7 +36,8 @@ export default function RootLayout({
       <link rel="icon" href="QuixAlert! 5.png" />
       </head>
       <body className={`${font.className} bg-default`}>
-        <Layout className={"min-h-screen h-auto"}>
+        <AntdRegistry>
+          <Layout className={"min-h-screen h-auto"}>
           <Header className="p-0">
             <NavBar/>
           </Header>
@@ -52,15 +53,14 @@ export default function RootLayout({
                   height: "100%"
                 }}
               >
-                <AntdRegistry>
-                  <AuthProvider>
-                    {children}
-                  </AuthProvider>
-                </AntdRegistry>
+                <AuthProvider>
+                  {children}
+                </AuthProvider>
               </Content>
             </Layout>
           </Layout>
         </Layout>
+        </AntdRegistry>
       </body>
     </html>
   );

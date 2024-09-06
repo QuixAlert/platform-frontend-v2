@@ -28,11 +28,11 @@ export default function RootLayout({
       <link rel="icon" href="QuixAlert! 5.png" />
     </head>
     <body className={`${font.className} bg-default`}>
-        <AuthProvider>
-          <AntdRegistry>
-            {children}
-          </AntdRegistry>
-        </AuthProvider>
+    <AntdRegistry>
+      <AuthProvider>
+          {children}
+      </AuthProvider>
+    </AntdRegistry>
     </body>
     </html>
   );
