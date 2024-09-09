@@ -27,3 +27,15 @@ export const createQueryString = (name: string, value: any) => {
 
   return params.toString();
 };
+
+export const toBase64 = (file: File) => new Promise((resolve, reject) => {
+  const reader = new FileReader();
+  reader.readAsDataURL(file);  // Ensure we read the file as a Data URL
+  reader.onload = () => {
+    const base64String = reader.result as string;
+    // Remove the prefix before returning the base64 content
+    const cleanBase64 = base64String.split(',')[1];
+    resolve(cleanBase64);
+  };
+  reader.onerror = reject;
+});

@@ -29,8 +29,8 @@ export const addAnimal = async (token: string, animal: Animal) => {
                 "gender": animal.gender,
                 "description": animal.description,
                 "size": animal.size || "Small",
-                "photo": "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg",
-                "address": "1234 Elm Street",
+                "photo": animal.photo,
+                "address": animal.address,
                 "breed": animal.breed,
                 "id_register_user": "-O3dGtS2S5Y7AeL4jww6"
             })
