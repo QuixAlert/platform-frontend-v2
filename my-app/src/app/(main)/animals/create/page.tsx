@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
 
 import {addAnimal} from "@/api/server/animal";
 
@@ -11,6 +11,7 @@ import {parseCookies} from "nookies";
 import { Form, Input, Button, Select, Upload, Row, Col, GetProp, UploadFile, UploadProps, notification, Space } from 'antd';
 
 import './style.css';
+import {addImageOnFirebase} from "@/api/server/generic";
 
 
 type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0];
@@ -22,6 +23,7 @@ const CreateAnimalPage: React.FC = () => {
   const onChange: UploadProps['onChange'] = ({ fileList: newFileList }) => {
     setFileList(newFileList);
   };
+
 
   const onPreview = async (file: UploadFile) => {
     let src = file.url as string;
@@ -40,6 +42,13 @@ const CreateAnimalPage: React.FC = () => {
 
   const onFinish = async (values: any) => {
     const token = parseCookies(undefined)["quixalert.auth.token"];
+
+    if (fileList.length > 0) {
+      const imageFile = fileList[0].originFileObj as File;
+      const result = await addImageOnFirebase(token, imageFile);
+      const {error, value} = result.unpack()
+      values.photo = value?.urlPicture;
+    }
 
     const animalResponse = await addAnimal(token, values);
 
@@ -80,7 +89,7 @@ const CreateAnimalPage: React.FC = () => {
                 </Col>
                 <Col span={8} offset={1}>
                   <Form.Item
-                    name="type"
+                    name="animal_type"
                     label={<span className="custom-label">Tipo de Animal</span>}
                     rules={[{ required: true, message: 'Por favor, selecione o tipo de animal!' }]}
                   >
