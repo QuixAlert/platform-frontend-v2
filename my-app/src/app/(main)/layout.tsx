@@ -52,6 +52,7 @@ export default function RootLayout({
                   minHeight: 280,
                   height: "100%"
                 }}
+                className="bg-pgb text-white"
               >
                 <AuthProvider>
                   {children}
