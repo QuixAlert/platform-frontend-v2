@@ -6,7 +6,6 @@ import { IoHome, IoPersonSharp } from "react-icons/io5";
 import { MdOutlinePets } from "react-icons/md";
 import { FaFileAlt } from "react-icons/fa";
 import { GoAlertFill } from "react-icons/go";
-import { FaGear } from "react-icons/fa6";
 import { BsFillQuestionCircleFill } from "react-icons/bs";
 
 function Sidebar() {
@@ -17,7 +16,6 @@ function Sidebar() {
   const isAdoptionPage = currentPath.includes("/adoption") || currentPath.includes("/animals");
   const isUsersPage = currentPath.includes("/users");
   const isDocumentsPage = currentPath.includes("/documents");
-  const isConfigPage = currentPath.includes("/config");
   const isHelpPage = currentPath.includes("/help");
   const isReportPage = currentPath.includes("/report");
 
@@ -58,12 +56,6 @@ function Sidebar() {
           <BsFillQuestionCircleFill
             onClick={() => { router.push("/help") }}
             className={`w-6 h-6 text-white cursor-pointer ${isHelpPage ? 'fill-pgreen' : ''}`}
-          />
-        </div>
-        <div>
-          <FaGear
-            onClick={() => { router.push("/config") }}
-            className={`w-6 h-6 text-white cursor-pointer ${isConfigPage ? 'fill-pgreen' : ''}`}
           />
         </div>
       </div>

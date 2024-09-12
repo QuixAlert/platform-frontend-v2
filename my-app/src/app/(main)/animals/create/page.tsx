@@ -61,9 +61,9 @@ const CreateAnimalPage: React.FC = () => {
 
   return (
     <>
-      <div className='bg-[#1D1E23] pt-[76px] '>
+      <div className='bg-pgb w-full h-full pt-5 pl-7'>
 
-        <h1 className="title max-w-[80%] mx-auto mt-[40px]" >
+        <h1 className="title max-w-[80%] mx-auto" >
           Cadastrar Animal:
         </h1>
 
@@ -71,7 +71,7 @@ const CreateAnimalPage: React.FC = () => {
           form={form}
           onFinish={onFinish}
           layout="vertical"
-          className="max-w-[80%] mx-auto p-5" 
+          className="max-w-[80%] mx-auto mt-3"
         >
           <Row gutter={44}>
             {/* Coluna da Esquerda */}
@@ -144,7 +144,7 @@ const CreateAnimalPage: React.FC = () => {
               </Form.Item>
 
               <Form.Item>
-                <Button className="submitButton" type="primary" htmlType="submit">
+                <Button className="submitButton bg-pgreen font-medium" type="primary" htmlType="submit">
                   Cadastrar Animal
                 </Button>
               </Form.Item>
