@@ -1,6 +1,7 @@
 import { Auth } from "./Auth"
 
 export type AuthContextRes = {
-    token: Auth | undefined
+    data: Auth | undefined
     error: Error | undefined
+
 }
