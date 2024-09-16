@@ -14,7 +14,7 @@ export const NotFoundErrorHandler: FC<NotFoundErrorHandlerProps> = ({ error }) =
         if (error && !modalShownRef.current) {
             modalShownRef.current = true;
             Modal.error({
-                title: 'Not Found',
+                title: 'Não encontrado',
                 content: error.message,
                 okText: 'OK',
                 onOk: () => {

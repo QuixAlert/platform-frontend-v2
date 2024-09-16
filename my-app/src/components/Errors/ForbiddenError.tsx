@@ -27,7 +27,7 @@ export const ForbiddenErrorHandler: FC<ForbiddenErrorHandlerProps> = ({ error })
     useEffect(() => {
         if (showModal) {
             Modal.error({
-                title: 'Authentication Error',
+                title: 'Erro de autenticação',
                 content: error.message,
                 okText: 'Re-login',
                 cancelButtonProps: { disabled: true, ghost: true },

@@ -3,7 +3,6 @@ export enum ErrorName {
   NOT_FOUND = 'NOT_FOUND',
   EMPTY_RESULT = 'EMPTY_RESULT',
   UNKNOWN = 'UNKNOWN',
-  GENERIC = 'GENERIC',
   BAD_REQUEST = 'BAD_REQUEST',
   LOGIN = 'LOGIN'
 }
