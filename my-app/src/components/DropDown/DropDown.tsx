@@ -3,18 +3,21 @@
 import React, { useState } from "react"
 
 import { DownOutlined, FormOutlined, LogoutOutlined, UserOutlined } from "@ant-design/icons";
-
+import {userInfoStore} from "@/store/user";
+import {Role} from "@/model/Role";
+import {logout} from "@/lib/utils";
 
 const DropDown = () => {
   const [open, setOpen] = useState(false);
+  const { user, resetUser } = userInfoStore();
 
   return (
     <div className="relative">
       <div className="flex justify-between items-center gap-4 z-10">
-        <img className="w-12 h-12 rounded-full border border-white" src="/user.png" alt="User"/>
+        <img className="w-12 h-12 rounded-full border border-white" src="/user-default.png" alt="User"/>
         <div className="flex flex-col items-start">
-          <div className="text-white font-bold mb-1 text-lg leading-none">Phablo Gabriel</div>
-          <div className="text-white text-xs leading-none">Administrador</div>
+          <div className="text-white font-bold mb-1 text-lg leading-none">{user?.name}</div>
+          <div className="text-white text-xs leading-none">{user?.role as Role}</div>
         </div>
         <DownOutlined className="text-white mr-2 cursor-pointer" onClick={() => setOpen(!open)} />
       </div>
@@ -29,7 +32,16 @@ const DropDown = () => {
         </li>
         <li className="flex items-center text-white text-lg cursor-pointer">
           <LogoutOutlined />
-          <span className="ml-2">Sair</span>
+          <span
+            className="ml-2"
+            onClick={
+              () => {
+                resetUser()
+                logout()
+              }
+            }>
+            Sair
+          </span>
         </li>
       </ul>
     </div>
