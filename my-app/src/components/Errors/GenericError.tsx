@@ -14,7 +14,7 @@ export const GenericErrorHandler: FC<GenericErrorHandlerProps> = ({ error }) => 
         if (error && !modalShownRef.current) {
             modalShownRef.current = true;
             Modal.error({
-                title: 'Generic Error',
+                title: 'Erro desconhecido',
                 content: error.message,
                 okText: 'OK',
                 onOk: () => {

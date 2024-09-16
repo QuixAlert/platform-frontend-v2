@@ -2,15 +2,15 @@ import {HttpStatusCode} from "axios";
 
 import {cookies} from 'next/headers';
 
-import {logout} from "@/lib/utils";
 import {Either, left, right} from "@/lib/either";
 
-import {GenericError} from "@/errors/generic-error";
+import {UnknownError} from "@/errors/unknown-error";
 
 import Animal from "@/model/Animal";
 import AnimalType from "@/model/AnimalType";
 
 import {ForbiddenError} from "@/errors/forbidden";
+import {BadRequestError} from "@/errors/bad-request";
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL_API
 
@@ -18,7 +18,7 @@ export const getAnimalTypeById = async (animalTypeId: string): Promise<Either<Er
     const cookieStore = cookies();
     const token = cookieStore.get("quixalert.auth.token")?.value;
 
-    if (token === undefined) return left(new GenericError("O token não foi enviado"));
+    if (token === undefined) return left(new BadRequestError("O token não foi enviado"));
 
     try {
         const response = await fetch(`${baseUrl}/animal_type/${animalTypeId}`, {
@@ -41,7 +41,7 @@ export const fetchAnimals = async (): Promise<Either<Error, Animal[]>> => {
     const cookieStore = cookies();
     const token = cookieStore.get("quixalert.auth.token")?.value;
 
-    if (token === undefined) return left(new GenericError("O token não foi enviado"));
+    if (token === undefined) return left(new BadRequestError("O token não foi enviado"));
 
     try {
         const response = await fetch(`${baseUrl}/animals`, {
@@ -56,6 +56,6 @@ export const fetchAnimals = async (): Promise<Either<Error, Animal[]>> => {
         const data: Animal[] = await response.json();
         return right(data);
     } catch (e) {
-        return left(new GenericError("Erro ao buscar animais"));
+        return left(new UnknownError("Erro ao buscar animais"));
     }
 }

@@ -1,5 +1,4 @@
-import { BadRequestError } from "@/errors/bad-request";
-import { GenericError } from "@/errors/generic-error";
+import { UnknownError } from "@/errors/unknown-error";
 import { LoginError } from "@/errors/login";
 import { Either, right, left } from "@/lib/either";
 import { Auth } from "@/model/Auth";
@@ -25,6 +24,6 @@ export const fetchLogin = async (email: string, password: string): Promise<Eithe
         return right(token)
     } catch (e) {
         const error = e as Error
-        return left(new GenericError(`Ocorreu um erro inesperado:  ${error.name}`))
+        return left(new UnknownError(`Ocorreu um erro inesperado:  ${error.name}`))
     }
 };

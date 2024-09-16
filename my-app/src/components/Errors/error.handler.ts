@@ -10,7 +10,6 @@ const errorHandlers: { [key in ErrorName]: React.FC<{ error: Error }> } = {
     [ErrorName.NOT_FOUND]: NotFoundErrorHandler,
     [ErrorName.EMPTY_RESULT]: EmptyResultErrorHandler,
     [ErrorName.UNKNOWN]: UnknownErrorHandler,
-    [ErrorName.GENERIC]: GenericErrorHandler,
     [ErrorName.BAD_REQUEST]: GenericErrorHandler,
     [ErrorName.LOGIN]: GenericErrorHandler,
 };

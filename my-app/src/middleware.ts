@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { NextRequest } from 'next/server';
 
-const authRoutes = ['/home/*', '/adoption/*'];
+const authRoutes = ['/home/*', '/adoption/*', '/animals/*', '/documents/*', '/help/*', '/users/*', '/reports/*'];
 
 function matchesWildcard(path: string, pattern: string): boolean {
     if (pattern.endsWith('/*')) {

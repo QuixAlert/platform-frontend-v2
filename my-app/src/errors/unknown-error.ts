@@ -1,10 +1,10 @@
 import {ErrorName} from "@/errors/error-names";
 
-export class GenericError extends Error {
+export class UnknownError extends Error {
 
     constructor(message: string) {
         super(message);
 
-        this.name = ErrorName.GENERIC
+        this.name = ErrorName.UNKNOWN
     }
 }
