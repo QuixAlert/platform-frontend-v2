@@ -21,16 +21,16 @@ export default function Home() {
 
   async function handleSignIn(data: any) {
     const user = data as User;
-    const { error, token } = await signIn(user);
+    const { error, data: authData } = await signIn(user);
 
     if (error) {
       showMessage('error', error.message);
       return;
     }
 
-    if (token) {
+    if (authData) {
       showMessage('success', 'Login feito com sucesso!');
-      setCookie(undefined, 'quixalert.auth.token', token.access_token);
+      setCookie(undefined, 'quixalert.auth.token', authData.access_token);
       router.push('/home');
     }
   }
