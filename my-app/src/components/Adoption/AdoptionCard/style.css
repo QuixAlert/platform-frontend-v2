@@ -63,13 +63,24 @@
   justify-content: center;
 }
 .card-see-more-btn {
-  padding: 5px 25px;
+  padding: 5px 15px;
   margin: 1rem auto 0 auto;
   border-radius: 20px;
-  font-size: 18px;
+  font-size: 12px;
   color: #fafafa;
   background-color: #1f1e1e;
 }
+
+.card-see-associate-btn {
+  padding: 5px 25px;
+  margin: 1rem auto 0 auto;
+  border-radius: 20px;
+  font-size: 12px;
+  color: #269996;
+  background-color: #fafafa;
+}
+
+
 
 
 .card-adoption-info-grid {
