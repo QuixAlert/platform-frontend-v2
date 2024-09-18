@@ -9,7 +9,8 @@ import { PiBirdFill } from "react-icons/pi";
 import "./style.css";
 import Adoption from "@/model/Adoption";
 import {Button, Flex, Popconfirm, Popover, Tooltip} from "antd";
-import {InfoCircleOutlined, PlusCircleOutlined} from "@ant-design/icons";
+import {DeleteOutlined, InfoCircleOutlined, PlusCircleOutlined} from "@ant-design/icons";
+import {StatusAdoptionOption} from "@/model/StatusAdoptionOption";
 
 const adoptionCard = {
   solicitante: {
@@ -38,8 +39,10 @@ const adoptionCard = {
 function AdoptionCard({ adoption }: { adoption: Adoption }) {
   const router = useRouter();
 
-  const handleConfirm = () => {}
-  const handleCancel = () => {}
+  adoption.status_adoption.name = StatusAdoptionOption.ASSOCIATED
+
+  const handleConfirmAssociation = () => {}
+  const handleConfirmRemoveAssociation = () => {}
 
   return (
       <div className="adoption-card" title="">
@@ -147,19 +150,35 @@ function AdoptionCard({ adoption }: { adoption: Adoption }) {
                     <InfoCircleOutlined/>
                   </button>
                 </Tooltip>
-                <Popconfirm
-                    title="Associar adoção"
-                    description={["Tem certeza que deseja ser", <br />, "associado a essa adoção para resolvê-la?"]}
-                    onConfirm={handleConfirm}
-                    okText="Sim"
-                    cancelText="Cancelar"
-                    icon={<PlusCircleOutlined/>}
-                >
-                  <button className="card-see-associate-btn">
-                    Associar
-                  </button>
-                </Popconfirm>
-
+                {
+                  adoption.status_adoption.name === StatusAdoptionOption.ASSOCIATED ? (
+                      <Popconfirm
+                          title="Associar adoção"
+                          description={["Tem certeza que deseja ser", <br />, "associado a essa adoção para resolvê-la?"]}
+                          onConfirm={handleConfirmAssociation}
+                          okText="Sim"
+                          cancelText="Cancelar"
+                          icon={<PlusCircleOutlined />}
+                      >
+                        <button className="card-see-associate-btn">
+                          Associar
+                        </button>
+                      </Popconfirm>
+                  ) : (
+                      <Popconfirm
+                          title="Desassociar adoção"
+                          description={["Você tem certeza que deseja", <br />, "desassociar a adoção?"]}
+                          onConfirm={handleConfirmRemoveAssociation}
+                          okText="Sim"
+                          cancelText="Cancelar"
+                          icon={<DeleteOutlined style={{ color: 'red' }}/>}
+                      >
+                        <button className="card-see-not-associate-btn">
+                          Desassociar
+                        </button>
+                      </Popconfirm>
+                  )
+                }
               </Flex>
             </div>
           </div>
