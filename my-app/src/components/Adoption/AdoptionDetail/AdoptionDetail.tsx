@@ -52,7 +52,7 @@ type AdoptionDetailProps = {
 export default function AdoptionDetail({adoption, error}: AdoptionDetailProps) {
   return (
     <>
-      <div className="page-container">
+      <div className="w-full h-full pt-5 pl-7 page-container bg-pgb text-white">
         { !adoption ? (
             <div className="h-screen flex items-center justify-center">
               <Spin indicator={<LoadingOutlined style={{fontSize: 48}} spin/>}/>
@@ -133,7 +133,7 @@ export default function AdoptionDetail({adoption, error}: AdoptionDetailProps) {
                 </div>
               </Col>
 
-              <Col span={8} className="adoption-part-container animal">
+              <Col span={8} className="adoption-part-container animal flex">
                 <img className="animal-image" src={adoption.animal.photo} alt=""/>
                 <div className="animal-detail-container">
                   <div className="animal-title">

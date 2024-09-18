@@ -26,6 +26,7 @@ const config = {
       colors: {
         pgreen: "#269996",
         sgreen: "#39C2BE",
+        pblue: "#1173B5",
         pgb: "#1d1e23",
         sgb: "#25252D",
         border: "hsl(var(--border))",

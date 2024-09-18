@@ -14,7 +14,7 @@ export const UnknownErrorHandler: FC<UnknownErrorHandlerProps> = ({ error }) => 
         if (error && !modalShownRef.current) {
             modalShownRef.current = true;
             Modal.error({
-                title: 'Unknown Error',
+                title: 'Erro desconhecido',
                 content: error.message,
                 okText: 'OK',
                 onOk: () => {
@@ -23,6 +23,8 @@ export const UnknownErrorHandler: FC<UnknownErrorHandlerProps> = ({ error }) => 
             });
         }
     }, [error]);
+
+
 
     return null; // No visible UI, modal is handled via Ant Design's Modal component
 };

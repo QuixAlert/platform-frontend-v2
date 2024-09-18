@@ -1,6 +1,6 @@
 import {toBase64} from "@/lib/utils";
 import {Either, left, right} from "@/lib/either";
-import {GenericError} from "@/errors/generic-error";
+import {UnknownError} from "@/errors/unknown-error";
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL_API
 
@@ -21,12 +21,12 @@ export const addImageOnFirebase = async (token: string, image: File): Promise<Ei
                 "base64Content": imageBase64Content
             })
         })
-        if (!response.ok) return left(new GenericError(`Não foi possível adicionar a imagem no firebase`))
+        if (!response.ok) return left(new UnknownError(`Não foi possível adicionar a imagem no firebase`))
 
         const imageLink = await response.json() as ImageLink
         return right(imageLink)
     } catch (e) {
         const error = e as Error
-        return left(new GenericError(`Ocorreu um erro inesperado:  ${error.name}. ${error.message}`))
+        return left(new UnknownError(`Ocorreu um erro inesperado:  ${error.name}. ${error.message}`))
     }
 }

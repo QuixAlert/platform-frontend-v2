@@ -35,7 +35,7 @@ export default function RootLayout({
       <head>
       <link rel="icon" href="QuixAlert! 5.png" />
       </head>
-      <body className={`${font.className} bg-default`}>
+      <body className={`${font.className} bg-pgb`}>
         <AntdRegistry>
           <Layout className={"min-h-screen h-auto"}>
           <Header className="p-0">
@@ -52,6 +52,7 @@ export default function RootLayout({
                   minHeight: 280,
                   height: "100%"
                 }}
+                className="bg-pgb text-white"
               >
                 <AuthProvider>
                   {children}

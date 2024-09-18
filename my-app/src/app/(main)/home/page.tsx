@@ -9,7 +9,7 @@ import './style.css';
 export default function Home(){
   return (
     <>
-      <div className="container">
+      <div className="container h-full p-0 w-full">
         <div className="card">
           <div className="content">
             <div className="textContainer">

@@ -51,13 +51,13 @@ const helpCardsMoki = [
 const Page = () => {
   return (
     <>
-      <div className='bg-[#1D1E23] pt-[100px] pl-[120px]'>
+      <div className='bg-pgb w-full h-full pt-5 pl-7'>
 
         <h1 className="text-white font-nunito font-extrabold text-[26px] ">
           Ajuda
         </h1>
 
-        <div className="mt-[26px] grid grid-cols-[repeat(auto-fit,_minmax(353px,_1fr))] gap-8 justify-items-start">
+        <div className="mt-7 grid grid-cols-[repeat(auto-fit,_minmax(353px,_1fr))] gap-8 justify-items-start">
           {helpCardsMoki.map((card, index) => (
             <HelpCard
               key={index}

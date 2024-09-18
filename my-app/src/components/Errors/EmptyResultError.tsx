@@ -14,7 +14,7 @@ export const EmptyResultErrorHandler: FC<EmptyResultErrorHandlerProps> = ({ erro
         if (error && !modalShownRef.current) {
             modalShownRef.current = true;
             Modal.error({
-                title: 'No Results Found',
+                title: 'Resultados não encontrados',
                 content: error.message,
                 okText: 'OK',
                 onOk: () => {

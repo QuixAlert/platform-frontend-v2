@@ -5,9 +5,11 @@ import {cookies} from 'next/headers';
 import Adoption from "@/model/Adoption";
 
 import { ForbiddenError } from "@/errors/forbidden";
-import {GenericError} from "@/errors/generic-error";
+import {UnknownError} from "@/errors/unknown-error";
+
 
 import {Either, left, right} from "@/lib/either";
+import {BadRequestError} from "@/errors/bad-request";
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL_API;
 export const fetchAdoptions = async (): Promise<Either<Error, Adoption[]>> => {
@@ -15,7 +17,7 @@ export const fetchAdoptions = async (): Promise<Either<Error, Adoption[]>> => {
   const cookieStore = cookies();
   const token = cookieStore.get("quixalert.auth.token")?.value;
 
-  if (token === undefined) return left(new GenericError("O token não foi enviado"));
+  if (token === undefined) return left(new BadRequestError("O token não foi enviado"));
 
   try {
     const response = await fetch(`${baseUrl}/adoption`, {
@@ -31,7 +33,7 @@ export const fetchAdoptions = async (): Promise<Either<Error, Adoption[]>> => {
     return right(data);
 
   } catch (error) {
-    return left(new GenericError("Erro ao buscar adoções"));
+    return left(new UnknownError("Erro ao buscar adoções"));
   }
 }
 
@@ -53,6 +55,6 @@ export const fetchAdoption = async (id: string): Promise<Either<Error, Adoption>
     return (right(await response.json() as Adoption));
   } catch (e) {
     const error = e as Error;
-    return left(new GenericError("Erro ao buscar adoção"));
+    return left(new UnknownError("Erro ao buscar adoção"));
   }
 };
