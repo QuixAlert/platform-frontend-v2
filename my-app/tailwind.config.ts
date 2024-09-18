@@ -20,7 +20,8 @@ const config = {
     },
     extend: {
       backgroundColor: {
-        'default': "#1d1e23"
+        'default': "#1d1e23",
+        pattern :"1D1E23"
       },
       colors: {
         pgreen: "#269996",
@@ -83,6 +84,15 @@ const config = {
       fontFamily: {
         roboto: ['Roboto', 'sans-serif'],
         nunito: ['Nunito', 'sans-serif'],
+      },
+      boxShadow:{
+        modalCard : 'rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px'
+      },
+      fontSize:{
+        title : '28px'
+      },
+      textShadow: {
+        modalTitle: '0.5px 1px rgb(154, 153, 153)',
       },
     },
   },
