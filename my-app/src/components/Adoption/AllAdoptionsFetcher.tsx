@@ -1,11 +1,9 @@
 import AdoptionsList from "@/components/Adoption/AdoptionList";
 import {fetchAdoptions} from "@/api/client/adoptions";
-import Adoption from "@/model/Adoption";
-import {ErrorS} from "@/model/Error";
 import {transformError} from "@/lib/utils";
 
 
-const AdoptionFetcher = async () => {
+const AllAdoptionsFetcher = async () => {
     const result = await fetchAdoptions()
     const { error, value } = result.unpack()
 
@@ -17,4 +15,4 @@ const AdoptionFetcher = async () => {
     />;
 };
 
-export default AdoptionFetcher;
+export default AllAdoptionsFetcher;
