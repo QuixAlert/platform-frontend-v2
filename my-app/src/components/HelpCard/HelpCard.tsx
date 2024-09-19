@@ -24,7 +24,7 @@ const HelpButton: React.FC<HelpButtonProps> = ({ title, videoUrl, description })
     setIsModalOpen(false);
   };
 
-  // Extrai o ID do vídeo do URL do YouTube
+  // get the ID vídeo of YouTube URL
   const getYouTubeVideoId = (url: string): string | null => {
     const regex = /[?&]v=([^&#]*)/;
     const match = url.match(regex);
@@ -38,7 +38,7 @@ const HelpButton: React.FC<HelpButtonProps> = ({ title, videoUrl, description })
     <div>
       <Card
         style={{ width: 280, height: 265, background: "#E0E0E0"}}
-        bodyStyle={{ padding: '15px 10px 20px 10px' }}
+        bodyStyle={{ padding: '15px 10px 20px 10px' }} //This allows overriding the default padding of Ant Design components.
       >
         <h3 className="text-base font-bold mb-[9px] mx-[5px] font-roboto overflow-hidden overflow-ellipsis ">
           {title}

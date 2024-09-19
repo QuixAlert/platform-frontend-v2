@@ -66,6 +66,7 @@ const config = {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        'video-card': '7px',
       },
       keyframes: {
         "accordion-down": {
@@ -84,6 +85,10 @@ const config = {
       fontFamily: {
         roboto: ['Roboto', 'sans-serif'],
         nunito: ['Nunito', 'sans-serif'],
+      },
+      boxShadow: {
+        'custom': 'rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px',
+        'custom-title': '0.5px 1px rgb(154, 153, 153)'
       },
     },
   },

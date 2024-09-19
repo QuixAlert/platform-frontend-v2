@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Spin } from 'antd';
 import ReactPlayer from 'react-player';
-import "./style.css";
+
 
 interface HelpCardModalProps {
   title: string;
@@ -16,7 +16,7 @@ const HelpCardModal: React.FC<HelpCardModalProps> = ({ title, videoUrl, isOpen, 
 
   const handleCancel = () => {
     if (player) {
-      player.seekTo(0); // Retorna o vídeo ao início
+      player.seekTo(0); // Return the vídeo to begin
     }
     onClose();
     setIsLoading(false);
@@ -29,7 +29,7 @@ const HelpCardModal: React.FC<HelpCardModalProps> = ({ title, videoUrl, isOpen, 
   return (
     <Modal
       title={
-        <p className='font-semibold text-[24px] modal-title'>
+        <p className='font-semibold text-[24px] font-roboto modal-title'>
           {title}
         </p>
       }
@@ -66,7 +66,7 @@ const HelpCardModal: React.FC<HelpCardModalProps> = ({ title, videoUrl, isOpen, 
         onStart={() => setIsLoading(false)}
         width={'100%'}
         height={'600px'}
-        className="react-player"
+        className="overflow-hidden rounded-video-card shadow-custom"
       />
     </Modal>
   );
