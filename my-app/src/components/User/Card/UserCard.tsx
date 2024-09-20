@@ -1,13 +1,8 @@
-"use client";
+import React from "react";
+import UserInfo from "../UserInfo";
+import BusinessUser from "@/model/BusinessUser";
 
-import React, { useState } from "react";
-import User from "@/model/User";
-import { FloatButton, Tooltip, notification } from "antd";
-import UserModal from "./UserModal";
-import UserInfo from "./UserInfo";
-import { PlusCircleOutlined } from "@ant-design/icons";
-
-function UserCard({ user }: { user: User }) {
+function UserCard({ user }: { user: BusinessUser }) {
     return (
         <>
             <div className="flex w-80 max-h-72 bg-gray-300 rounded-xl text-white border-2">

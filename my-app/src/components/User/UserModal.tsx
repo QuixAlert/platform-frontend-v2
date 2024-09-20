@@ -3,6 +3,7 @@ import { Button, Checkbox, Form, Input, Modal } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { NotificationType, showNotification } from "../Notification/Notification";
 import { NotificationInstance } from "antd/es/notification/interface";
+import ColorButton from "../Button/ColorButton";
 
 type UserModalProps = {
     open: boolean;
@@ -57,16 +58,16 @@ const UserModal = ({
     return (
         <Modal
             title="Adicionar novo usuário"
-            open={open}
             okText="Enviar email"
+            onClose={onClose}
             cancelText="Cancelar"
             footer={[
-                <Button key="cancel" onClick={onClose}>
+                <ColorButton bgColor="#269996" key="cancel" onClick={onClose}>
                     Cancelar
-                </Button>,
-                <Button key="submit" type="primary" loading={loading} onClick={handleOk} disabled={isSendEmailButtonEnabled}>
+                </ColorButton>,
+                <ColorButton bgColor="#269996" key="submit" type="primary" loading={loading} onClick={handleOk} disabled={isSendEmailButtonEnabled}>
                     Enviar Email
-                </Button>,
+                </ColorButton>,
             ]}
         >
             <Form form={form} layout="vertical">

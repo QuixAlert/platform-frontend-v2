@@ -1,13 +1,11 @@
 "use client"
 
-import Adoption from "@/model/Adoption";
 import {Suspense, useState} from "react";
-import {Loading} from "@/components/Loading/Loading";
-import AdoptionFetcher from "@/components/Adoption/AdoptionFetcher";
-import UserCard from "@/components/User/UserCard";
 import { FloatButton, notification, Tooltip } from "antd";
 import { PlusCircleOutlined } from "@ant-design/icons";
 import UserModal from "@/components/User/UserModal";
+import { Loading } from "@/components/Loading/Loading";
+import { UsersListFetcher } from "@/components/User/Fetcher/UserListFetcher";
 
 export default function UsersPage() {
     const [api, contextHolder] = notification.useNotification();
@@ -30,13 +28,9 @@ export default function UsersPage() {
                     <h1 className="text-4xl font-bold">Usuários</h1>
                 </div>
 
-                <h2 className="text-2xl font-semibold mb-6">Ativos</h2>
-
-                <UserCard user={null}/>
-
-                <h2 className="text-2xl font-semibold mt-4 mb-6">Não Ativos</h2>
-
-                <UserCard user={null}/>
+                <Suspense fallback={<Loading />}>
+                    <UsersListFetcher/>
+                </Suspense>
 
                 <Tooltip placement="left" title="Adicionar novo usuário">
                     <FloatButton onClick={showModal} icon={<PlusCircleOutlined />} />

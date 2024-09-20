@@ -4,7 +4,8 @@ const nextConfig = {
       domains: [
         'firebasestorage.googleapis.com',
         'images.pexels.com',
-        'cdn.pixabay.com'
+        'cdn.pixabay.com',
+        'a-static.mlcdn.com.br'
         ],
     },
   };
