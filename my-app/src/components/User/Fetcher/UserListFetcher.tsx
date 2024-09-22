@@ -1,9 +1,9 @@
-import errorHandlers from "@/components/Errors/error.handler";
 import { ErrorName } from "@/errors/error-names";
 import { transformError } from "@/lib/utils";
 import UserActiveList from "../List/UserActiveList";
 import UserInactiveList from "../List/UserInactiveList";
 import { fetchUsers } from "@/api/client/users";
+import errorHandlers from "@/components/ui/Errors/error.handler";
 
 export async function UsersListFetcher(){
     const result = await fetchUsers()
@@ -16,8 +16,8 @@ export async function UsersListFetcher(){
         return <ErrorComponent error={error} />;
     }
 
-    const activeUsers = users.filter(user => user.active == true)
-    const inactiveUsers = users.filter(user => user.active != true)
+    const activeUsers = users.filter(user => user.active)
+    const inactiveUsers = users.filter(user => !user.active)
 
     return (
         <>

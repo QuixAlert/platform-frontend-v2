@@ -4,7 +4,7 @@ import {Suspense, useState} from "react";
 import { FloatButton, notification, Tooltip } from "antd";
 import { PlusCircleOutlined } from "@ant-design/icons";
 import UserModal from "@/components/User/UserModal";
-import { Loading } from "@/components/Loading/Loading";
+import { Loading } from "@/components/ui/Loading/Loading";
 import { UsersListFetcher } from "@/components/User/Fetcher/UserListFetcher";
 
 export default function UsersPage() {

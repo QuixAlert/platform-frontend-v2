@@ -1,5 +1,5 @@
 import AnimalCard from "@/components/Animal/AnimalCard/AnimalCard";
-import errorHandlers from "@/components/Errors/error.handler";
+import errorHandlers from "@/components/ui/Errors/error.handler";
 
 import Animal from "@/model/Animal";
 

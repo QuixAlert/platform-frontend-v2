@@ -3,7 +3,7 @@ import {Suspense} from "react";
 import Link from "next/link";
 
 import AnimalFetcher from "@/components/Animal/AnimalFetcher";
-import {Loading} from "@/components/Loading/Loading";
+import {Loading} from "@/components/ui/Loading/Loading";
 
 import { Button } from "antd";
 

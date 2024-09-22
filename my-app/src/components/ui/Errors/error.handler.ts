@@ -1,9 +1,9 @@
 import { ErrorName } from "@/errors/error-names";
-import ForbiddenErrorHandler from "@/components/Errors/ForbiddenError";
-import NotFoundErrorHandler from "@/components/Errors/NotFoundError";
-import UnknownErrorHandler from "@/components/Errors/UnknownError";
-import EmptyResultErrorHandler from "@/components/Errors/EmptyResultError";
-import GenericErrorHandler from "@/components/Errors/GenericError";
+import ForbiddenErrorHandler from "@/components/ui/Errors/ForbiddenError";
+import NotFoundErrorHandler from "@/components/ui/Errors/NotFoundError";
+import UnknownErrorHandler from "@/components/ui/Errors/UnknownError";
+import EmptyResultErrorHandler from "@/components/ui/Errors/EmptyResultError";
+import GenericErrorHandler from "@/components/ui/Errors/GenericError";
 
 const errorHandlers: { [key in ErrorName]: React.FC<{ error: Error }> } = {
     [ErrorName.FORBIDDEN]: ForbiddenErrorHandler,

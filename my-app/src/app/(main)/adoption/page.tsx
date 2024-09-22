@@ -2,7 +2,7 @@ import { Suspense } from "react";
 
 import Link from "next/link";
 
-import { Loading } from "@/components/Loading/Loading";
+import { Loading } from "@/components/ui/Loading/Loading";
 import AdoptionFetcher from "@/components/Adoption/AdoptionFetcher";
 
 import {Button} from "antd";
