@@ -2,7 +2,7 @@ import React from 'react';
 
 import Image from 'next/image';
 
-import NeedHelpBtn from "@/components/NeedHelpBtn/NeedHelpBtn";
+import NeedHelpBtn from "@/components/ui/NeedHelpBtn/NeedHelpBtn";
 
 import './style.css';
 

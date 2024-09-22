@@ -25,13 +25,7 @@ export function AuthProvider({ children }: Readonly<{ children: React.ReactNode 
     const { error, value: data } = response.unpack();
 
     if (data) {
-      setUser({
-        id: Number(data.user.user_id),
-        name: data.user.name,
-        email: data.user.email,
-        role: Role.USER,
-        password: '',
-      });
+      setUser(data.user);
       setIsLogged(true);
     }
 

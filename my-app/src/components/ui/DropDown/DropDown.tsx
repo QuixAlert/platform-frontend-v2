@@ -6,10 +6,13 @@ import { DownOutlined, FormOutlined, LogoutOutlined, UserOutlined } from "@ant-d
 import {userInfoStore} from "@/store/user";
 import {Role} from "@/model/Role";
 import {logout} from "@/lib/utils";
+import { useRouter, usePathname } from 'next/navigation';
+
 
 const DropDown = () => {
   const [open, setOpen] = useState(false);
   const { user, resetUser } = userInfoStore();
+  const router = useRouter();
 
   return (
     <div className="relative">
@@ -24,7 +27,7 @@ const DropDown = () => {
       <ul className={`absolute mt-2 p-5 w-[224px] bg-[#25252D] rounded-b-md list-none border-t border-gray-700 transition-opacity duration-300 ease-in-out ${open ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
         <li className="flex items-center text-white text-lg mb-2 cursor-pointer">
           <UserOutlined />
-          <span className="ml-2">Meu perfil</span>
+          <span className="ml-2" onClick={() => router.push(`/profile/${user?.id}`)}>Meu perfil</span>
         </li>
         <li className="flex items-center text-white text-lg mb-2 cursor-pointer">
           <FormOutlined />

@@ -1,11 +1,12 @@
 import User from "@/model/User";
 import {create} from "zustand";
 import {persist} from "zustand/middleware";
+import BusinessUser from "@/model/BusinessUser";
 
 interface userInfoState {
-    user: User | undefined
+    user: BusinessUser | undefined
     isLogged: boolean
-    setUser: (user: User) => void
+    setUser: (user: BusinessUser) => void
     setIsLogged: (isLogged: boolean) => void
     resetUser: () => void
 }
@@ -14,7 +15,7 @@ export const userInfoStore = create<userInfoState>()(
     persist((set) => ({
         user: undefined,
         isLogged: false,
-        setUser: (user: User) => set(state => ({user})),
+        setUser: (user: BusinessUser) => set(state => ({user})),
         setIsLogged: (isLogged: boolean) => set({isLogged}),
         resetUser: () => set({isLogged: false, user: undefined}),
     }), {name: 'user-store'})

@@ -4,8 +4,8 @@ import type { Metadata } from "next";
 
 import {AuthProvider} from "@/contexts/AuthContext";
 
-import NavBar from "@/components/NavBar/NavBar";
-import SideBar from "@/components/SideBar/SideBar";
+import NavBar from "@/components/ui/NavBar/NavBar";
+import SideBar from "@/components/ui/SideBar/SideBar";
 
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 
