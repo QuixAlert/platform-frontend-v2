@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import Link from "next/link";
 
 import { Loading } from "@/components/ui/Loading/Loading";
-import ReportFetcher from "@/components/Report/AdoptionFetcher";
+import ReportFetcher from "@/components/Report/ReportFetcher";
 
 import {Button} from "antd";
 
