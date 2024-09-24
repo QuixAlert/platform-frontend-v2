@@ -1,23 +1,41 @@
-"use client"
+"use client";
 
-import styled from 'styled-components';
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import PinInput from './PinInput';
+import { validateInvite } from '@/api/client/singup';
+import ColorButton from '../Button/ColorButton';
 
-const PinCodeForm: React.FC = () => {
-  const [pin, setPin] = useState<string[]>(Array(6).fill(''));
+type PinCodeFormProps = {
+  id: string;
+};
+
+const PinCodeForm: React.FC<PinCodeFormProps> = ({ id }) => {
+  const searchParams = useSearchParams();
+  const inviteCode = searchParams.get('inviteCode');
+  
+  const initialPin = inviteCode ? inviteCode.split("").slice(0, 4) : Array(4).fill('');
+
+  const [pin, setPin] = useState<string[]>(initialPin);
+  const [isLoading, setIsLoading] = useState(false);
+
   const router = useRouter();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true);
     const fullPin = pin.join('');
 
-    if (fullPin === '123456') {
-      router.push('/singup/register'); 
+    const result = await validateInvite(id, fullPin);
+    const { error } = result.unpack();
+
+    if (!error) {
+      router.push(`/signup/${id}/register`);
     } else {
       alert('Invalid PIN code');
     }
+
+    setIsLoading(false);
   };
 
   const handlePinChange = (index: number, value: string) => {
@@ -27,55 +45,31 @@ const PinCodeForm: React.FC = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <PinInputContainer>
-        {Array.from({ length: 6 }, (_, index) => (
+    <form onSubmit={handleSubmit} className="flex flex-col items-center gap-4">
+      <div className="flex justify-center gap-2">
+        {Array.from({ length: 4 }, (_, index) => (
           <PinInput
             key={index}
             id={`code-${index + 1}`}
             prevId={index > 0 ? `code-${index}` : undefined}
-            nextId={index < 5 ? `code-${index + 2}` : undefined}
+            nextId={index < 3 ? `code-${index + 2}` : undefined}
             onChange={(value) => handlePinChange(index, value)}
+            value={pin[index]}
           />
         ))}
-      </PinInputContainer>
+      </div>
 
-      <Button type="submit">Validar código PIN</Button>
-    </Form>
+      <ColorButton
+        loading={isLoading}
+        bgColor="#299699"
+        type="primary"
+        htmlType="submit"
+        className="bg-teal-600 text-white py-3 px-6 text-lg rounded-md hover:bg-teal-700 transition duration-300"
+      >
+        Validar código PIN
+      </ColorButton>
+    </form>
   );
 };
 
 export default PinCodeForm;
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-`;
-
-const PinInputContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-`;
-
-const HelperText = styled.p`
-  margin-top: 0.5rem;
-  text-align: center;
-  color: #6b7280;
-`;
-
-const Button = styled.button`
-  background-color: #269996;
-  color: white;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: background-color 0.3s;
-
-  &:hover {
-    background-color: #268381; 
-  }
-`;
