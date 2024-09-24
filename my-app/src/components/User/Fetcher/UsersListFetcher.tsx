@@ -3,19 +3,20 @@ import { Loading } from "@/components/ui/Loading/Loading";
 
 import { useState, useEffect, useMemo } from "react";
 import { fetchUsers } from "@/api/client/users"; // Import fetchUsers function
-import UserActiveList from "../List/UserActiveList";
-import UserInactiveList from "../List/UserInactiveList";
+import UserActiveList from "../List/UsersList";
 import { transformError } from "@/lib/utils";
 import BusinessUser from "@/model/BusinessUser";
 import { ErrorName } from "@/errors/error-names";
 
 type UsersListFetcherProps = {
     loggedUserEmail?: string
+    onEdit: (user: BusinessUser) => void
 }
 
 
 const UsersListFetcher = ({
-    loggedUserEmail
+    loggedUserEmail,
+    onEdit
 }: UsersListFetcherProps) => {
     const [users, setUsers] = useState<BusinessUser[]>([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -61,9 +62,9 @@ const UsersListFetcher = ({
     return (
         <>
             <h2 className="text-2xl font-semibold mb-6">Ativos</h2>
-            <UserActiveList users={activeUsers} />
+            <UserActiveList users={activeUsers} onEdit={onEdit}/>
             <h2 className="text-2xl font-semibold mt-4 mb-6">Não Ativos</h2>
-            <UserInactiveList users={inactiveUsers} />
+            <UserActiveList users={inactiveUsers} onEdit={onEdit}/>
         </>
     );
 };

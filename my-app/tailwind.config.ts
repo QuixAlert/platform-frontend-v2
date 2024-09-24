@@ -24,6 +24,7 @@ const config = {
       },
       colors: {
         pgreen: "#269996",
+        pgreetwo: "#268381",
         sgreen: "#39C2BE",
         pblue: "#1173B5",
         pgb: "#1d1e23",
