@@ -1,21 +1,16 @@
 "use client"
 
 import Card from '@/components/Card/Card';
-import styled from 'styled-components';
+import PinCodeForm from '@/components/Singup/PinCodeForm';
 
 const SignUpPage: React.FC = () => {
   return (
-    <Container>
-      <Card />
-    </Container>
+    <div>
+      <Card image="/cat.jpg">
+        <PinCodeForm />
+      </Card>
+    </div>
   );
 };
 
 export default SignUpPage;
-
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  /* align-items: center; */
-  /* background-color: #299696; // Change to your desired background color */
-`;

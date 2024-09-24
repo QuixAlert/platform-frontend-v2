@@ -11,11 +11,18 @@ const CardContainer = styled.div`
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 `;
 
-const Card: React.FC = () => {
+type CardProps = {
+  children: React.ReactNode
+  image: string
+}
+
+const Card: React.FC<CardProps> = ({children, image}) => {
   return (
     <CardContainer>
-      <CardContent />
-      <CardImage />
+      <CardContent>
+        {children}
+      </CardContent>
+      <CardImage image={image}/>
     </CardContainer>
   );
 };

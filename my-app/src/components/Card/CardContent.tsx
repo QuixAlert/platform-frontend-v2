@@ -15,7 +15,11 @@ const CenteredFormContainer = styled.div`
   height: 80%;
 `;
 
-const CardContent: React.FC = () => {
+type CardContentProps = {
+  children: React.ReactNode
+}
+
+const CardContent: React.FC<CardContentProps> = ({children}) => {
   return (
     <ContentContainer>
       <h1 className="text-2xl font-bold mb-4 text-center">Plataforma de Dados Quixalert</h1>
@@ -23,9 +27,8 @@ const CardContent: React.FC = () => {
         Complete seu cadastro inserindo o código de verificação que enviamos para o seu e-mail.
       </p>
       
-      {/* Wrap the form, button, and help text in a centered container */}
       <CenteredFormContainer>
-        <PinCodeForm />
+        {children}
         <HelperText>
           Por favor, insira o código de 6 dígitos que enviamos para o seu e-mail.
         </HelperText>
