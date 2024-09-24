@@ -1,19 +1,23 @@
-import styled from 'styled-components';
+"use client";
 
-const ImageContainer = styled.div<{ image: string }>`
-  flex: 1; 
-  background-image: ${({ image }) => `url(${image})`};
-  background-size: cover; 
-  background-position: center;
-`;
+import React from 'react';
+import Image from 'next/image';
 
 type CardImageProps = {
-  image: string;
-}
+  imageSrc: string;
+};
 
-const CardImage: React.FC<CardImageProps> = ({ image }) => {
-  return <ImageContainer image={image} />;
+const CardImage: React.FC<CardImageProps> = ({ imageSrc }) => {
+  return (
+    <div className="relative h-full w-full">
+      <Image
+        className="absolute inset-0 object-cover"
+        src={imageSrc}
+        layout="fill"
+        alt="Card Image"
+      />
+    </div>
+  );
 };
 
 export default CardImage;
-

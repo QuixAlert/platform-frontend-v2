@@ -1,46 +1,22 @@
-import styled from 'styled-components';
-import PinCodeForm from '../Singup/PinCodeForm';
+"use client";
 
-const ContentContainer = styled.div`
-  flex: 2;
-  padding: 2rem;
-  background-color: #fff;
-`;
+import React from 'react';
 
-const CenteredFormContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; 
-  height: 80%;
-`;
-
-type CardContentProps = {
-  children: React.ReactNode
-}
-
-const CardContent: React.FC<CardContentProps> = ({children}) => {
+const CardContent: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
-    <ContentContainer>
-      <h1 className="text-2xl font-bold mb-4 text-center">Plataforma de Dados Quixalert</h1>
-      <p className="text-lg text-center mb-8">
+    <div className="p-8 bg-white h-full">
+      <h1 className="text-2xl font-bold mb-4 text-center text-black">Plataforma de Dados Quixalert</h1>
+      <p className="text-lg text-center mb-8 text-black">
         Complete seu cadastro inserindo o código de verificação que enviamos para o seu e-mail.
       </p>
-      
-      <CenteredFormContainer>
+      <div className="flex flex-col justify-center items-center h-[80%]">
         {children}
-        <HelperText>
+        <p className="mt-2 text-center text-black">
           Por favor, insira o código de 6 dígitos que enviamos para o seu e-mail.
-        </HelperText>
-      </CenteredFormContainer>
-    </ContentContainer>
+        </p>
+      </div>
+    </div>
   );
 };
-
-const HelperText = styled.p`
-  margin-top: 0.5rem;
-  text-align: center;
-  color: #6b7280;
-`;
 
 export default CardContent;
