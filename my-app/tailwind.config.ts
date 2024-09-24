@@ -20,7 +20,9 @@ const config = {
     },
     extend: {
       backgroundColor: {
-        'default': "#1d1e23"
+        'default': "#1d1e23",
+        'custom-green': '#017957',
+        'green-hover':'#016c4f',
       },
       colors: {
         pgreen: "#269996",
