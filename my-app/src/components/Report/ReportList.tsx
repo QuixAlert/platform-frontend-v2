@@ -1,16 +1,19 @@
 "use client";
 
-import ReportCard from "@/components/Report/ReportCard/ReportCard";
-import Adoption from "@/model/Adoption";
+import Report from "@/model/Report";
+
 import { ErrorName } from "@/errors/error-names";
 import errorHandlers from "@/components/ui/Errors/error.handler";
 
-type AdoptionsListProps = {
-    adoptions: Adoption[] | undefined;
+import ReportCard from "@/components/Report/ReportCard/ReportCard";
+
+
+type ReportListProps = {
+    reports: Report[] | undefined;
     error: Error | undefined;
 };
 
-const RerportList = ({ adoptions, error }: AdoptionsListProps) => {
+const RerportList = ({ reports, error }: ReportListProps) => {
     if (error) {
         const ErrorComponent = errorHandlers[error.name as ErrorName];
         return <ErrorComponent error={error} />;
@@ -19,8 +22,8 @@ const RerportList = ({ adoptions, error }: AdoptionsListProps) => {
     return (
         <>
             <div className="cards">
-                {adoptions?.map((adoption) => (
-                    <ReportCard key={adoption.id} adoption={adoption} />
+                {reports?.map((report) => (
+                    <ReportCard key={report.id} report={report} />
                 ))}
             </div>
         </>
