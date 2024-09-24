@@ -5,8 +5,9 @@ import React, { useState } from "react"
 import { DownOutlined, FormOutlined, LogoutOutlined, UserOutlined } from "@ant-design/icons";
 import {userInfoStore} from "@/store/user";
 import {Role} from "@/model/Role";
-import {logout} from "@/lib/utils";
+import {createQueryString, logout} from "@/lib/utils";
 import { useRouter, usePathname } from 'next/navigation';
+import {destroyCookie} from "nookies";
 
 
 const DropDown = () => {
@@ -39,8 +40,9 @@ const DropDown = () => {
             className="ml-2"
             onClick={
               () => {
-                resetUser()
-                logout()
+                router.replace('/' + '?' + createQueryString('redirected', true));
+                router.refresh()
+                destroyCookie(undefined,"quixalert.auth.token")
               }
             }>
             Sair
