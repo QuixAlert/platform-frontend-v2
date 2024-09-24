@@ -3,16 +3,18 @@ import { twMerge } from "tailwind-merge"
 import {destroyCookie} from "nookies";
 import {fetchAdoptions} from "@/api/client/adoptions";
 import Adoption from "@/model/Adoption";
+import {Router} from "next/router";
+import {AppRouterInstance} from "next/dist/shared/lib/app-router-context.shared-runtime";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function logout(){
+export function logout(router: AppRouterInstance){
   destroyCookie(undefined,"quixalert.auth.token")
-  window.location.reload();
+  // window.location.reload();
   // cookieStore.delete("quixalert.auth.token");
-  // router.refresh()
+  router.refresh()
 }
 
 export const transformError = (error: Error) => ({

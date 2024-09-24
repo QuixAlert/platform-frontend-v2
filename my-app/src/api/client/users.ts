@@ -53,3 +53,26 @@ export const fetchUserById = async(id: string): Promise<Either<Error, BusinessUs
     }
 }
 
+export const changeUserStatus = async(id: string, newStatus: boolean): Promise<Either<Error, BusinessUser>> => {
+    const token = parseCookies(undefined)["quixalert.auth.token"];
+
+    if (token === undefined) return left(new BadRequestError("O token não foi enviado"));
+
+    try {
+        const response = await fetch(`${baseUrl}/user/status/${id}?active=${newStatus}`, {
+            headers: { Authorization: `Bearer ${token}` },
+            method: "POST"
+        });
+      
+        if (response.status === HttpStatusCode.Forbidden) {
+        return left(new ForbiddenError("Token inválido, para continuar você precisa fazer o login novamente."));
+        }
+    
+        const data = await response.json() as BusinessUser;
+        return right(data);
+    } catch (error) {
+        return left(new UnknownError("Erro ao atualizar o status do usuário"));
+    }
+}
+
+

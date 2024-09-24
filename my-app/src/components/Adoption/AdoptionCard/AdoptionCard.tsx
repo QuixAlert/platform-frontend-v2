@@ -42,7 +42,7 @@ function AdoptionCard({ adoption }: { adoption: Adoption }) {
         <div className="card-person-container">
           <Image
             className="card-person-photo"
-            src={adoption.user?.path_picture || adoptionCard.solicitante.url}
+            src={"/" + (adoption.user?.path_picture || adoptionCard.solicitante.url)}
             alt="person-photo"
             width={100}
             height={100}
