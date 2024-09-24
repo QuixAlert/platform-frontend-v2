@@ -9,7 +9,7 @@ interface SignUpLayoutProps {
 }
 
 const SignUpLayout: React.FC<SignUpLayoutProps> = ({ children }) => (
-  <Layout>
+  <Layout className='bg-current'>
     <Card>{children}</Card>
   </Layout>
 );

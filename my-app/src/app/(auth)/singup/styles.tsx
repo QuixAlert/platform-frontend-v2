@@ -6,7 +6,7 @@ export const Layout = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f3f4f6; /* gray-100 */
+  background-color: #f3f4f6;
 `;
 
 export const Card = styled.div`
@@ -16,6 +16,24 @@ export const Card = styled.div`
   border-radius: 0.5rem;
   min-height: 500px;
   min-width: 800px;
+`;
+
+export const CardImage = styled.div`
+background-color: white;
+padding: 2rem;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+border-radius: 0.5rem;
+min-height: 500px;
+min-width: 800px;
+`;
+
+export const CardContent = styled.div`
+background-color: white;
+padding: 2rem;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+border-radius: 0.5rem;
+min-height: 500px;
+min-width: 800px;
 `;
 
 export const Title = styled.h1`

@@ -1,18 +1,21 @@
 "use client"
 
-import React from 'react';
-import SignUpLayout from './layout';
-import PinCodeForm from '@/components/Singup/PinCodeForm';
-import { Subtitle, Title } from './styles';
+import Card from '@/components/Card/Card';
+import styled from 'styled-components';
 
-const SignUpPage: React.FC = () => (
-  <SignUpLayout>
-    <Title>Plataforma de Dados do Quixalert</Title>
-    <Subtitle>
-      Complete seu cadastro inserindo o código de verificação que enviamos para o seu e-mail.
-    </Subtitle>
-    <PinCodeForm />
-  </SignUpLayout>
-);
+const SignUpPage: React.FC = () => {
+  return (
+    <Container>
+      <Card />
+    </Container>
+  );
+};
 
 export default SignUpPage;
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  /* background-color: #299696; // Change to your desired background color */
+`;
