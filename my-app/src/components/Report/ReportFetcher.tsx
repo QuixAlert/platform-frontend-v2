@@ -29,16 +29,15 @@ const repoCard = {
 const reports = [repoCard, reportCard, reportCard, reportCard, reportCard];
 
 const ReportFetcher = async () => {
-    // const result = await fetchReports();
-    // const { error, value } = result.unpack()
-    //
-    // console.log(value)
-    //
+    const result = await fetchReports();
+    const { error, value } = result.unpack()
+
+    console.log(value)
+
     return <ReportsList
-        reports={reports}
-        error={
-            //error != undefined ? transformError(error) : undefined
-            undefined
+        reports={value}
+        error = {
+            error != undefined ? transformError(error) : undefined
         }
     />;
 };
