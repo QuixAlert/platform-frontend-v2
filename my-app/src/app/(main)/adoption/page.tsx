@@ -1,10 +1,10 @@
 import { Suspense } from "react";
 import Link from "next/link";
-import { Loading } from "@/components/Loading/Loading";
 import AllAdoptionsFetcher from "@/components/Adoption/AllAdoptionsFetcher";
 import { Button, Space } from "antd";
 import "./style.css";
 import MyAdoptionsFetcher from "@/components/Adoption/MyAdoptionsFetcher";
+import { Loading } from "@/components/ui/Loading/Loading";
 
 export default function AdoptionPage() {
   return (

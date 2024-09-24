@@ -3,7 +3,7 @@
 import AdoptionCard from "@/components/Adoption/AdoptionCard/AdoptionCard";
 import Adoption from "@/model/Adoption";
 import { ErrorName } from "@/errors/error-names";
-import errorHandlers from "@/components/Errors/error.handler";
+import errorHandlers from "@/components/ui/Errors/error.handler";
 
 type AdoptionsListProps = {
     adoptions: Adoption[] | undefined;

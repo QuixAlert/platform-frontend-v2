@@ -1,7 +1,7 @@
 import React from "react";
 
-import DropDown from "../DropDown/DropDown";
-import NavBarItems from "../NavBarItems/NavBarItems";
+import DropDown from "@/components/ui/DropDown/DropDown";
+import NavBarItems from "@/components/ui/NavBarItems/NavBarItems";
 
 import Image from 'next/image';
 
