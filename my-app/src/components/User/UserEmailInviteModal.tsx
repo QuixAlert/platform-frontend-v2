@@ -5,17 +5,17 @@ import { NotificationType, showNotification } from "../Notification/Notification
 import { NotificationInstance } from "antd/es/notification/interface";
 import ColorButton from "../Button/ColorButton";
 
-type UserModalProps = {
+type UserEmailInviteModalProps = {
     open: boolean;
     onClose: () => void;
     notificationApi: NotificationInstance
 }
 
-const UserModal = ({
+const UserEmailInviteModal = ({
     open,
     onClose,
     notificationApi
-}: UserModalProps) => {
+}: UserEmailInviteModalProps) => {
     const [loading, setLoading] = useState(false);
     const [form] = Form.useForm();
     const [isSendEmailButtonEnabled, setIsSendEmailButtonEnabled] = useState(true);
@@ -59,7 +59,9 @@ const UserModal = ({
         <Modal
             title="Adicionar novo usuário"
             okText="Enviar email"
+            open={open}
             onClose={onClose}
+            onCancel={onClose}
             cancelText="Cancelar"
             footer={[
                 <ColorButton bgColor="#269996" key="cancel" onClick={onClose}>
@@ -90,4 +92,4 @@ const UserModal = ({
     );
 };
 
-export default UserModal;
+export default UserEmailInviteModal;

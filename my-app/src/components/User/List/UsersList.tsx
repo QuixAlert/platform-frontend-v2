@@ -1,26 +1,24 @@
 "use client";
 
-import AdoptionCard from "@/components/Adoption/AdoptionCard/AdoptionCard";
-import Adoption from "@/model/Adoption";
-import { ErrorName } from "@/errors/error-names";
-import errorHandlers from "@/components/Errors/error.handler";
 import BusinessUser from "@/model/BusinessUser";
 import UserCard from "../Card/UserCard";
 
-type UserActiveListProps = {
+type UsersListProps = {
     users: BusinessUser[]
+    onEdit: (user: BusinessUser) => void
 }
 
-const UserActiveList = ({
-    users
-}: UserActiveListProps
+const UsersList = ({
+    users,
+    onEdit
+}: UsersListProps
 ) => {
     return (
         <>
             <div className="flex flex-row gap-4 overflow-y-auto">
                 {users?.map((user) => (
                     <div className="flex-shrink-0" key={user.id}>
-                        <UserCard user={user} />
+                        <UserCard user={user} onEdit={onEdit}/>
                     </div>
                 ))}
             </div>
@@ -28,4 +26,4 @@ const UserActiveList = ({
     );
 };
 
-export default UserActiveList;
+export default UsersList;
