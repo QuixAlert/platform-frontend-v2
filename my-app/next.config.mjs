@@ -5,7 +5,8 @@ const nextConfig = {
         'firebasestorage.googleapis.com',
         'images.pexels.com',
         'cdn.pixabay.com',
-        'a-static.mlcdn.com.br'
+        'a-static.mlcdn.com.br',
+        'maps.googleapis.com',
         ],
     },
   };
