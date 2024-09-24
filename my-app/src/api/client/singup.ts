@@ -3,6 +3,7 @@ import { ForbiddenError } from "@/errors/forbidden";
 import { UnknownError } from "@/errors/unknown-error";
 import { Either, left, right } from "@/lib/either";
 import { Invitation } from "@/model/Invitation";
+import { ValidInvite } from "@/model/ValidInvite";
 import { HttpStatusCode } from "axios";
 import { parseCookies } from "nookies";
 
@@ -61,6 +62,29 @@ export const validateInvite = async(inviteId: string, inviteCode: string): Promi
         return right(undefined);
     } catch (error) {
         return left(new UnknownError("Erro ao aceitar o convite"));
+    }
+}
+
+
+export const checkIfInviteIsValid = async(inviteId: string): Promise<Either<Error, ValidInvite>> => {
+
+    try {
+        const response = await fetch(`${baseUrl}/invitations/valid/${inviteId}`, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+
+            method: "GET"
+        });
+
+        if (response.status !== HttpStatusCode.Ok) {
+            return left(new UnknownError("Erro ao buscar status do convite!"));
+        }
+
+        const data = await response.json() as ValidInvite;
+        return right(data);
+    } catch (error) {
+        return left(new UnknownError("Erro ao buscar status do convite!"));
     }
 }
 
