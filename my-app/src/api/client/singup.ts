@@ -41,14 +41,10 @@ export const sendEnvite = async(email: string): Promise<Either<Error, undefined>
 }
 
 export const validateInvite = async(inviteId: string, inviteCode: string): Promise<Either<Error, undefined>> => {
-    let token = parseCookies(undefined)["quixalert.auth.token"];
-
-    if (token === undefined) return left(new BadRequestError("O token não foi enviado"));
 
     try {
         const response = await fetch(`${baseUrl}/invitations/accept/${inviteId}`, {
             headers: {
-                Authorization: `Bearer ${token}`,
                 'Content-Type': 'application/json'
             },
 
@@ -58,17 +54,13 @@ export const validateInvite = async(inviteId: string, inviteCode: string): Promi
             }),
         });
 
-        if (response.status === HttpStatusCode.Forbidden) {
-            return left(new ForbiddenError("Token inválido, para continuar você precisa fazer o login novamente."));
-        }
-
         if (response.status !== HttpStatusCode.Ok) {
             return left(new UnknownError("Erro ao validar o convite!"));
         }
 
         return right(undefined);
     } catch (error) {
-        return left(new UnknownError("Erro ao atualizar os dados do usuário"));
+        return left(new UnknownError("Erro ao aceitar o convite"));
     }
 }
 
