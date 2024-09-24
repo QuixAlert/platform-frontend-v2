@@ -108,8 +108,9 @@ const UserActiveStatusModal = ({
             </Form>
 
             <p className="pt-2 pb-0 text-small font-light dark:text-black">
-                Altere o status do usuário conforme necessário e clique em "Atualizar Status".
+                `Altere o status do usuário conforme necessário e clique em &quot;Atualizar Status&quot;.` 
             </p>
+
         </Modal>
     );
 };
