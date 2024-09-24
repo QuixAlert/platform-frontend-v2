@@ -59,7 +59,9 @@ const UserModal = ({
         <Modal
             title="Adicionar novo usuário"
             okText="Enviar email"
+            open={open}
             onClose={onClose}
+            onCancel={onClose}
             cancelText="Cancelar"
             footer={[
                 <ColorButton bgColor="#269996" key="cancel" onClick={onClose}>
