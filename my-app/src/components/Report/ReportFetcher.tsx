@@ -8,25 +8,25 @@ import {ErrorS} from "@/model/Error";
 import {transformError} from "@/lib/utils";
 import reportCard from "@/components/Report/ReportCard/ReportCard";
 
-const repoCard = {
+const repoCard: Report = {
     title: "Lixo depositado incorretamente na rua",
     location: "Rua José Queiroz Pessoa 1812",
     description: "Lixos fedorentos em frente a garagem do seu zé, ao lado da do boteco",
     date: "21/09/2024",
     photo: "https://folhapopular.info/wp-content/uploads/2017/08/2017_08_16_1502905105.jpg",
     possible_solution: "Realizar a retirada dos lixos através de uma equipe especializada",
-    status: "Em análise",
-    user: {
-        name: "Thiago Maia",
-        path: "/solicitante.png"
-    },
-    responsible: {
-        name: "João Victor",
-        path: "/responsavel.png"
-    }
+    // status: "Em análise",
+    // user: {
+    //     name: "Thiago Maia",
+    //     path_picture: "/solicitante.png"
+    // },
+    // responsible: {
+    //     name: "João Victor",
+    //     path: "/responsavel.png"
+    // }
 }
 
-const reports = [repoCard, reportCard, reportCard, reportCard, reportCard];
+const reports: Report[] = [repoCard, repoCard, repoCard, repoCard, repoCard];
 
 const ReportFetcher = async () => {
     const result = await fetchReports();
