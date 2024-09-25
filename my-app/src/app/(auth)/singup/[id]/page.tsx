@@ -2,6 +2,7 @@
 
 import StyledCard from '@/components/Card/StyledCard';
 import PinCodeForm from '@/components/Singup/PinCodeForm';
+import SignUpLayout from './layout';
 
 type SignUpPageProps = {
   params: { id: string };
@@ -9,11 +10,13 @@ type SignUpPageProps = {
 
 const SignUpPage: React.FC<SignUpPageProps> = ({ params }) => {
   return (
-    <div className="flex justify-center items-center w-[800px] h-[500px]">
-      <StyledCard imageSrc='/cat2.svg'>
-        <PinCodeForm id={params.id} />
-      </StyledCard>
-    </div>
+    <SignUpLayout isWhiteBackground={true}>
+      <div className="flex justify-center items-center w-[800px] h-[500px]">
+        <StyledCard imageSrc='/cat2.svg'>
+          <PinCodeForm id={params.id} />
+        </StyledCard>
+      </div>
+    </SignUpLayout>
   );
 };
 

@@ -43,7 +43,7 @@ const PinCodeForm: React.FC<PinCodeFormProps> = ({ id }) => {
     console.log(error)
 
     if (!error) {
-      router.push(`/signup/${id}/register`);
+      router.push(`/singup/${id}/register`);
       showMessage('success', "Código validado com sucesso");
     } else {
       setIsInvalid(true); 

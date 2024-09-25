@@ -2,6 +2,7 @@ import { BadRequestError } from "@/errors/bad-request";
 import { ForbiddenError } from "@/errors/forbidden";
 import { UnknownError } from "@/errors/unknown-error";
 import { Either, left, right } from "@/lib/either";
+import BusinessUser from "@/model/BusinessUser";
 import { Invitation } from "@/model/Invitation";
 import { ValidInvite } from "@/model/ValidInvite";
 import { HttpStatusCode } from "axios";
@@ -9,7 +10,7 @@ import { parseCookies } from "nookies";
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL_API
 
-export const sendEnvite = async(email: string): Promise<Either<Error, undefined>> => {
+export const sendInvite = async(email: string): Promise<Either<Error, undefined>> => {
     let token = parseCookies(undefined)["quixalert.auth.token"];
 
     if (token === undefined) return left(new BadRequestError("O token não foi enviado"));
