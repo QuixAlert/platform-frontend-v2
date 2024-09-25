@@ -9,7 +9,7 @@ import {RequestCookie} from "next/dist/compiled/@edge-runtime/cookies";
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL_API
 
-export const updateUserProfile = async(user: BusinessUser, id: string, helpToken: RequestCookie | string): Promise<Either<Error, BusinessUser>> => {
+export const updateUserProfile = async(user: BusinessUser, id: string, helpToken?: RequestCookie | string): Promise<Either<Error, BusinessUser>> => {
     let token = parseCookies(undefined)["quixalert.auth.token"];
 
     if(helpToken) token = typeof helpToken === "string" ? helpToken : helpToken.value;

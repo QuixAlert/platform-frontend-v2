@@ -12,7 +12,6 @@ import errorHandlers from "@/components/ui/Errors/error.handler";
 import { ErrorName } from "@/errors/error-names";
 import { transformError } from "@/lib/utils";
 import { addImageOnFirebaseWithBase64 } from "@/api/server/generic";
-import {NotificationType, showNotification} from "@/components/Notification/Notification";
 
 type UserMainProfileProps = {
     user?: BusinessUser;
@@ -21,8 +20,8 @@ type UserMainProfileProps = {
 export default function UserMainProfile({ user }: UserMainProfileProps) {
     const [isEditingProfile, setIsEditingProfile] = useState(false);
     const [photoBase64, setPhotoBase64] = useState<string | null>(null);
-    const [name, setName] = useState<string>(user?.name || "");
-    const [email, setEmail] = useState<string>(user?.email || "");
+    const [name, setName] = useState<string | undefined>(user?.name || "");
+    const [email, setEmail] = useState<string | undefined>(user?.email || "");
     const [isLoading, setIsLoading] = useState(false);
     const [ErrorComponent, setErrorComponent] = useState<React.ReactNode | null>(null);
     let photoUrl: string | undefined = undefined; // Initial photo URL
@@ -36,8 +35,8 @@ export default function UserMainProfile({ user }: UserMainProfileProps) {
 
     useEffect(() => {
         if (!isEditingProfile && user) {
-            setName(user.name);
-            setEmail(user.email);
+            setName(user?.name);
+            setEmail(user?.email);
         }
     }, [user, isEditingProfile]);
 

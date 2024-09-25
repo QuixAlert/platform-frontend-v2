@@ -3,31 +3,31 @@ import { ArrowLeftOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import ColorButton from "@/components/Button/ColorButton";
 
-function NotFound() {
+function SuccessRegistrationPage() {
     return (
         <div className="flex flex-col justify-center items-center min-h-screen min-w-full bg-pgb text-center p-4">
             <Image
                 priority={true}
                 alt="Quixalert logo"
-                src="/exceptions/access-failed.svg"
-                width={400}
-                height={400}
+                src="/exceptions/register-failed.svg"
+                width={500}
+                height={500}
                 className="mb-8"
             />
 
             <h1 className="text-6xl font-bold font-mono text-white mb-4">
-                Oops!
+                Cadastro realizado!
             </h1>
 
             <p className="text-lg text-gray-400 mb-8">
-                A página que você está procurando não foi encontrada.
+                O cadastro foi feito com sucesso. Volte para a tela de login e utilize o email e senha cadastrados.
             </p>
 
             <ColorButton bgColor="#269996" type="primary" icon={<ArrowLeftOutlined />}>
-                <Link href="/home">Voltar para Home</Link>
+                <Link href="/">Voltar para Login</Link>
             </ColorButton>
         </div>
     );
 }
 
-export default NotFound;
+export default SuccessRegistrationPage;
