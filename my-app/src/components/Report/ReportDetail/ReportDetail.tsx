@@ -6,10 +6,11 @@ import { LoadingOutlined } from "@ant-design/icons";
 import "./style.css";
 
 import Report from "@/model/Report";
-import {FaCalendarAlt, FaCat, FaClock, FaDog} from "react-icons/fa";
+import {FaCalendarAlt, FaCat, FaClock, FaDog, FaMarker, FaMapMarkerAlt, FaExclamationTriangle} from "react-icons/fa";
 import {PiBirdFill} from "react-icons/pi";
-
+import Image from "next/image";
 import {MiniMap} from "@/components/Report/ReportCard/ReportCard";
+import next from "next";
 
 const reportMock = {
   user_requester: {
@@ -17,7 +18,7 @@ const reportMock = {
     foto: "https://a-static.mlcdn.com.br/450x450/peruca-de-palhaco-colorida-ydh/actionbrindes/15800370851/cb8d385937eb94b22520dc7c0bb886f9.jpeg",
   },
   report: {
-    title: "Lixo depositado incorretamente",
+    title: "Lixo depositado incorretamente", //este titulo está integrada com o back?
     location: "Jose Queiroz Pessoa 1812",
     description: "Lixo fedorento depositado em frente ao galpão do seu zé",
     date: "23/09/2024",
@@ -32,7 +33,7 @@ type ReportDetailProps = {
   error: Error | undefined;
 };
 
-// Função para buscar a URL
+// Função para buscar a URLa
 const fetchMapImage = (address: string | number | boolean) => {
   const apiKey = "AIzaSyDpFArXXY9NU9HZUpjunkwhTp3p_jjs30c"; //  chave da API do robson
   return `https://maps.googleapis.com/maps/api/staticmap?center=${encodeURIComponent(address)}&zoom=15&size=600x300&maptype=roadmap&markers=color:red%7C${encodeURIComponent(address)}&key=${apiKey}`;
@@ -49,7 +50,7 @@ export default function ReportDetail({ report, error }: ReportDetailProps) {
           ) :
           (
             <Row>
-              <Col span={8} className="adoption-part-container solicitation">
+              <Col span={8} className="report-part-container solicitation">
                 <div className="requester-container">
                   <img className="requester-photo" src={report.user_requester?.path_picture} alt="requester-photo"/>
                   <div className="requester-role-and-name">
@@ -66,40 +67,47 @@ export default function ReportDetail({ report, error }: ReportDetailProps) {
                       <p>25/09/2024</p>
                     </div>
                   </div>
+                     <div className="flex flex-row gap-2">
+                      <FaExclamationTriangle className="request-icon"/>
+                      <p className="truncate">{reportMock.report.title}</p>
+                    </div>
                 </div>
 
                 <div className="request-body-container">
                   <div className="request-where-lives">
                     <h3>Descrição</h3>
                     <div className="request-input-box">
-                      <p className="request-input">{report.description}</p>
+                      <p className="request-input truncate h-11">{report.description}</p>
                     </div>
                   </div>
 
-                  <div className="request-other-animals">
+                  <div className="request-other-reports">
                     <h3>Localização</h3>
                     <div className="request-input-box">
-                      <p className="request-input">{report.location}</p>
+                      <p className="request-input truncate h-8">{report.location}</p>
                     </div>
                   </div>
 
                   <div className="request-motivation">
                     <h3>Possível Solução:</h3>
                     <div className="request-input-box">
-                      <p className="request-input">{report.possible_solution}</p>
+                      <p className="request-input truncate h-8">{report.possible_solution}</p>
                     </div>
                   </div>
                 </div>
               </Col>
 
-              <Col span={8} className="adoption-part-container animal flex">
-                <img className="animal-image" src={report.photo} alt=""/>
-                <div className="map-image">
-                  <MiniMap address={report.location} />
+              <Col span={8} className="report-part-container report flex">
+                <img className="report-image" src={report.photo} alt=""/>
+                <div className="image-conteiner">
+                  <div className="map-image"> 
+                    <MiniMap address={report.location} />
+                  </div>
                 </div>
+               
               </Col>
 
-              <Col span={8} className="adoption-part-container devolutiva">
+              <Col span={8} className="report-part-container devolutiva">
                 <div className="info approval-container">
                   <div className="responsible-container">
                     <img className="responsible-photo" src={report.user?.path_picture} alt="responsible-photo"/>
@@ -129,7 +137,7 @@ export default function ReportDetail({ report, error }: ReportDetailProps) {
                   </div>
                   <form className="request-return-form">
                 <textarea
-                  placeholder="Ex.: Infelizmente, você não se adequou aos requisitos exigidos para adotar tal animal."
+                  placeholder="Ex.: Infelizmente, você não colocou o endereço da denúncia"
                   className="request-return"
                   name="request-return"
                   id="request-return"

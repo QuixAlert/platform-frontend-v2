@@ -6,7 +6,7 @@
 
 /* SOLICITANTE*/
 /* DETALHES DO SOLICITANTE */
-.adoption-part-container {
+.report-part-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -115,9 +115,9 @@
     gap: 0.5rem;
 }
 
-/* ANIMAL */
+/* REPORT */
 /* FOTO */
-.animal-image {
+.report-image {
     height: 300px;
     width: 300px;
     object-fit: cover;
@@ -126,15 +126,27 @@
 }
 
 .map-image {
-    height: 200px;
-    width: 300px;
-    object-fit: cover;
+    display: flex;
+    width: 100%;
     border-radius: 10px;
-    margin-bottom: 3rem;
+    height: 100%;
 }
 
-/* DESCRICAO DO ANIMAL */
-.animal-detail-container {
+.image-conteiner{
+    display: flex;
+    background-color: #EEEEEE;
+    height: 170px;
+    width: 300px;
+    border-radius: 10px;
+    padding-top: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+/* DESCRICAO DO REPORT */
+.report-detail-container {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -148,40 +160,40 @@
     width: 300px;
     max-height: 17rem;
 }
-.animal-title {
+.report-title {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     font-weight: bold;
 }
-.animal-name {
+.report-name {
     font-size: 16px;
 }
-.animal-icon {
+.report-icon {
     font-size: 20px;
 }
-.animal-title img {
+.report-title img {
     width: 16px;
 }
-.animal-info-container {
+.report-info-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 10px;
 }
-.animal-info {
+.report-info {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-.animal-info h3 {
+.report-info h3 {
     font-weight: bold;
 }
-.animal-other-infos {
+.report-other-infos {
     display: flex;
     gap: 14px;
 }
-.animal-description {
+.report-description {
     text-align: justify;
 }
 
