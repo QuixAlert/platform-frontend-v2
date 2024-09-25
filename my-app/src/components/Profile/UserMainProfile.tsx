@@ -12,7 +12,6 @@ import errorHandlers from "@/components/ui/Errors/error.handler";
 import { ErrorName } from "@/errors/error-names";
 import { transformError } from "@/lib/utils";
 import { addImageOnFirebaseWithBase64 } from "@/api/server/generic";
-import {NotificationType, showNotification} from "@/components/Notification/Notification";
 
 type UserMainProfileProps = {
     user?: BusinessUser;
@@ -21,8 +20,8 @@ type UserMainProfileProps = {
 export default function UserMainProfile({ user }: UserMainProfileProps) {
     const [isEditingProfile, setIsEditingProfile] = useState(false);
     const [photoBase64, setPhotoBase64] = useState<string | null>(null);
-    const [name, setName] = useState<string>(user?.name || "");
-    const [email, setEmail] = useState<string>(user?.email || "");
+    const [name, setName] = useState<string | undefined>(user?.name || "");
+    const [email, setEmail] = useState<string | undefined>(user?.email || "");
     const [isLoading, setIsLoading] = useState(false);
     const [ErrorComponent, setErrorComponent] = useState<React.ReactNode | null>(null);
     let photoUrl: string | undefined = undefined; // Initial photo URL
@@ -36,8 +35,8 @@ export default function UserMainProfile({ user }: UserMainProfileProps) {
 
     useEffect(() => {
         if (!isEditingProfile && user) {
-            setName(user.name);
-            setEmail(user.email);
+            setName(user?.name);
+            setEmail(user?.email);
         }
     }, [user, isEditingProfile]);
 
@@ -87,10 +86,12 @@ export default function UserMainProfile({ user }: UserMainProfileProps) {
             {contextHolder}
             <div className="relative rounded-xl w-4/5 h-[420px] bg-white shadow-md">
                 <UserProfilePhoto
-                    photoUrl={user?.photo}
+                    photoUrl={user?.photo ? user?.photo : `data:image/png;base64,${photoBase64}`}
                     isEditing={isEditingProfile}
                     setPhotoBase64={setPhotoBase64}
+                    className={`absolute w-40 h-40 left-4 top-32 rounded-full overflow-hidden border-8 border-white ${isEditingProfile ? 'hover:opacity-75 transition-opacity duration-300' : ''}`}
                 />
+
 
                 <div className="bg-pgreen h-2/4 rounded-lg"/>
 

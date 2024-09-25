@@ -4,19 +4,20 @@ import Label from "@/components/Label/Label";
 import BusinessUser from "@/model/BusinessUser";
 
 const UserInfo = ({ user }: { user: BusinessUser }) => {
+    console.log(user.photo)
     return (
         <div>
             <div className="cabecalho pb-2 flex items-center gap-2">
                 <Image
                     className="image-do-usuario rounded-full border-2"
-                    src={user.photo || "/solicitante.png"}
+                    src={user?.photo || "/user-default.jpg"}
                     alt="Imagem do usuário"
                     width={50}
                     height={50}
                 />
                 <div>
                     <p className="pb-0 text-base font-bold dark:text-black">{user?.name || "João Pedro"}</p>
-                    <p className="pt-0 text-sm font-thin dark:text-black">{`Ativa(o) à ${user?.activeTime || "Usuário ativo à 4"} meses`}</p>
+                    <p className="pt-0 text-sm font-thin dark:text-black">{`Ativa(o) à ${user?.active || "Usuário ativo à 4"} meses`}</p>
                 </div>
             </div>
 

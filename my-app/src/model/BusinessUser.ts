@@ -5,8 +5,9 @@ export default interface BusinessUser {
   id?: string;
   name?: string;
   email?: string;
+  password?: string;
   role?: Role;
   active?: boolean
-  photo?: string
+  photo?: string | null
   governmentDetails?: GovernmentDetails
 }

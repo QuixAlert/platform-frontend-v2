@@ -9,7 +9,7 @@ import {RequestCookie} from "next/dist/compiled/@edge-runtime/cookies";
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL_API
 
-export const updateUserProfile = async(user: BusinessUser, id: string, helpToken: RequestCookie | string): Promise<Either<Error, BusinessUser>> => {
+export const updateUserProfile = async(user: BusinessUser, id: string, helpToken?: RequestCookie | string): Promise<Either<Error, BusinessUser>> => {
     let token = parseCookies(undefined)["quixalert.auth.token"];
 
     if(helpToken) token = typeof helpToken === "string" ? helpToken : helpToken.value;
@@ -27,9 +27,7 @@ export const updateUserProfile = async(user: BusinessUser, id: string, helpToken
             method: "POST",
             body: JSON.stringify(user),
         });
-
-        console.log(reqBody)
-
+        
         if (response.status === HttpStatusCode.Forbidden) {
             return left(new ForbiddenError("Token inválido, para continuar você precisa fazer o login novamente."));
         }

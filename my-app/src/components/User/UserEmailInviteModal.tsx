@@ -4,6 +4,7 @@ import { UserOutlined } from "@ant-design/icons";
 import { NotificationType, showNotification } from "../Notification/Notification";
 import { NotificationInstance } from "antd/es/notification/interface";
 import ColorButton from "../Button/ColorButton";
+import { sendInvite } from "@/api/client/singup";
 
 type UserEmailInviteModalProps = {
     open: boolean;
@@ -27,14 +28,20 @@ const UserEmailInviteModal = ({
     const handleOk = async () => {
         try {
             const values = await form.validateFields();
+        
             setLoading(true);
             showNotification({
                 message: "Enviando email",
                 description: "Estamos processando o email e enviando o convite para o usuário.",
                 type: NotificationType.ALERT,
             }, notificationApi 
-        );
-            await new Promise(resolve => setTimeout(resolve, 6000)); // Simulate email sending
+            );
+
+            const result = await sendInvite(values.email)
+            const {error, value} = result.unpack()
+            
+            if(error) throw new Error()
+        
             showNotification({
                 message: "Email enviado",
                 description: "O email foi processado e o convite enviado para o usuário.",
@@ -42,7 +49,6 @@ const UserEmailInviteModal = ({
             }, notificationApi 
         );
         } catch (error) {
-            // Handle validation error if needed
             showNotification({
                 message: "Erro ao enviar email",
                 description: "Houve um problema ao enviar o email.",

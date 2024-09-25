@@ -26,8 +26,6 @@ export default function UserSpecialty({
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
-    console.log(specialization)
-
     const showModal = () => {
         setIsModalVisible(true);
     }

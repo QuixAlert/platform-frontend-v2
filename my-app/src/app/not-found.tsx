@@ -5,7 +5,7 @@ import ColorButton from "@/components/Button/ColorButton";
 
 function NotFound() {
     return (
-        <div className="flex flex-col justify-center items-center min-h-full min-w-full bg-pgb text-center p-4">
+        <div className="flex flex-col justify-center items-center min-h-screen min-w-full bg-pgb text-center p-4">
             <Image
                 priority={true}
                 alt="Quixalert logo"
