@@ -1,7 +1,7 @@
 "use client"
 
 import { Suspense, useState, useEffect } from "react";
-import { FloatButton, notification, Tooltip } from "antd";
+import { FloatButton, notification, Tooltip, Spin } from "antd";
 import { PlusCircleOutlined } from "@ant-design/icons";
 import UserEmailInviteModal from "@/components/User/UserEmailInviteModal";
 import { Loading } from "@/components/ui/Loading/Loading";
@@ -19,29 +19,44 @@ export default function UsersPage() {
 
     const [isModalEmailInviteOpen, setIsModalEmailInviteOpen] = useState(false);
     const [isModalUserStatusOpen, setIsModalUserStatusOpen] = useState(false);
-    const [userOnStatusEdition, setUserOnStatusEdition] = useState<BusinessUser>()
-
+    const [userOnStatusEdition, setUserOnStatusEdition] = useState<BusinessUser>();
+    const [isLoading, setIsLoading] = useState(true); // New loading state
 
     const showModalEmailInvite = () => setIsModalEmailInviteOpen(true);
     const handleModalEmailInviteClose = () => setIsModalEmailInviteOpen(false);
 
     const showModalUserStatus = (user: BusinessUser) => {
         setIsModalUserStatusOpen(true);
-        setUserOnStatusEdition(user)
-    }
+        setUserOnStatusEdition(user);
+    };
     const handleModalUserStatusClose = () => {
         setIsModalUserStatusOpen(false);
-        setUserOnStatusEdition(undefined)
-    }
+        setUserOnStatusEdition(undefined);
+    };
 
     useEffect(() => {
-        if (user?.role !== Role.ADMIN) {
-            router.push('/unauthorized');
+        if (user) {
+            if (user.role !== Role.ADMIN) {
+                router.push("/unauthorized");
+            } else {
+                setIsLoading(false); // Set loading to false once the user role is confirmed
+            }
         }
     }, [user, router]);
 
+    if (isLoading) {
+        return (
+            <div className="flex justify-center items-center min-h-screen w-full bg-default">
+                <div className="text-center">
+                    <Spin size="large" className="text-white" />
+                    <p className="mt-4 text-xl text-white">Checando credenciais</p>
+                </div>
+            </div>
+        );
+    }
+
     if (!user) {
-        return null;
+        return null; // Prevent rendering if no user data is available
     }
 
     return (
@@ -53,7 +68,7 @@ export default function UsersPage() {
                 </div>
 
                 <Suspense fallback={<Loading />}>
-                    <UsersListFetcher loggedUserEmail={user.email} onEdit={showModalUserStatus}/>
+                    <UsersListFetcher loggedUserEmail={user.email} onEdit={showModalUserStatus} />
                 </Suspense>
 
                 <Tooltip placement="left" title="Adicionar novo usuário">
@@ -63,10 +78,14 @@ export default function UsersPage() {
                 <UserActiveStatusModal
                     open={isModalUserStatusOpen}
                     onClose={handleModalUserStatusClose}
-                    notificationApi={api} 
+                    notificationApi={api}
                     user={userOnStatusEdition}
                 />
-                <UserEmailInviteModal open={isModalEmailInviteOpen} onClose={handleModalEmailInviteClose} notificationApi={api} />
+                <UserEmailInviteModal
+                    open={isModalEmailInviteOpen}
+                    onClose={handleModalEmailInviteClose}
+                    notificationApi={api}
+                />
             </div>
         </>
     );

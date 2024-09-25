@@ -4,12 +4,13 @@ import Label from "@/components/Label/Label";
 import BusinessUser from "@/model/BusinessUser";
 
 const UserInfo = ({ user }: { user: BusinessUser }) => {
+    console.log(user.photo)
     return (
         <div>
             <div className="cabecalho pb-2 flex items-center gap-2">
                 <Image
                     className="image-do-usuario rounded-full border-2"
-                    src={"/" + user.photo || "/solicitante.png"}
+                    src={user?.photo || "/user-default.jpg"}
                     alt="Imagem do usuário"
                     width={50}
                     height={50}

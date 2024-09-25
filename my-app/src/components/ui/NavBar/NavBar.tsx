@@ -1,3 +1,5 @@
+"use client"
+
 import React from "react";
 
 import DropDown from "@/components/ui/DropDown/DropDown";

@@ -8,6 +8,6 @@ export default interface BusinessUser {
   password?: string;
   role?: Role;
   active?: boolean
-  photo: string | null
+  photo?: string | null
   governmentDetails?: GovernmentDetails
 }
