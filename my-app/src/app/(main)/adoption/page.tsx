@@ -1,12 +1,16 @@
-import { Suspense } from "react";
+"use client"
+
+import { Suspense, use } from "react";
 import Link from "next/link";
-import AllAdoptionsFetcher from "@/components/Adoption/AllAdoptionsFetcher";
-import { Button, Space } from "antd";
+import { Button } from "antd";
 import "./style.css";
-import MyAdoptionsFetcher from "@/components/Adoption/MyAdoptionsFetcher";
 import { Loading } from "@/components/ui/Loading/Loading";
+import { userInfoStore } from "@/store/user";
+import AdoptionsFetcher from "@/components/Adoption/AdoptionsFetcher";
 
 export default function AdoptionPage() {
+  const user = userInfoStore()
+
   return (
       <>
         <div className="w-full h-full pt-5 pl-7 page-container bg-pgb">
@@ -34,16 +38,8 @@ export default function AdoptionPage() {
             </div>
           </div>
 
-          <h2 className="text-2xl font-semibold text-white mb-6">Minhas Adoções</h2>
           <Suspense fallback={<Loading />}>
-            <MyAdoptionsFetcher />
-          </Suspense>
-
-          <Space />
-
-          <h2 className="text-2xl font-semibold text-white mt-10 mb-6">Todas as Adoções</h2>
-          <Suspense fallback={<Loading />}>
-            <AllAdoptionsFetcher />
+            <AdoptionsFetcher loggedUserId={user.user?.id!} />
           </Suspense>
         </div>
       </>

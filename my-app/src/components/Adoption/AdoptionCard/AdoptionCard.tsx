@@ -11,7 +11,8 @@ import Adoption from "@/model/Adoption";
 import { Button, Flex, Popconfirm, Tooltip } from "antd";
 import { DeleteOutlined, InfoCircleOutlined, PlusCircleOutlined } from "@ant-design/icons";
 import { StatusAdoptionOption } from "@/model/StatusAdoptionOption";
-import {linkAdoption} from "@/api/server/adoption";
+import {linkAdoption, unlinkAdoption} from "@/api/server/adoption";
+import { userInfoStore } from "@/store/user";
 
 const adoptionCard = {
   solicitante: {
@@ -39,18 +40,25 @@ const adoptionCard = {
 
 function AdoptionCard({ adoption }: { adoption: Adoption }) {
   const router = useRouter();
+  const {user} = userInfoStore()
 
   adoption.status_adoption.name = StatusAdoptionOption.ASSOCIATED;
 
   const handleConfirmAssociation = async () => {
     console.log("LINKANDOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
-    const result = await linkAdoption(adoption.id, adoption.id_user);
+    const loggedUserId = user?.id || ''
+    const result = await linkAdoption(adoption.id, loggedUserId);
     const { error, value } = result.unpack();
     console.log(value);
     console.log(error);
   };
-  const handleConfirmRemoveAssociation = async () => {
 
+  const handleConfirmRemoveAssociation = async () => {
+    console.log("UNLINKANDOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
+    const result = await unlinkAdoption(adoption.id);
+    const { error, value } = result.unpack();
+    console.log(value);
+    console.log(error);
   };
 
   return (
@@ -59,7 +67,7 @@ function AdoptionCard({ adoption }: { adoption: Adoption }) {
             <div className="card-person-container">
               <Image
                   className="card-person-photo"
-                  src={adoption.user?.path_picture || adoptionCard.solicitante.url}
+                  src={adoption.user?.photo || adoptionCard.solicitante.url}
                   alt="person-photo"
                   width={100}
                   height={100}
@@ -118,7 +126,7 @@ function AdoptionCard({ adoption }: { adoption: Adoption }) {
         <div className="card-person-container">
           <Image
             className="card-person-photo"
-            src={adoption.user?.photoUrl || adoptionCard.responsavel.url}
+            src={adoption.user_requester?.path_picture || adoptionCard.responsavel.url}
             alt="person-photo"
             width={100}
             height={100}
@@ -126,7 +134,7 @@ function AdoptionCard({ adoption }: { adoption: Adoption }) {
           <div className="card-person-role-and-name">
             <p className="card-person-role">Responsável:</p>
             <p className="card-person-name">
-              {adoption.user?.name || adoptionCard.responsavel.nome}
+              {adoption.user_requester?.name || adoptionCard.responsavel.nome}
             </p>
           </div>
         </div>
@@ -156,12 +164,12 @@ function AdoptionCard({ adoption }: { adoption: Adoption }) {
                 <InfoCircleOutlined />
               </button>
             </Tooltip>
-            {!adoption.user ? (
+            {!adoption?.user_requester ? (
               <Popconfirm
                 title="Associar adoção"
                 description={[
                   "Tem certeza que deseja ser",
-                  <br />,
+                  <br key=""/>,
                   "associado a essa adoção para resolvê-la?",
                 ]}
                 onConfirm={handleConfirmAssociation}
@@ -176,7 +184,7 @@ function AdoptionCard({ adoption }: { adoption: Adoption }) {
                 title="Desassociar adoção"
                 description={[
                   "Você tem certeza que deseja",
-                  <br />,
+                  <br key=""/>,
                   "desassociar a adoção?",
                 ]}
                 onConfirm={handleConfirmRemoveAssociation}
