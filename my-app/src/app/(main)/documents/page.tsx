@@ -1,7 +1,10 @@
+import InDevelopmentComponent from "@/components/InDevelopment/InDevelopment";
+
 export default function DocumentsPage(){
+
     return (
         <>
-            <h1>Documents Page</h1>
+            <InDevelopmentComponent pageName="Documentos"/>
         </>
     )
 }

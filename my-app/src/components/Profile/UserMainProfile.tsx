@@ -24,7 +24,7 @@ export default function UserMainProfile({ user }: UserMainProfileProps) {
     const [email, setEmail] = useState<string | undefined>(user?.email || "");
     const [isLoading, setIsLoading] = useState(false);
     const [ErrorComponent, setErrorComponent] = useState<React.ReactNode | null>(null);
-    let photoUrl: string | undefined = undefined; // Initial photo URL
+    let photoUrl: string | null = null; // Initial photo URL
 
     const [messageApi, contextHolder] = message.useMessage();
 

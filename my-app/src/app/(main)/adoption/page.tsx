@@ -1,21 +1,21 @@
-import { Suspense } from "react";
+"use client"
 
+import { Suspense, use } from "react";
 import Link from "next/link";
-
-import { Loading } from "@/components/ui/Loading/Loading";
-import AdoptionFetcher from "@/components/Adoption/AdoptionFetcher";
-
-import {Button} from "antd";
-
+import { Button } from "antd";
 import "./style.css";
-
+import { Loading } from "@/components/ui/Loading/Loading";
+import { userInfoStore } from "@/store/user";
+import AdoptionsFetcher from "@/components/Adoption/AdoptionsFetcher";
 
 export default function AdoptionPage() {
+  const user = userInfoStore()
+
   return (
       <>
         <div className="w-full h-full pt-5 pl-7 page-container bg-pgb">
           <div className="header">
-            <h1 className="main-title text-white mb-8">Adoções</h1>
+            <h1 className="text-4xl font-bold text-white mb-8">Adoções</h1>
             <div className="filters mb-4">
               <Button className="filter-button bg-pgreen border-none text-white font-bold py-2 px-4 rounded-full">Todas</Button>
               <Button className="filter-button bg-white border-none hover:text-black py-2 px-4 rounded-full">Minhas</Button>
@@ -39,7 +39,7 @@ export default function AdoptionPage() {
           </div>
 
           <Suspense fallback={<Loading />}>
-            <AdoptionFetcher/>
+            <AdoptionsFetcher loggedUserId={user.user?.id!} />
           </Suspense>
         </div>
       </>

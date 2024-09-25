@@ -8,6 +8,11 @@ import { FaDog, FaCat } from "react-icons/fa";
 import { PiBirdFill } from "react-icons/pi";
 import "./style.css";
 import Adoption from "@/model/Adoption";
+import { Button, Flex, Popconfirm, Tooltip } from "antd";
+import { DeleteOutlined, InfoCircleOutlined, PlusCircleOutlined } from "@ant-design/icons";
+import { StatusAdoptionOption } from "@/model/StatusAdoptionOption";
+import {linkAdoption, unlinkAdoption} from "@/api/server/adoption";
+import { userInfoStore } from "@/store/user";
 
 const adoptionCard = {
   solicitante: {
@@ -15,8 +20,8 @@ const adoptionCard = {
     url: "/solicitante.png",
   },
   responsavel: {
-    nome: "Samuel",
-    url: "/responsavel.png", 
+    nome: "Não Definido",
+    url: "/user-default.png",
   },
   solicitacao: {
     data: "12/06/2024",
@@ -35,35 +40,55 @@ const adoptionCard = {
 
 function AdoptionCard({ adoption }: { adoption: Adoption }) {
   const router = useRouter();
+  const {user} = userInfoStore()
+
+  adoption.status_adoption.name = StatusAdoptionOption.ASSOCIATED;
+
+  const handleConfirmAssociation = async () => {
+    console.log("LINKANDOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
+    const loggedUserId = user?.id || ''
+    const result = await linkAdoption(adoption.id, loggedUserId);
+    const { error, value } = result.unpack();
+    console.log(value);
+    console.log(error);
+  };
+
+  const handleConfirmRemoveAssociation = async () => {
+    console.log("UNLINKANDOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
+    const result = await unlinkAdoption(adoption.id);
+    const { error, value } = result.unpack();
+    console.log(value);
+    console.log(error);
+  };
 
   return (
-    <div className="adoption-card" title="">
-      <div className="card-left">
-        <div className="card-person-container">
-          <Image
-            className="card-person-photo"
-            src={adoption.user?.path_picture || adoptionCard.solicitante.url}
-            alt="person-photo"
-            width={100}
-            height={100}
-          />
-          <div className="card-person-role-and-name">
-            <p className="card-person-role">Solicitante:</p>
-            <p className="card-person-name">
-              {adoption.user?.name || adoptionCard.solicitante.nome}
-            </p>
-          </div>
-        </div>
-        <div className="card-adoption-info-grid">
-          <div className="card-adoption-info-line">
-            <h3>Tipo de solicitação:</h3>
-            <p>Adoção</p>
-          </div>
-          <div className="card-adoption-info-line">
-            <h3>Data da solicitação:</h3>
-            <p>{"20/12/2023"}</p>
-          </div>
-        </div>
+      <div className="adoption-card" title="">
+          <div className="card-left">
+            <div className="card-person-container">
+              <Image
+                  className="card-person-photo"
+                  src={adoption.user?.photo || adoptionCard.solicitante.url}
+                  alt="person-photo"
+                  width={100}
+                  height={100}
+              />
+              <div className="card-person-role-and-name">
+                <p className="card-person-role">Solicitante:</p>
+                <p className="card-person-name">
+                  {adoption.user?.name || adoptionCard.solicitante.nome}
+                </p>
+              </div>
+            </div>
+            <div className="card-adoption-info-grid">
+              <div className="card-adoption-info-line">
+                <h3>Tipo de solicitação:</h3>
+                <p>Adoção</p>
+              </div>
+              <div className="card-adoption-info-line">
+                <h3>Data da solicitação:</h3>
+                <p>{"20/12/2023"}</p>
+              </div>
+            </div>
 
         <div className="card-animal-sub-info">
           <h3>{adoption.animal.name}</h3>
@@ -101,15 +126,15 @@ function AdoptionCard({ adoption }: { adoption: Adoption }) {
         <div className="card-person-container">
           <Image
             className="card-person-photo"
-            src={adoptionCard.responsavel.url}
+            src={adoption.user_requester?.path_picture || adoptionCard.responsavel.url}
             alt="person-photo"
-            width={100} // Adjust width
-            height={100} // Adjust height
+            width={100}
+            height={100}
           />
           <div className="card-person-role-and-name">
             <p className="card-person-role">Responsável:</p>
             <p className="card-person-name">
-              {adoptionCard.responsavel.nome}
+              {adoption.user_requester?.name || adoptionCard.responsavel.nome}
             </p>
           </div>
         </div>
@@ -128,14 +153,51 @@ function AdoptionCard({ adoption }: { adoption: Adoption }) {
           </div>
         </div>
         <div className="card-see-more">
-          <button
-            className="card-see-more-btn"
-            onClick={() => {
-              router.push(`/adoption/${adoption.id}`);
-            }}
-          >
-            Ver mais
-          </button>
+          <Flex gap="middle">
+            <Tooltip title="Ver detalhes" placement="topRight">
+              <button
+                className="card-see-more-btn"
+                onClick={() => {
+                  router.push(`/adoption/${adoption.id}`);
+                }}
+              >
+                <InfoCircleOutlined />
+              </button>
+            </Tooltip>
+            {!adoption?.user_requester ? (
+              <Popconfirm
+                title="Associar adoção"
+                description={[
+                  "Tem certeza que deseja ser",
+                  <br key=""/>,
+                  "associado a essa adoção para resolvê-la?",
+                ]}
+                onConfirm={handleConfirmAssociation}
+                okText="Sim"
+                cancelText="Cancelar"
+                icon={<PlusCircleOutlined />}
+              >
+                <button className="card-see-associate-btn">Associar</button>
+              </Popconfirm>
+            ) : (
+              <Popconfirm
+                title="Desassociar adoção"
+                description={[
+                  "Você tem certeza que deseja",
+                  <br key=""/>,
+                  "desassociar a adoção?",
+                ]}
+                onConfirm={handleConfirmRemoveAssociation}
+                okText="Sim"
+                cancelText="Cancelar"
+                icon={<DeleteOutlined style={{ color: "red" }} />}
+              >
+                <button className="card-see-not-associate-btn">
+                  Desassociar
+                </button>
+              </Popconfirm>
+            )}
+          </Flex>
         </div>
       </div>
     </div>
