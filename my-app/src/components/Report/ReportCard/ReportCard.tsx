@@ -35,7 +35,7 @@ const fetchMapImage = (address: string | number | boolean) => {
   return `https://maps.googleapis.com/maps/api/staticmap?center=${encodeURIComponent(address)}&zoom=15&size=600x300&maptype=roadmap&markers=color:red%7C${encodeURIComponent(address)}&key=${apiKey}`;
 };
 
-function MiniMap({ address }: { address: string }) {
+export function MiniMap({ address }: { address: string }) {
   const [mapImage, setMapImage] = useState("");
 
   useEffect(() => {
@@ -47,7 +47,7 @@ function MiniMap({ address }: { address: string }) {
   const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(address)}`;
 
   return (
-    <div style={{ height: "80px", width: "100%", overflow: "hidden", borderRadius: '5px' }}>
+    <div style={{ height: "100%", width: "100%", overflow: "hidden", borderRadius: '5px' }}>
       {mapImage && (
         <a href={googleMapsUrl} target="_blank" rel="noopener noreferrer">
           <Image 
@@ -55,7 +55,7 @@ function MiniMap({ address }: { address: string }) {
             alt="Mapa" 
             layout="responsive" 
             width={600} // tem que ter pelo menos alguma propriedade por padrão
-            height={300} 
+            height={300}
           />
         </a>
       )}
@@ -134,7 +134,7 @@ function ReportCard({ report }: { report: Report }) {
         <div className="card-see-more">
           <button
             className="card-see-more-btn"
-            onClick={() => router.push(`/report/${report.id}`)}
+            onClick={() => router.push(`/reports/${report.id}`)}
           >
             Ver mais
           </button>
