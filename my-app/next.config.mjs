@@ -7,6 +7,7 @@ const nextConfig = {
         'cdn.pixabay.com',
         'a-static.mlcdn.com.br',
         'maps.googleapis.com',
+        "folhapopular.info",
         ],
     },
   };

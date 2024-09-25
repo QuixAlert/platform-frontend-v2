@@ -32,6 +32,7 @@ export default function UserSpecialty({
 
     const handleModalOk = useCallback((newSpecialty: string) => {
         setIsLoading(true)
+        // @ts-ignore
         const result = updateUserSpecialty({
             governmentDetails: {
                 specialization: {areaName: newSpecialty},

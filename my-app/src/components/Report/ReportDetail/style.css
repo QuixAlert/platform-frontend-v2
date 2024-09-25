@@ -125,6 +125,14 @@
     margin-bottom: 3rem;
 }
 
+.map-image {
+    height: 200px;
+    width: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 3rem;
+}
+
 /* DESCRICAO DO ANIMAL */
 .animal-detail-container {
     display: flex;
