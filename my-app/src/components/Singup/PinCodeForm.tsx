@@ -40,8 +40,6 @@ const PinCodeForm: React.FC<PinCodeFormProps> = ({ id }) => {
     const result = await validateInvite(id, fullPin);
     const { error } = result.unpack();
 
-    console.log(error)
-
     if (!error) {
       router.push(`/singup/${id}/register`);
       showMessage('success', "Código validado com sucesso");

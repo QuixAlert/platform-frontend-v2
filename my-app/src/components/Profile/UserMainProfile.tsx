@@ -86,10 +86,12 @@ export default function UserMainProfile({ user }: UserMainProfileProps) {
             {contextHolder}
             <div className="relative rounded-xl w-4/5 h-[420px] bg-white shadow-md">
                 <UserProfilePhoto
-                    photoUrl={user?.photo}
+                    photoUrl={user?.photo ? user?.photo : `data:image/png;base64,${photoBase64}`}
                     isEditing={isEditingProfile}
                     setPhotoBase64={setPhotoBase64}
+                    className={`absolute w-40 h-40 left-4 top-32 rounded-full overflow-hidden border-8 border-white ${isEditingProfile ? 'hover:opacity-75 transition-opacity duration-300' : ''}`}
                 />
+
 
                 <div className="bg-pgreen h-2/4 rounded-lg"/>
 
