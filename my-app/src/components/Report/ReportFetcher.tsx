@@ -8,7 +8,7 @@ import {ErrorS} from "@/model/Error";
 import {transformError} from "@/lib/utils";
 import reportCard from "@/components/Report/ReportCard/ReportCard";
 
-const repoCard: Report = {
+const repoCard = {
     title: "Lixo depositado incorretamente na rua",
     location: "Rua José Queiroz Pessoa 1812",
     description: "Lixos fedorentos em frente a garagem do seu zé, ao lado da do boteco",
@@ -26,7 +26,7 @@ const repoCard: Report = {
     // }
 }
 
-const reports: Report[] = [repoCard, repoCard, repoCard, repoCard, repoCard];
+//const reports: Report[] = [repoCard, repoCard, repoCard, repoCard, repoCard];
 
 const ReportFetcher = async () => {
     const result = await fetchReports();
