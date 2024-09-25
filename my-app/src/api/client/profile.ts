@@ -27,9 +27,7 @@ export const updateUserProfile = async(user: BusinessUser, id: string, helpToken
             method: "POST",
             body: JSON.stringify(user),
         });
-
-        console.log(reqBody)
-
+        
         if (response.status === HttpStatusCode.Forbidden) {
             return left(new ForbiddenError("Token inválido, para continuar você precisa fazer o login novamente."));
         }

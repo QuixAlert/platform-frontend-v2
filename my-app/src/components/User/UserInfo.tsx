@@ -9,7 +9,7 @@ const UserInfo = ({ user }: { user: BusinessUser }) => {
             <div className="cabecalho pb-2 flex items-center gap-2">
                 <Image
                     className="image-do-usuario rounded-full border-2"
-                    src={"/"+user.photo || "/solicitante.png"}
+                    src={"/" + user.photo || "/solicitante.png"}
                     alt="Imagem do usuário"
                     width={50}
                     height={50}

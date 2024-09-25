@@ -40,7 +40,6 @@ function MiniMap({ address }: { address: string }) {
 
   useEffect(() => {
     const imageUrl = fetchMapImage(address);
-    // console.log(imageUrl); 
     setMapImage(imageUrl);
     
   }, [address]);

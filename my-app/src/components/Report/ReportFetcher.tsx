@@ -32,8 +32,6 @@ const ReportFetcher = async () => {
     const result = await fetchReports();
     const { error, value } = result.unpack()
 
-    console.log(value)
-
     return <ReportsList
         reports={value}
         error = {
