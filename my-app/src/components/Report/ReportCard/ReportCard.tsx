@@ -19,13 +19,13 @@ const repoCard = {
   photo: "https://folhapopular.info/wp-content/uploads/2017/08/2017_08_16_1502905105.jpg",
   possible_solution: "Realizar a retirada dos lixos através de uma equipe especializada",
   status: "Em análise",
-  user: {
+  user_requester: {
     name: "Thiago Maia",
     path: "/solicitante.png"
   },
-  responsible: {
-    name: "João Victor",
-    path: "/responsavel.png"
+  user: {
+    name: "Não Definido",
+    path: "/default.png"
   }
 }
 
@@ -72,7 +72,7 @@ function ReportCard({ report }: { report: Report }) {
         <div className="card-person-container">
           <Image
             className="card-person-photo"
-            src={repoCard.user.path}
+            src={report.user_requester?.path_picture || repoCard.user_requester.path}
             alt="person-photo"
             width={100}
             height={100}
@@ -80,41 +80,41 @@ function ReportCard({ report }: { report: Report }) {
           <div className="card-person-role-and-name">
             <p className="card-person-role">Solicitante:</p>
             <p className="card-person-name">
-              {repoCard.user.name}
+              {report.user_requester?.name || repoCard.user_requester.name}
             </p>
           </div>
         </div>
         <div className="card-adoption-info-grid">
           <div className="card-adoption-info-line w-[180px]">
             <h3>Título</h3>
-            <p className="truncate">{repoCard.title}</p>
+            <p className="truncate">{report.title || repoCard.title}</p>
           </div>
           <div className="card-adoption-info-line">
             <h3>Data da solicitação:</h3>
-            <p>{repoCard.date}</p>
+            <p>{report.date || repoCard.date}</p>
           </div>
         </div>
 
         <div className="card-adoption-info-line w-[180px]">
           <h3>Endereço</h3>
-          <p className="truncate">{repoCard.location}</p>
+          <p className="truncate">{report.location || repoCard.location}</p>
         </div>
 
-        <MiniMap address={repoCard.location} />
+        <MiniMap address={report.location || repoCard.location} />
       </div>
 
       <div className="card-right">
         <div className="card-person-container">
           <Image
             className="card-person-photo"
-            src={repoCard.responsible.path}
+            src={report.user?.path_picture || repoCard.user.path}
             alt="person-photo"
             width={100}
             height={100}
           />
           <div className="card-person-role-and-name">
             <p className="card-person-role">Responsável:</p>
-            <p className="card-person-name">{repoCard.responsible.name}</p>
+            <p className="card-person-name">{report.user?.name || report.user?.name}</p>
           </div>
         </div>
         <div className="card-status-info">
@@ -124,7 +124,7 @@ function ReportCard({ report }: { report: Report }) {
           </div>
           <div className="card-info-line">
             <h2>Status:</h2>
-            <p>{repoCard.status}</p>
+            <p>{report.status_report?.name || repoCard.status}</p>
           </div>
           <div className="card-info-line">
             <h2>Conclusão Prevista:</h2>

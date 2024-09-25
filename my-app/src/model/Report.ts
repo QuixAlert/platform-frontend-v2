@@ -10,7 +10,9 @@ export default interface Report {
   date: string,
   photo: string,
   id_user?: string,
+  id_user_requester: string,
   possible_solution: string,
   status_report?: StatusReport,
   user?: UserFirebase,
+  user_requester?: UserFirebase,
 }
