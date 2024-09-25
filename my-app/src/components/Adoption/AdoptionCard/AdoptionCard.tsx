@@ -15,7 +15,7 @@ import {StatusAdoptionOption} from "@/model/StatusAdoptionOption";
 const adoptionCard = {
   solicitante: {
     nome: "Thiago",
-    url: "solicitante.png",
+    url: "/solicitante.png",
   },
   responsavel: {
     nome: "Samuel",
