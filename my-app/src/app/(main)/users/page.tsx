@@ -19,26 +19,30 @@ export default function UsersPage() {
 
     const [isModalEmailInviteOpen, setIsModalEmailInviteOpen] = useState(false);
     const [isModalUserStatusOpen, setIsModalUserStatusOpen] = useState(false);
-    const [userOnStatusEdition, setUserOnStatusEdition] = useState<BusinessUser>()
-
+    const [userOnStatusEdition, setUserOnStatusEdition] = useState<BusinessUser>();
 
     const showModalEmailInvite = () => setIsModalEmailInviteOpen(true);
     const handleModalEmailInviteClose = () => setIsModalEmailInviteOpen(false);
 
     const showModalUserStatus = (user: BusinessUser) => {
         setIsModalUserStatusOpen(true);
-        setUserOnStatusEdition(user)
-    }
+        setUserOnStatusEdition(user);
+    };
     const handleModalUserStatusClose = () => {
         setIsModalUserStatusOpen(false);
-        setUserOnStatusEdition(undefined)
-    }
+        setUserOnStatusEdition(undefined);
+    };
+
+    const [checkedRole, setCheckedRole] = useState(false);
 
     useEffect(() => {
-        if (user?.role !== Role.ADMIN) {
-            router.push('/unauthorized');
+        if (!checkedRole && user) {
+            if (user.role !== Role.ADMIN) {
+                router.push("/unauthorized");
+            }
+            setCheckedRole(true);
         }
-    }, [user, router]);
+    }, [user, router, checkedRole]);
 
     if (!user) {
         return null;
@@ -53,7 +57,7 @@ export default function UsersPage() {
                 </div>
 
                 <Suspense fallback={<Loading />}>
-                    <UsersListFetcher loggedUserEmail={user.email} onEdit={showModalUserStatus}/>
+                    <UsersListFetcher loggedUserEmail={user.email} onEdit={showModalUserStatus} />
                 </Suspense>
 
                 <Tooltip placement="left" title="Adicionar novo usuário">
@@ -63,10 +67,14 @@ export default function UsersPage() {
                 <UserActiveStatusModal
                     open={isModalUserStatusOpen}
                     onClose={handleModalUserStatusClose}
-                    notificationApi={api} 
+                    notificationApi={api}
                     user={userOnStatusEdition}
                 />
-                <UserEmailInviteModal open={isModalEmailInviteOpen} onClose={handleModalEmailInviteClose} notificationApi={api} />
+                <UserEmailInviteModal
+                    open={isModalEmailInviteOpen}
+                    onClose={handleModalEmailInviteClose}
+                    notificationApi={api}
+                />
             </div>
         </>
     );
