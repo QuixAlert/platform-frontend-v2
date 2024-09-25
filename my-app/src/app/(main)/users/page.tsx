@@ -1,7 +1,7 @@
 "use client"
 
 import { Suspense, useState, useEffect } from "react";
-import { FloatButton, notification, Tooltip } from "antd";
+import { FloatButton, notification, Tooltip, Spin } from "antd";
 import { PlusCircleOutlined } from "@ant-design/icons";
 import UserEmailInviteModal from "@/components/User/UserEmailInviteModal";
 import { Loading } from "@/components/ui/Loading/Loading";
@@ -20,6 +20,7 @@ export default function UsersPage() {
     const [isModalEmailInviteOpen, setIsModalEmailInviteOpen] = useState(false);
     const [isModalUserStatusOpen, setIsModalUserStatusOpen] = useState(false);
     const [userOnStatusEdition, setUserOnStatusEdition] = useState<BusinessUser>();
+    const [isLoading, setIsLoading] = useState(true); // New loading state
 
     const showModalEmailInvite = () => setIsModalEmailInviteOpen(true);
     const handleModalEmailInviteClose = () => setIsModalEmailInviteOpen(false);
@@ -33,19 +34,29 @@ export default function UsersPage() {
         setUserOnStatusEdition(undefined);
     };
 
-    const [checkedRole, setCheckedRole] = useState(false);
-
     useEffect(() => {
-        if (!checkedRole && user) {
+        if (user) {
             if (user.role !== Role.ADMIN) {
                 router.push("/unauthorized");
+            } else {
+                setIsLoading(false); // Set loading to false once the user role is confirmed
             }
-            setCheckedRole(true);
         }
-    }, [user, router, checkedRole]);
+    }, [user, router]);
+
+    if (isLoading) {
+        return (
+            <div className="flex justify-center items-center min-h-screen w-full bg-default">
+                <div className="text-center">
+                    <Spin size="large" className="text-white" />
+                    <p className="mt-4 text-xl text-white">Checando credenciais</p>
+                </div>
+            </div>
+        );
+    }
 
     if (!user) {
-        return null;
+        return null; // Prevent rendering if no user data is available
     }
 
     return (
