@@ -25,7 +25,7 @@ const repoCard = {
   },
   user: {
     name: "Não Definido",
-    path: "/default.png"
+    path: "/user-default.png"
   }
 }
 
