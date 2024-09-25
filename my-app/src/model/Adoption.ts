@@ -1,6 +1,8 @@
 import Animal from "@/model/Animal";
 import UserFirebase from "@/model/UserFirebase";
 import StatusAdoption from "@/model/StatusAdoption";
+import BusinessStatus = google.maps.places.BusinessStatus;
+import BusinessUser from "@/model/BusinessUser";
 
 export default interface Adoption {
     id: string,
@@ -11,6 +13,7 @@ export default interface Adoption {
     status_adoption_id: string,
     motivation: string,
     animal: Animal,
-    user: UserFirebase,
+    user: BusinessUser,
+    user_requester: UserFirebase,
     status_adoption: StatusAdoption
 }
