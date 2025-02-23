@@ -16,6 +16,9 @@ const AdoptionsList = ({ adoptions, error }: AdoptionsListProps) => {
         return <ErrorComponent error={error} />;
     }
 
+    console.log("Retriving adoptions\n")
+    console.log(adoptions);
+
     return (
         <>
             <div className="cards">

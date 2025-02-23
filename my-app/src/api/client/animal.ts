@@ -11,8 +11,9 @@ import AnimalType from "@/model/AnimalType";
 
 import {ForbiddenError} from "@/errors/forbidden";
 import {BadRequestError} from "@/errors/bad-request";
+import 'dotenv/config'
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL_API
+const baseUrl = 'http://localhost:8080/api/v1'
 
 export const getAnimalTypeById = async (animalTypeId: string): Promise<Either<Error, AnimalType>> => {
     const cookieStore = cookies();

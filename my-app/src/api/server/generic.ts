@@ -2,8 +2,9 @@ import {toBase64} from "@/lib/utils";
 import {Either, left, right} from "@/lib/either";
 import {UnknownError} from "@/errors/unknown-error";
 import {parseCookies} from "nookies";
+import 'dotenv/config'
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL_API
+const baseUrl = 'http://localhost:8080/api/v1'
 
 type ImageLink = {
     urlPicture: string

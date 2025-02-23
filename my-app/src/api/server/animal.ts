@@ -1,6 +1,7 @@
 import Animal from "@/model/Animal";
+import 'dotenv/config'
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL_API
+const baseUrl = 'http://localhost:8080/api/v1'
 
 function convertAnimalType(type: string): string {
     if (type === "Dog") {

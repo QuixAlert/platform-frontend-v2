@@ -5,8 +5,9 @@ import Adoption from "@/model/Adoption";
 import { HttpStatusCode } from "axios";
 import { ForbiddenError } from "@/errors/forbidden";
 import { BadRequestError } from "@/errors/bad-request";
+import 'dotenv/config'
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL_API;
+const baseUrl = 'http://localhost:8080/api/v1'
 
 export const fetchAdoptions = async (): Promise<Either<Error, Adoption[]>> => {
   const token = parseCookies(undefined)["quixalert.auth.token"];
@@ -40,8 +41,6 @@ export const linkAdoption = async (id: string, idUser: string): Promise<Either<E
       method: "PUT",
     });
 
-    console.log(response)
-
     if (response.status === HttpStatusCode.Forbidden) {
       return left(new ForbiddenError("Token inválido, para continuar você precisa fazer o login novamente."));
     }
@@ -61,8 +60,6 @@ export const unlinkAdoption = async (id: string): Promise<Either<Error, Adoption
       headers: { Authorization: `Bearer ${token}` },
       method: "PUT",
     });
-
-    console.log(response)
 
     if (response.status === HttpStatusCode.Forbidden) {
       return left(new ForbiddenError("Token inválido, para continuar você precisa fazer o login novamente."));

@@ -12,7 +12,7 @@ function matchesWildcard(path: string, pattern: string): boolean {
 }
 
 export async function middleware(request: NextRequest) {
-    const login = process.env.NEXT_PUBLIC_AUTH_PAGE ?? '/';
+    const login = 'http://localhost:3000'
     const { pathname, searchParams } = request.nextUrl;
 
     // Check if the user is being redirected to the home page

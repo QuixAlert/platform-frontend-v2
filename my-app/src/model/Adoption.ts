@@ -13,7 +13,7 @@ export default interface Adoption {
     status_adoption_id: string,
     motivation: string,
     animal: Animal,
-    user: BusinessUser,
+    user: UserFirebase,
     user_requester: UserFirebase,
     status_adoption: StatusAdoption
 }

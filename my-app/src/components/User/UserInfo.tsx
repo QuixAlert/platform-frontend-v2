@@ -4,7 +4,6 @@ import Label from "@/components/Label/Label";
 import BusinessUser from "@/model/BusinessUser";
 
 const UserInfo = ({ user }: { user: BusinessUser }) => {
-    console.log(user.photo)
     return (
         <div>
             <div className="cabecalho pb-2 flex items-center gap-2">

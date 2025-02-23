@@ -11,7 +11,10 @@ import {UnknownError} from "@/errors/unknown-error";
 import {Either, left, right} from "@/lib/either";
 import {BadRequestError} from "@/errors/bad-request";
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL_API;
+import 'dotenv/config'
+
+
+const baseUrl = 'http://localhost:8080/api/v1'
 export const fetchAdoptions = async (): Promise<Either<Error, Adoption[]>> => {
 
   const cookieStore = cookies();

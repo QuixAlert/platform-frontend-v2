@@ -7,8 +7,9 @@ import { Invitation } from "@/model/Invitation";
 import { ValidInvite } from "@/model/ValidInvite";
 import { HttpStatusCode } from "axios";
 import { parseCookies } from "nookies";
+import 'dotenv/config'
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL_API
+const baseUrl = 'http://localhost:8080/api/v1'
 
 export const sendInvite = async(email: string): Promise<Either<Error, undefined>> => {
     let token = parseCookies(undefined)["quixalert.auth.token"];

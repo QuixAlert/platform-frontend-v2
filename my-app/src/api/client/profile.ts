@@ -6,8 +6,9 @@ import {HttpStatusCode} from "axios";
 import {ForbiddenError} from "@/errors/forbidden";
 import {UnknownError} from "@/errors/unknown-error";
 import {RequestCookie} from "next/dist/compiled/@edge-runtime/cookies";
+import 'dotenv/config'
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL_API
+const baseUrl = 'http://localhost:8080/api/v1'
 
 export const updateUserProfile = async(user: BusinessUser, id: string, helpToken?: RequestCookie | string): Promise<Either<Error, BusinessUser>> => {
     let token = parseCookies(undefined)["quixalert.auth.token"];

@@ -7,8 +7,10 @@ import { parseCookies } from "nookies";
 import { BadRequestError } from "@/errors/bad-request";
 import { HttpStatusCode } from "axios";
 import { ForbiddenError } from "@/errors/forbidden";
+import 'dotenv/config'
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL_API
+
+const baseUrl = 'http://localhost:8080/api/v1'
 
 export const fetchLogin = async (email: string, password: string): Promise<Either<Error, Auth>> => {
     try {

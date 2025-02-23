@@ -6,8 +6,9 @@ import BusinessUser from "@/model/BusinessUser";
 import User from "@/model/User";
 import { HttpStatusCode } from "axios";
 import {parseCookies} from "nookies";
+import 'dotenv/config'
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL_API;
+const baseUrl = 'http://localhost:8080/api/v1'
 
 export const fetchUsers = async(): Promise<Either<Error, BusinessUser[]>> => {
     const token = parseCookies(undefined)["quixalert.auth.token"];

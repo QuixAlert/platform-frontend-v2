@@ -50,6 +50,7 @@ type AdoptionDetailProps = {
 }
 
 export default function AdoptionDetail({adoption, error}: AdoptionDetailProps) {
+  console.log(adoption)
   return (
     <>
       <div className="w-full h-full pt-5 pl-7 page-container bg-pgb text-white">

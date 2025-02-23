@@ -3,11 +3,11 @@ import { ArrowLeftOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import ColorButton from "@/components/Button/ColorButton";
 
-type InDevelopmentPagePros = {
-    pageName: string
-}
+type InDevelopmentPageProps = {
+    params: { pageName: string };
+};
 
-function InDevelopmentPage({pageName}: InDevelopmentPagePros) {
+function InDevelopmentPage({ params }: InDevelopmentPageProps) {
     return (
         <div className="flex flex-col justify-center items-center min-h-full min-w-full bg-pgb text-center p-4">
             <Image
@@ -24,7 +24,7 @@ function InDevelopmentPage({pageName}: InDevelopmentPagePros) {
             </h1>
 
             <p className="text-lg text-gray-400 mb-8">
-                A página de {pageName} ainda está em desenvolvimento
+                A página de {params.pageName} ainda está em desenvolvimento
             </p>
 
             <ColorButton bgColor="#269996" type="primary" icon={<ArrowLeftOutlined />}>
