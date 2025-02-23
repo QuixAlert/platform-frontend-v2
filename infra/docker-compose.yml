@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  frontend:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    working_dir: /app/my-app
+    ports:
+      - "3000:3000"
+    environment:
+      - API_BASE_URL_API="http://localhost:8080/api/v1"
+      - NEXT_PUBLIC_AUTH_PAGE="http://localhost:3000"
+    # Remove volume mounts so that the build artifacts are not overwritten
+    # volumes:
+    #   - ../my-app:/app/my-app
+    #   - /app/my-app/node_modules
+    stdin_open: true
+    tty: true
