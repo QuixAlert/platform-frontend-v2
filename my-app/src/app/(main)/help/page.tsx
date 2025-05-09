@@ -2,7 +2,6 @@ import React from 'react';
 
 import HelpCard from '@/components/HelpCard/HelpCard';
 
-import "./style.css";
 
 
 const helpCardsMoki = [
@@ -51,7 +50,7 @@ const helpCardsMoki = [
 const Page = () => {
   return (
     <>
-      <div className='bg-pgb w-full h-full pt-5 pl-7'>
+      <div className='bg-default w-full h-full pt-5 pl-7'>
 
         <h1 className="text-white font-nunito font-bold text-[26px]">
           Ajuda
