@@ -29,7 +29,7 @@ const HelpCardModal: React.FC<HelpCardModalProps> = ({ title, videoUrl, isOpen, 
   return (
     <Modal
       title={
-        <p className='font-semibold text-[24px] modal-title'>
+        <p className='font-bold font-sans text-title  modal-title'>
           {title}
         </p>
       }
@@ -66,7 +66,7 @@ const HelpCardModal: React.FC<HelpCardModalProps> = ({ title, videoUrl, isOpen, 
         onStart={() => setIsLoading(false)}
         width={'100%'}
         height={'600px'}
-        className="react-player"
+        className="rounded-lg overflow-hidden  shadow-modalCard"
       />
     </Modal>
   );
